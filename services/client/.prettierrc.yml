@@ -4,7 +4,7 @@ bracketSpacing: false
 embeddedLanguageFormatting: "auto"
 endOfLine: "lf"
 htmlWhitespaceSensitivity: "strict"
-jsxBracketSameLine: false
+bracketSameLine: false
 jsxSingleQuote: false
 printWidth: 99
 quoteProps: "as-needed"
@@ -13,6 +13,18 @@ singleQuote: false
 tabWidth: 4
 trailingComma: "all"
 useTabs: false
+
+# JSDoc plugin
+jsdocSpaces: 1
+jsdocDescriptionWithDot: false
+jsdocDescriptionTag: false
+jsdocVerticalAlignment: false
+jsdocKeepUnParseAbleExampleIndent: false
+tsdoc: true
+
+plugins:
+  - prettier-plugin-jsdoc
+  - prettier-plugin-package
 
 overrides:
   - files:
