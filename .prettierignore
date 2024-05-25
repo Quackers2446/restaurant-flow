@@ -1,0 +1,5 @@
+data/*
+src/*.yml
+*/node_modules/
+build
+pnpm-lock.yaml
