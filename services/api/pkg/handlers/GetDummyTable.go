@@ -7,8 +7,8 @@ import (
 )
 
 type DummyTable struct {
-	Id          int
-	Description string
+	Id          int    `json:"id"`
+	Description string `json:"description"`
 }
 
 func (handler Handler) GetDummyTable(context echo.Context) error {
