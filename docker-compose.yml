@@ -14,7 +14,9 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
-      - db:/var/lib/mysql
+      # NOTE: if we get migrations working, add this so data persists
+      # - db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   db:

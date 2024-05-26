@@ -18,9 +18,12 @@ const (
 
 func Connect() *sql.DB {
 	connInfo := fmt.Sprintf(
-		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname,
+		// "host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		"%s:%s@tcp(%s:%d)/%s",
+		user, password, host, port, dbname,
 	)
+
+	fmt.Println(connInfo)
 
 	db, err := sql.Open("mysql", connInfo)
 	if err != nil {
