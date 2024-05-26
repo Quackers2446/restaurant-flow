@@ -1,15 +1,14 @@
 package handlers
 
 import (
-	"database/sql"
-
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
 )
 
 type Handler struct {
-	DB *sql.DB
+	DB *sqlx.DB
 }
 
-func New(db *sql.DB) Handler {
+func New(db *sqlx.DB) Handler {
 	return Handler{db}
 }

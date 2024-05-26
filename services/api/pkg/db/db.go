@@ -1,11 +1,11 @@
 package db
 
 import (
-	"database/sql"
 	"fmt"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
 )
 
 const (
@@ -16,7 +16,7 @@ const (
 	dbname   = "restaurantFlow"
 )
 
-func Connect() *sql.DB {
+func Connect() *sqlx.DB {
 	connInfo := fmt.Sprintf(
 		// "host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		"%s:%s@tcp(%s:%d)/%s",
@@ -25,7 +25,7 @@ func Connect() *sql.DB {
 
 	fmt.Println(connInfo)
 
-	db, err := sql.Open("mysql", connInfo)
+	db, err := sqlx.Open("mysql", connInfo)
 	if err != nil {
 		panic(err)
 	}
@@ -42,6 +42,6 @@ func Connect() *sql.DB {
 	return db
 }
 
-func CloseConnection(db *sql.DB) {
+func CloseConnection(db *sqlx.DB) {
 	defer db.Close()
 }
