@@ -6,17 +6,13 @@
 
 1. [Docker](https://www.docker.com/get-started/)
 2. [Docker Compose](https://docs.docker.com/compose/install/)
-3. [Node](https://nodejs.org/en/download/package-manager) and [pnpm](https://pnpm.io/installation#using-npm)
+3. [Node](https://nodejs.org/en/download/package-manager) and [pnpm](https://pnpm.io/installation#using-npm) with `npm i -g pnpm`
 4. To interact with the database, install at least one of [MyCLI](https://www.mycli.net/install), [MySQL CLI](https://dev.mysql.com/doc/refman/8.0/en/mysql.html), or [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
-5. Install go, I'm using 1.22 but older versions _might_ work?
+5. [Go](https://go.dev/doc/install), preferably 1.22 but other versions _might_ work
 
 ### What to run
 
-1. In `services/client`, run `pnpm install`
-    - We will use `pnpm` because it is better and faster in every way
-2. In `services/api` run `go mod download`
-3. Run `docker-compose up`
-    - For the moment, this just gets the database running, but in the future it will encompass all services
+Run `docker-compose up` to host the database. See the `README` files of each service for further instructions.
 
 ## Database
 
