@@ -39,8 +39,7 @@ CREATE TABLE `GoogleRestaurant` (
     `coords` point NOT NULL,
     `northeast` point NOT NULL,
     `southwest` point NOT NULL,
-    `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `restaurant_id` int
+    `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Tag` (
@@ -77,8 +76,6 @@ CREATE TABLE `OpeningPeriod` (
 CREATE INDEX `GoogleRestaurant_index_0` ON `GoogleRestaurant` (`place_id`);
 
 ALTER TABLE `Restaurant` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `GoogleRestaurant` (`google_restaurant_id`);
-
-ALTER TABLE `GoogleRestaurant` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
 
 ALTER TABLE `Tag` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
 
