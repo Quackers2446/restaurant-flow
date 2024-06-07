@@ -46,7 +46,7 @@ CREATE TABLE `GoogleRestaurant` (
 CREATE TABLE `Tag` (
     `tag_id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(64),
-    `resturaunt_id` int
+    `restaurant_id` int
 );
 
 CREATE TABLE `Review` (
@@ -80,7 +80,7 @@ ALTER TABLE `Restaurant` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `Go
 
 ALTER TABLE `GoogleRestaurant` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
 
-ALTER TABLE `Tag` ADD FOREIGN KEY (`resturaunt_id`) REFERENCES `Restaurant` (`restaurant_id`);
+ALTER TABLE `Tag` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
 
 ALTER TABLE `Review` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
 
