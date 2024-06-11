@@ -7,7 +7,7 @@
 1. [Docker](https://www.docker.com/get-started/)
 2. [Docker Compose](https://docs.docker.com/compose/install/)
 3. [Node](https://nodejs.org/en/download/package-manager) and [pnpm](https://pnpm.io/installation#using-npm) with `npm i -g pnpm`
-4. To interact with the database, install at least one of [MyCLI](https://www.mycli.net/install), [MySQL CLI](https://dev.mysql.com/doc/refman/8.0/en/mysql.html), or [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+4. To interact with the database, install at least one of [MyCLI](https://www.mycli.net/install), [MySQL CLI](https://dev.mysql.com/doc/refman/8.0/en/mysql.html), [MySQL Workbench](https://dev.mysql.com/downloads/workbench/), or [DBeaver](https://dbeaver.io/download/).
 5. [Go](https://go.dev/doc/install), preferably 1.22 but other versions _might_ work
 
 ### What to run

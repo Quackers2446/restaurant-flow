@@ -10,7 +10,9 @@
   "keywords": [],
   "author": "",
   "dependencies": {
+    "@luke-zhang-04/utils": "github:Luke-zhang-04/utils#semver:3.0.0",
     "dotenv": "^16.4.5",
-    "mysql2": "^3.10.0"
+    "mysql2": "^3.10.0",
+    "node-fetch": "^3.3.2"
   }
 }

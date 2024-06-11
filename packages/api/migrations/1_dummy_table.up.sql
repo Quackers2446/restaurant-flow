@@ -1,6 +1,6 @@
-CREATE TABLE `dummyTable` (
-    `id` int PRIMARY KEY AUTO_INCREMENT,
+create table `dummyTable` (
+    `id` int primary key auto_increment,
     `description` text
 );
 
-INSERT INTO `dummyTable` (`description`) VALUES ("test1"), ("test2"), ("test3");
+insert into dummyTable (`description`) values ("test1"), ("test2"), ("test3");
