@@ -1,11 +1,18 @@
 import { TextInput } from '@mantine/core';
 
-function SearchBar() {
+interface SearchBarProps {
+    label: string;
+    description?: string;
+    placeholder?: string
+}
+
+function SearchBar(props: SearchBarProps) {
+    const { label, description, placeholder } = props;
     return (
         <TextInput
-            label="Input label"
-            description="Input description"
-            placeholder="Input placeholder"
+            label={label}
+            description={description}
+            placeholder={placeholder}
         />
     );
 }

@@ -28,12 +28,13 @@ function App() {
                         hiddenFrom="sm"
                         size="sm"
                     />
-                    <SearchBar />
                 </AppShell.Header>
 
                 <AppShell.Navbar p="lg">Navbar</AppShell.Navbar>
 
-                <AppShell.Main>Main</AppShell.Main>
+                <AppShell.Main>
+                    <SearchBar label="Search" description="Explore Restaurants in Waterloo" placeholder="..Lazeez" />
+                </AppShell.Main>
             </AppShell>
         </MantineProvider >
     );
