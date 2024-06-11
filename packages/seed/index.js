@@ -194,8 +194,8 @@ const insertPlace = async (place) => {
             acceptsCashOnly: place.paymentOptions.acceptsCashOnly,
             acceptsNfc: place.paymentOptions.acceptsNfc,
 
-            wheelchairAccessibleEntrance: place.accessibilityOptions.wheelchairAccessibleEntrance,
-            wheelchairAccessibleSeating: place.accessibilityOptions.wheelchairAccessibleSeating,
+            wheelchairAccessibleEntrance: place.accessibilityOptions?.wheelchairAccessibleEntrance,
+            wheelchairAccessibleSeating: place.accessibilityOptions?.wheelchairAccessibleSeating,
             placeId: place.id,
             coordLat: place.location.latitude,
             coordLng: place.location.longitude,
@@ -221,52 +221,51 @@ const insertPlace = async (place) => {
     )
 }
 
-const response = await fetch("https://places.googleapis.com/v1/places:searchNearby", {
-    method: "POST",
-    body: JSON.stringify({
-        includedTypes: ["restaurant"],
-        maxResultCount: 20, // Max is 20
-        locationRestriction: {
-            circle: {
-                center: {
-                    latitude: 43.472092784983914,
-                    longitude: -80.53013441283382,
-                },
-                radius: 2000.0,
-            },
+let pageToken = undefined
+
+for (let i = 0; i < 3; i++) {
+    const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
+        method: "POST",
+        body: JSON.stringify({
+            textQuery: "Restaurants near the University of Waterloo",
+            pageSize: 20,
+            pageToken,
+        }),
+        headers: {
+            "Content-Type": "application/json",
+            "X-Goog-Api-Key": process.env.GOOGLE_PLACES_API_KEY,
+            "X-Goog-FieldMask": "*",
         },
-    }),
-    headers: {
-        "Content-Type": "application/json",
-        "X-Goog-Api-Key": process.env.GOOGLE_PLACES_API_KEY,
-        "X-Goog-FieldMask": "*",
-    },
-})
+    })
 
-if (!response.ok) {
-    console.log(`ERROR ${response.status}`, await response.text())
-} else {
-    const data = await response.json()
+    if (!response.ok) {
+        console.log(`ERROR ${response.status}`, await response.text())
+    } else {
+        const data = await response.json()
 
-    const {places} = data
+        const {places, nextPageToken} = data
 
-    try {
-        const result = await semaphore(
-            places.map((place) => async () => {
-                console.log(`Inserting ${place.displayName.text} ${place.id} ...`)
+        try {
+            console.log(`Inserting ${places.length} places...`)
+            await semaphore(
+                places.map((place) => async () => {
+                    console.log(`Inserting ${place.displayName.text} ${place.id} ...`)
 
-                const val = await insertPlace(place)
+                    const val = await insertPlace(place)
 
-                console.log(`Inserted ${place.displayName.text} ${place.id}`)
+                    console.log(`Inserted ${place.displayName.text} ${place.id}`)
 
-                return val
-            }),
-            10,
-        )
+                    return val
+                }),
+                10,
+            )
 
-        console.log(result)
-    } catch (err) {
-        console.error(err)
+            pageToken = nextPageToken
+        } catch (err) {
+            console.error(err)
+
+            break
+        }
     }
 }
 
