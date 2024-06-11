@@ -18,7 +18,7 @@ CREATE TABLE `GoogleRestaurant` (
     `name` varchar(64) NOT NULL,
     `description` text,
     `address` varchar(512) NOT NULL,
-    `phone` varchar(32) NOT NULL,
+    `phone` varchar(32),
     `website` varchar(256),
     `google_url` varchar(256),
     `avg_rating` tinyint,
