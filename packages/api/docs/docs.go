@@ -39,9 +39,182 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/restaurants": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "get all restaurants",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/handlers.getRestaurantsResult"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/httputil.HTTPError"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "db.GoogleRestaurant": {
+            "type": "object",
+            "properties": {
+                "acceptsCash_only": {
+                    "type": "boolean"
+                },
+                "acceptsCredit_cards": {
+                    "type": "boolean"
+                },
+                "acceptsDebit_cards": {
+                    "type": "boolean"
+                },
+                "acceptsNfc": {
+                    "type": "boolean"
+                },
+                "address": {
+                    "type": "string",
+                    "example": "362 King St N, Waterloo, ON N2J 2Z2, Canada"
+                },
+                "avgRating": {
+                    "type": "number",
+                    "example": 3.7
+                },
+                "businessStatus": {
+                    "type": "string",
+                    "example": "Operational"
+                },
+                "coordsLat": {
+                    "type": "number",
+                    "example": 43.481748499999995
+                },
+                "coordsLng": {
+                    "type": "number",
+                    "example": -80.52557019999999
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Classic, long-running fast-food chain known for its burgers* \u0026 fries."
+                },
+                "goodForGroups": {
+                    "type": "boolean"
+                },
+                "goodForWatchingSports": {
+                    "type": "boolean"
+                },
+                "googleUrl": {
+                    "type": "string",
+                    "example": "https://maps.google.com/?cid=217835057852927681"
+                },
+                "hasOutdoorSeating": {
+                    "type": "boolean"
+                },
+                "hasRestroom": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "McDonald's"
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "(519) 772-0790"
+                },
+                "placeId": {
+                    "type": "string",
+                    "example": "ChIJp6htNPLzK4gRwU7zutTnBQM"
+                },
+                "priceLevel": {
+                    "type": "string",
+                    "example": "Moderate"
+                },
+                "servesBeer": {
+                    "type": "boolean"
+                },
+                "servesBreakfast": {
+                    "type": "boolean"
+                },
+                "servesBrunch": {
+                    "type": "boolean"
+                },
+                "servesCocktails": {
+                    "type": "boolean"
+                },
+                "servesCoffee": {
+                    "type": "boolean"
+                },
+                "servesDessert": {
+                    "type": "boolean"
+                },
+                "servesDinner": {
+                    "type": "boolean"
+                },
+                "servesLunch": {
+                    "type": "boolean"
+                },
+                "servesVegetarianFood": {
+                    "type": "boolean"
+                },
+                "servesWine": {
+                    "type": "boolean"
+                },
+                "supportsCurbsidePickup": {
+                    "type": "boolean"
+                },
+                "supportsDelivery": {
+                    "type": "boolean"
+                },
+                "supportsDineIn": {
+                    "type": "boolean"
+                },
+                "supportsReservations": {
+                    "type": "boolean"
+                },
+                "supportsTakeout": {
+                    "type": "boolean"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "example": "2000-01-01T00:00:00Z"
+                },
+                "viewportHighLat": {
+                    "type": "number",
+                    "example": -80.52418676970849
+                },
+                "viewportHighLng": {
+                    "type": "number",
+                    "example": 43.483284130291494
+                },
+                "viewportLowLat": {
+                    "type": "number",
+                    "example": 43.480586169708495
+                },
+                "viewportLowLng": {
+                    "type": "number",
+                    "example": -80.5268847302915
+                },
+                "website": {
+                    "type": "string",
+                    "example": "https://www.mcdonalds.com/ca/en-ca/restaurant-locator.html?y_source=1*_MTQ1MTk5MzUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D"
+                },
+                "wheelchairAccessibleEntrance": {
+                    "type": "boolean"
+                },
+                "wheelchairAccessibleSeating": {
+                    "type": "boolean"
+                }
+            }
+        },
         "handlers.dummyTable": {
             "type": "object",
             "properties": {
@@ -53,16 +226,37 @@ const docTemplate = `{
                 }
             }
         },
+        "handlers.getRestaurantsResult": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "example": "2000-01-01T00:00:00Z"
+                },
+                "googleRestaurant": {
+                    "$ref": "#/definitions/db.GoogleRestaurant"
+                },
+                "restaurantId": {
+                    "description": "Required for mapping",
+                    "type": "integer",
+                    "example": 0
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "example": "2000-01-01T00:00:00Z"
+                }
+            }
+        },
         "httputil.HTTPError": {
             "type": "object",
             "properties": {
                 "code": {
                     "type": "integer",
-                    "example": 400
+                    "example": 500
                 },
                 "message": {
                     "type": "string",
-                    "example": "status bad request"
+                    "example": "example error"
                 }
             }
         }

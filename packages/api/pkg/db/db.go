@@ -22,7 +22,7 @@ const (
 func Connect() *sqlx.DB {
 	connInfo := fmt.Sprintf(
 		// "host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		"%s:%s@tcp(%s:%d)/%s?multiStatements=true",
+		"%s:%s@tcp(%s:%d)/%s?multiStatements=true&parseTime=true",
 		user, password, host, port, dbname,
 	)
 
