@@ -13,11 +13,23 @@ CREATE TABLE `Restaurant` (
     `google_restaurant_id` int
 );
 
+-- SQLC does not support spatial datatypes, so we cannot use the POINT type.
+CREATE TABLE `Location` (
+    `location_id` int PRIMARY KEY AUTO_INCREMENT,
+    `address` varchar(512) NOT NULL,
+    `lat` float NOT NULL,
+    `lng` float NOT NULL,
+    `viewport_high_lat` float NOT NULL,
+    `viewport_high_lng` float NOT NULL,
+    `viewport_low_lat` float NOT NULL,
+    `viewport_low_lng` float NOT NULL,
+    `google_restaurant_id` int UNIQUE
+);
+
 CREATE TABLE `GoogleRestaurant` (
     `google_restaurant_id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(64) NOT NULL,
     `description` text,
-    `address` varchar(512) NOT NULL,
     `phone` varchar(32),
     `website` varchar(256),
     `google_url` varchar(256),
@@ -36,9 +48,6 @@ CREATE TABLE `GoogleRestaurant` (
     `serves_wine` boolean,
     `wheelchair_accessible_entrance` boolean,
     `place_id` varchar(512) UNIQUE NOT NULL,
-    `coords` point NOT NULL,
-    `northeast` point NOT NULL,
-    `southwest` point NOT NULL,
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
@@ -76,6 +85,8 @@ CREATE TABLE `OpeningPeriod` (
 CREATE INDEX `GoogleRestaurant_index_0` ON `GoogleRestaurant` (`place_id`);
 
 ALTER TABLE `Restaurant` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `GoogleRestaurant` (`google_restaurant_id`);
+
+ALTER TABLE `Location` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `GoogleRestaurant` (`google_restaurant_id`);
 
 ALTER TABLE `Tag` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
 
