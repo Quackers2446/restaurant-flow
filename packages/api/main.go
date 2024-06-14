@@ -4,6 +4,7 @@ import (
 	_ "restaurant-flow/docs"
 	"restaurant-flow/pkg/db"
 	"restaurant-flow/pkg/handlers"
+	"restaurant-flow/pkg/sqlcClient"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -25,7 +26,10 @@ func main() {
 
 	defer db.CloseConnection(DB)
 
-	h := handlers.New(DB)
+	// Setup sqlc
+	queries := sqlcClient.New(DB)
+
+	h := handlers.New(DB, queries)
 
 	// Routes
 	e.GET("/dummy-table", h.GetDummyTable)

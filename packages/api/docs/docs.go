@@ -52,7 +52,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/handlers.getRestaurantsResult"
+                                "$ref": "#/definitions/sqlcClient.GetRestaurantsRow"
                             }
                         }
                     },
@@ -67,154 +67,6 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "db.GoogleRestaurant": {
-            "type": "object",
-            "properties": {
-                "acceptsCash_only": {
-                    "type": "boolean"
-                },
-                "acceptsCredit_cards": {
-                    "type": "boolean"
-                },
-                "acceptsDebit_cards": {
-                    "type": "boolean"
-                },
-                "acceptsNfc": {
-                    "type": "boolean"
-                },
-                "address": {
-                    "type": "string",
-                    "example": "362 King St N, Waterloo, ON N2J 2Z2, Canada"
-                },
-                "avgRating": {
-                    "type": "number",
-                    "example": 3.7
-                },
-                "businessStatus": {
-                    "type": "string",
-                    "example": "Operational"
-                },
-                "coordsLat": {
-                    "type": "number",
-                    "example": 43.481748499999995
-                },
-                "coordsLng": {
-                    "type": "number",
-                    "example": -80.52557019999999
-                },
-                "description": {
-                    "type": "string",
-                    "example": "Classic, long-running fast-food chain known for its burgers* \u0026 fries."
-                },
-                "goodForGroups": {
-                    "type": "boolean"
-                },
-                "goodForWatchingSports": {
-                    "type": "boolean"
-                },
-                "googleUrl": {
-                    "type": "string",
-                    "example": "https://maps.google.com/?cid=217835057852927681"
-                },
-                "hasOutdoorSeating": {
-                    "type": "boolean"
-                },
-                "hasRestroom": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string",
-                    "example": "McDonald's"
-                },
-                "phone": {
-                    "type": "string",
-                    "example": "(519) 772-0790"
-                },
-                "placeId": {
-                    "type": "string",
-                    "example": "ChIJp6htNPLzK4gRwU7zutTnBQM"
-                },
-                "priceLevel": {
-                    "type": "string",
-                    "example": "Moderate"
-                },
-                "servesBeer": {
-                    "type": "boolean"
-                },
-                "servesBreakfast": {
-                    "type": "boolean"
-                },
-                "servesBrunch": {
-                    "type": "boolean"
-                },
-                "servesCocktails": {
-                    "type": "boolean"
-                },
-                "servesCoffee": {
-                    "type": "boolean"
-                },
-                "servesDessert": {
-                    "type": "boolean"
-                },
-                "servesDinner": {
-                    "type": "boolean"
-                },
-                "servesLunch": {
-                    "type": "boolean"
-                },
-                "servesVegetarianFood": {
-                    "type": "boolean"
-                },
-                "servesWine": {
-                    "type": "boolean"
-                },
-                "supportsCurbsidePickup": {
-                    "type": "boolean"
-                },
-                "supportsDelivery": {
-                    "type": "boolean"
-                },
-                "supportsDineIn": {
-                    "type": "boolean"
-                },
-                "supportsReservations": {
-                    "type": "boolean"
-                },
-                "supportsTakeout": {
-                    "type": "boolean"
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "example": "2000-01-01T00:00:00Z"
-                },
-                "viewportHighLat": {
-                    "type": "number",
-                    "example": -80.52418676970849
-                },
-                "viewportHighLng": {
-                    "type": "number",
-                    "example": 43.483284130291494
-                },
-                "viewportLowLat": {
-                    "type": "number",
-                    "example": 43.480586169708495
-                },
-                "viewportLowLng": {
-                    "type": "number",
-                    "example": -80.5268847302915
-                },
-                "website": {
-                    "type": "string",
-                    "example": "https://www.mcdonalds.com/ca/en-ca/restaurant-locator.html?y_source=1*_MTQ1MTk5MzUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D"
-                },
-                "wheelchairAccessibleEntrance": {
-                    "type": "boolean"
-                },
-                "wheelchairAccessibleSeating": {
-                    "type": "boolean"
-                }
-            }
-        },
         "handlers.dummyTable": {
             "type": "object",
             "properties": {
@@ -223,27 +75,6 @@ const docTemplate = `{
                 },
                 "id": {
                     "type": "integer"
-                }
-            }
-        },
-        "handlers.getRestaurantsResult": {
-            "type": "object",
-            "properties": {
-                "createdAt": {
-                    "type": "string",
-                    "example": "2000-01-01T00:00:00Z"
-                },
-                "googleRestaurant": {
-                    "$ref": "#/definitions/db.GoogleRestaurant"
-                },
-                "restaurantId": {
-                    "description": "Required for mapping",
-                    "type": "integer",
-                    "example": 0
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "example": "2000-01-01T00:00:00Z"
                 }
             }
         },
@@ -257,6 +88,273 @@ const docTemplate = `{
                 "message": {
                     "type": "string",
                     "example": "example error"
+                }
+            }
+        },
+        "sql.NullBool": {
+            "type": "object",
+            "properties": {
+                "bool": {
+                    "type": "boolean"
+                },
+                "valid": {
+                    "description": "Valid is true if Bool is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "sql.NullFloat64": {
+            "type": "object",
+            "properties": {
+                "float64": {
+                    "type": "number"
+                },
+                "valid": {
+                    "description": "Valid is true if Float64 is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "sql.NullInt32": {
+            "type": "object",
+            "properties": {
+                "int32": {
+                    "type": "integer"
+                },
+                "valid": {
+                    "description": "Valid is true if Int32 is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "sql.NullString": {
+            "type": "object",
+            "properties": {
+                "string": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if String is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "sqlcClient.GetRestaurantsRow": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "googleRestaurant": {
+                    "$ref": "#/definitions/sqlcClient.GoogleRestaurant"
+                },
+                "location": {
+                    "$ref": "#/definitions/sqlcClient.Location"
+                },
+                "restaurantId": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "sqlcClient.GoogleRestaurant": {
+            "type": "object",
+            "properties": {
+                "acceptsCashOnly": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "acceptsCreditCards": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "acceptsDebitCards": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "acceptsNfc": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "avgRating": {
+                    "$ref": "#/definitions/sql.NullFloat64"
+                },
+                "businessStatus": {
+                    "$ref": "#/definitions/sqlcClient.NullGooglerestaurantBusinessStatus"
+                },
+                "description": {
+                    "$ref": "#/definitions/sql.NullString"
+                },
+                "goodForGroups": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "goodForWatchingSports": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "googleRestaurantId": {
+                    "type": "integer"
+                },
+                "googleUrl": {
+                    "$ref": "#/definitions/sql.NullString"
+                },
+                "hasOutdoorSeating": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "hasRestroom": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "$ref": "#/definitions/sql.NullString"
+                },
+                "placeId": {
+                    "type": "string"
+                },
+                "priceLevel": {
+                    "$ref": "#/definitions/sqlcClient.NullGooglerestaurantPriceLevel"
+                },
+                "servesBeer": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesBreakfast": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesBrunch": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesCocktails": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesCoffee": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesDessert": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesDinner": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesLunch": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesVegetarianFood": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "servesWine": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "supportsCurbsidePickup": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "supportsDelivery": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "supportsDineIn": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "supportsReservations": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "supportsTakeout": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "website": {
+                    "$ref": "#/definitions/sql.NullString"
+                },
+                "wheelchairAccessibleEntrance": {
+                    "$ref": "#/definitions/sql.NullBool"
+                },
+                "wheelchairAccessibleSeating": {
+                    "$ref": "#/definitions/sql.NullBool"
+                }
+            }
+        },
+        "sqlcClient.GooglerestaurantBusinessStatus": {
+            "type": "string",
+            "enum": [
+                "Operational",
+                "ClosedTemporarily",
+                "ClosedPermanently"
+            ],
+            "x-enum-varnames": [
+                "GooglerestaurantBusinessStatusOperational",
+                "GooglerestaurantBusinessStatusClosedTemporarily",
+                "GooglerestaurantBusinessStatusClosedPermanently"
+            ]
+        },
+        "sqlcClient.GooglerestaurantPriceLevel": {
+            "type": "string",
+            "enum": [
+                "Free",
+                "Inexpensive",
+                "Moderate",
+                "Expensive",
+                "VeryExpensive"
+            ],
+            "x-enum-varnames": [
+                "GooglerestaurantPriceLevelFree",
+                "GooglerestaurantPriceLevelInexpensive",
+                "GooglerestaurantPriceLevelModerate",
+                "GooglerestaurantPriceLevelExpensive",
+                "GooglerestaurantPriceLevelVeryExpensive"
+            ]
+        },
+        "sqlcClient.Location": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "googleRestaurantId": {
+                    "$ref": "#/definitions/sql.NullInt32"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "lng": {
+                    "type": "number"
+                },
+                "locationId": {
+                    "type": "integer"
+                },
+                "viewportHighLat": {
+                    "type": "number"
+                },
+                "viewportHighLng": {
+                    "type": "number"
+                },
+                "viewportLowLat": {
+                    "type": "number"
+                },
+                "viewportLowLng": {
+                    "type": "number"
+                }
+            }
+        },
+        "sqlcClient.NullGooglerestaurantBusinessStatus": {
+            "type": "object",
+            "properties": {
+                "googlerestaurantBusinessStatus": {
+                    "$ref": "#/definitions/sqlcClient.GooglerestaurantBusinessStatus"
+                },
+                "valid": {
+                    "description": "Valid is true if GooglerestaurantBusinessStatus is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "sqlcClient.NullGooglerestaurantPriceLevel": {
+            "type": "object",
+            "properties": {
+                "googlerestaurantPriceLevel": {
+                    "$ref": "#/definitions/sqlcClient.GooglerestaurantPriceLevel"
+                },
+                "valid": {
+                    "description": "Valid is true if GooglerestaurantPriceLevel is not NULL",
+                    "type": "boolean"
                 }
             }
         }
