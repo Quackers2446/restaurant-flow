@@ -131,4 +131,5 @@ dist
 
 swagger.json
 swagger.yaml
-sqlcClient
+docs.go
+sqlcClient/
