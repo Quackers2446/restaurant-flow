@@ -36,7 +36,10 @@ func main() {
 	e.Validator = &CustomValidator{validator: validator.New()}
 
 	// Middleware
-	e.Use(middleware.Logger())
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		// Resembling common log format
+		Format: `${remote_ip} - - [${time_rfc3339}] "${method} ${path} ${protocol}" ${status} ${bytes_out} ${latency_human} ${error}` + "\n",
+	}))
 	e.Use(middleware.Recover())
 
 	DB := db.Connect()
