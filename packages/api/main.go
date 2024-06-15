@@ -77,6 +77,7 @@ func main() {
 	// Routes
 	e.GET("/dummy-table", h.GetDummyTable)
 	e.GET("/restaurants", h.GetRestaurants)
+	e.GET("/restaurants/:id", h.GetRestaurant)
 
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)

@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type getRestaurantsQuery struct {
+type getRestaurantsInput struct {
 	Start   uint16 `query:"start"`
 	Limit   uint8  `query:"limit" validate:"lte=50"`
 	OrderBy string `query:"orderBy" validate:"omitempty,oneof=name created_at updated_at avg_rating"`
@@ -25,7 +25,7 @@ type getRestaurantsResult struct {
 
 // GetRestaurants
 //
-//	@Summary	get all restaurants
+//	@Summary	get many restaurants
 //
 //	@Accept		json
 //	@Produce	json
@@ -38,22 +38,22 @@ type getRestaurantsResult struct {
 //	@Failure	500		{object}	echo.HTTPError
 //	@Router		/restaurants [get]
 func (handler Handler) GetRestaurants(context echo.Context) (err error) {
-	query := getRestaurantsQuery{Start: 0, Limit: 20, OrderBy: "name"}
+	input := getRestaurantsInput{Start: 0, Limit: 20, OrderBy: "name"}
 
-	if err = context.Bind(&query); err != nil {
+	if err = context.Bind(&input); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	if err = context.Validate(&query); err != nil {
+	if err = context.Validate(&input); err != nil {
 		return err
 	}
 
 	restaurants, err := handler.Queries.GetRestaurants(
 		context.Request().Context(),
 		sqlcClient.GetRestaurantsParams{
-			Offset:  int32(query.Start),
-			Limit:   int32(query.Limit),
-			OrderBy: query.OrderBy,
-			Order:   query.Order,
+			Offset:  int32(input.Start),
+			Limit:   int32(input.Limit),
+			OrderBy: input.OrderBy,
+			Order:   input.Order,
 		},
 	)
 

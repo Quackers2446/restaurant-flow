@@ -35,6 +35,17 @@ order by
     Restaurant.restaurant_id asc
 limit ?, ?;
 
+-- name: GetRestaurant :one
+select
+    Restaurant.*,
+    sqlc.embed(GoogleRestaurant),
+    sqlc.embed(Location)
+from Restaurant
+inner join GoogleRestaurant on GoogleRestaurant.google_restaurant_id = Restaurant.google_restaurant_id
+inner join `Location` on `Location`.google_restaurant_id = Restaurant.google_restaurant_id
+where Restaurant.restaurant_id = ?
+limit 1;
+
 -- name: GetTags :many
 select Tag.* from Tag where Tag.restaurant_id in (sqlc.slice("restaurant_ids"));
 
