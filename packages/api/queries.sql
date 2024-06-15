@@ -7,9 +7,7 @@
 
 -- name: GetRestaurants :many
 select
-    Restaurant.restaurant_id,
-    Restaurant.created_at,
-    Restaurant.updated_at,
+    Restaurant.*,
     sqlc.embed(GoogleRestaurant),
     sqlc.embed(Location)
 from Restaurant
@@ -39,3 +37,9 @@ limit ?, ?;
 
 -- name: GetTags :many
 select Tag.* from Tag where Tag.restaurant_id in (sqlc.slice("restaurant_ids"));
+
+-- name: GetOpeningHours :many
+select OpeningHours.*, sqlc.embed(OpeningPeriod)
+from OpeningHours
+inner join OpeningPeriod on OpeningPeriod.opening_hours_id = OpeningHours.opening_hours_id
+where OpeningHours.google_restaurant_id in (sqlc.slice("google_restaurant_ids"));

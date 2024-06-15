@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
 	"restaurant-flow/pkg/util"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 )
@@ -18,7 +19,8 @@ type getRestaurantsQuery struct {
 type getRestaurantsResult struct {
 	sqlcClient.GetRestaurantsRow
 
-	Tags []*sqlcClient.Tag `json:"tags"`
+	Tags         []*sqlcClient.Tag                        `json:"tags"`
+	OpeningHours map[string]([]*sqlcClient.OpeningPeriod) `json:"openingHours"`
 }
 
 // GetRestaurants
@@ -64,18 +66,25 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	// in the ass.
 	// Normally we would use a query builder like  https://github.com/go-jet/jet but then we
 	// wouldn't be writing SQL, which (I assume) is against the rules of the project.
-	index := make(map[int32]*getRestaurantsResult)
+	restaurantIndex := make(map[int32]*getRestaurantsResult)
+	googleRestaurantIndex := make(map[int32]*getRestaurantsResult)
 
 	var data []*getRestaurantsResult = util.Map(
 		restaurants,
 		func(restaurant *sqlcClient.GetRestaurantsRow) *getRestaurantsResult {
-			resultItem := &getRestaurantsResult{GetRestaurantsRow: *restaurant, Tags: []*sqlcClient.Tag{}}
-			index[restaurant.RestaurantID] = resultItem // SIDE EFFECT
+			resultItem := &getRestaurantsResult{
+				GetRestaurantsRow: *restaurant,
+				Tags:              []*sqlcClient.Tag{},
+				OpeningHours:      make(map[string]([]*sqlcClient.OpeningPeriod)),
+			}
+			restaurantIndex[restaurant.RestaurantID] = resultItem              // SIDE EFFECT
+			googleRestaurantIndex[*restaurant.GoogleRestaurantID] = resultItem // SIDE EFFECT
 
 			return resultItem
 		},
 	)
 
+	// Add tags
 	tags, err := handler.Queries.GetTags(
 		context.Request().Context(),
 		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) *int32 { return &restaurant.RestaurantID }),
@@ -86,7 +95,33 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	}
 
 	for _, tag := range tags {
-		index[*tag.RestaurantID].Tags = append(index[*tag.RestaurantID].Tags, &tag)
+		restaurantIndex[*tag.RestaurantID].Tags = append(restaurantIndex[*tag.RestaurantID].Tags, &tag)
+	}
+
+	// Add opening hours
+	openingHours, err := handler.Queries.GetOpeningHours(
+		context.Request().Context(),
+		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) *int32 {
+			return &restaurant.GoogleRestaurant.GoogleRestaurantID
+		}),
+	)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	for _, hour := range openingHours {
+		typeKey := strings.ToLower(string(hour.Type))
+		openingHoursForRestaurant := googleRestaurantIndex[*hour.GoogleRestaurantID].OpeningHours
+
+		val, ok := openingHoursForRestaurant[typeKey]
+
+		if ok {
+			openingHoursForRestaurant[typeKey] = append(val, &hour.OpeningPeriod)
+		} else {
+			openingHoursForRestaurant[typeKey] = []*sqlcClient.OpeningPeriod{&hour.OpeningPeriod}
+		}
+
 	}
 
 	return context.JSON(http.StatusOK, data)
