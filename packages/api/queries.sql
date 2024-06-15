@@ -1,6 +1,9 @@
 -- SQL queries for SQLC generation go here. Note that these queries are run through a preprocessor, so there may be
 -- functions that are not defined in MySQL used here.
 -- Docs: https://docs.sqlc.dev/en/latest/tutorials/getting-started-mysql.html
+-- Note: we cannot just left join and expect SQLC to handle one-to-many relationships properly
+--       see https://github.com/sqlc-dev/sqlc/issues/2348
+--       and https://github.com/sqlc-dev/sqlc/discussions/2643
 
 -- name: GetRestaurants :many
 select
@@ -15,21 +18,24 @@ inner join `Location` on `Location`.google_restaurant_id = Restaurant.google_res
 order by
     case when sqlc.arg("order") = "desc" then (
         case
-            when sqlc.arg("order_by") = "name" then `name`
+            when sqlc.arg("order_by") = "name" then `GoogleRestaurant`.`name`
             when sqlc.arg("order_by") = "updated_at" then `GoogleRestaurant`.`updated_at`
             when sqlc.arg("order_by") = "created_at" then `created_at`
             when sqlc.arg("order_by") = "avg_rating" then `avg_rating`
-            else `name`
+            else `GoogleRestaurant`.`name`
         end
     ) end desc,
     case when sqlc.arg("order") != "desc" then (
         case
-            when sqlc.arg("order_by") = "name" then `name`
+            when sqlc.arg("order_by") = "name" then `GoogleRestaurant`.`name`
             when sqlc.arg("order_by") = "updated_at" then `GoogleRestaurant`.`updated_at`
             when sqlc.arg("order_by") = "created_at" then `created_at`
             when sqlc.arg("order_by") = "avg_rating" then `avg_rating`
-            else `name`
+            else `GoogleRestaurant`.`name`
         end
     ) end asc,
-    `restaurant_id` asc
+    Restaurant.restaurant_id asc
 limit ?, ?;
+
+-- name: GetTags :many
+select Tag.* from Tag where Tag.restaurant_id in (sqlc.slice("restaurant_ids"));
