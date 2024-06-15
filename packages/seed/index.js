@@ -48,7 +48,6 @@ const insertPlace = async (place) => {
         insert into GoogleRestaurant set
             name=:name,
             description=:description,
-            address=:address,
             phone=:phone,
             website=:website,
             google_url=:googleUrl,
@@ -80,15 +79,11 @@ const insertPlace = async (place) => {
             accepts_nfc=:acceptsNfc,
             wheelchair_accessible_entrance=:wheelchairAccessibleEntrance,
             wheelchair_accessible_seating=:wheelchairAccessibleSeating,
-            place_id=:placeId,
-            coords=point(:coordLat, :coordLng),
-            viewport_high=point(:highLat, :highLng),
-            viewport_low=point(:lowLat, :lowLng)
+            place_id=:placeId
         as new
         on duplicate key update
             name=new.name,
             description=new.description,
-            address=new.address,
             phone=new.phone,
             website=new.website,
             google_url=new.google_url,
@@ -119,10 +114,20 @@ const insertPlace = async (place) => {
             accepts_cash_only=new.accepts_cash_only,
             accepts_nfc=new.accepts_nfc,
             wheelchair_accessible_entrance=new.wheelchair_accessible_entrance,
-            wheelchair_accessible_seating=new.wheelchair_accessible_seating,
-            coords=new.coords,
-            viewport_high=new.viewport_high,
-            viewport_low=new.viewport_low;
+            wheelchair_accessible_seating=new.wheelchair_accessible_seating;
+
+        insert into Location set
+            address=:address,
+            lat=:coordLat,
+            lng=:coordLng,
+            viewport_high_lat=:highLat,
+            viewport_high_lng=:highLng,
+            viewport_low_lat=:lowLat,
+            viewport_low_lng=:lowLng,
+            google_restaurant_id=(select google_restaurant_id from GoogleRestaurant where place_id=:placeId)
+        as new
+        -- On duplicate key, no-op
+        on duplicate key update google_restaurant_id=new.google_restaurant_id;
 
         insert into Restaurant set google_restaurant_id=(select google_restaurant_id from GoogleRestaurant where place_id=:placeId) as new
             -- On duplicate key, no-op

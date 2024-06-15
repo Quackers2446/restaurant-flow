@@ -5,5 +5,6 @@ DROP TABLE `OpeningHours`;
 DROP TABLE `Review`;
 DROP TABLE `Tag`;
 DROP TABLE `Restaurant`;
+DROP TABLE `Location`;
 DROP TABLE `GoogleRestaurant`;
 DROP TABLE `User`;

@@ -1,0 +1,72 @@
+# Docs: https://docs.sqlc.dev/en/stable/reference/config.html
+
+version: "2"
+sql:
+  - engine: "mysql"
+    queries: "queries.sql"
+    schema: "migrations/"
+    gen:
+      go:
+        package: "sqlcClient"
+        out: "pkg/sqlcClient"
+        emit_json_tags: true
+        emit_empty_slices: true
+        json_tags_case_style: "camel"
+        rename:
+          # Workaround for https://github.com/sqlc-dev/sqlc/issues/3089
+          googlerestaurant: GoogleRestaurant
+          openingperiod: OpeningPeriod
+
+        # Need to add for every nullable type in the schema
+        overrides:
+          - db_type: "tinyint"
+            nullable: true
+            go_type:
+              type: "int8"
+              pointer: true
+          - db_type: "smallint"
+            nullable: true
+            go_type:
+              type: "int16"
+              pointer: true
+          - db_type: "smallint"
+            unsigned: true
+            nullable: true
+            go_type:
+              type: "uint16"
+              pointer: true
+          - db_type: "mediumint"
+            nullable: true
+            go_type:
+              type: "int32"
+              pointer: true
+          - db_type: "int"
+            nullable: true
+            go_type:
+              type: "int32"
+              pointer: true
+          - db_type: "varchar"
+            nullable: true
+            go_type:
+              type: "string"
+              pointer: true
+          - db_type: "text"
+            nullable: true
+            go_type:
+              type: "string"
+              pointer: true
+          - db_type: "binary"
+            nullable: true
+            go_type:
+              type: "string"
+              pointer: true
+          - db_type: "char"
+            nullable: true
+            go_type:
+              type: "string"
+              pointer: true
+          - db_type: "float"
+            nullable: true
+            go_type:
+              type: "float64"
+              pointer: true

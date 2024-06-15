@@ -1,6 +1,3 @@
-alter table `GoogleRestaurant` rename column `northeast` to `viewport_high`;
-alter table `GoogleRestaurant` rename column `southwest` to `viewport_low`;
-
 alter table `GoogleRestaurant` add `supports_takeout` boolean default null;
 
 -- Not necessary, just a style thing
