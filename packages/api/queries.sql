@@ -11,4 +11,25 @@ select
     sqlc.embed(Location)
 from Restaurant
 inner join GoogleRestaurant on GoogleRestaurant.google_restaurant_id = Restaurant.google_restaurant_id
-inner join `Location` on `Location`.google_restaurant_id = Restaurant.google_restaurant_id;
+inner join `Location` on `Location`.google_restaurant_id = Restaurant.google_restaurant_id
+order by
+    case when sqlc.arg("order") = "desc" then (
+        case
+            when sqlc.arg("order_by") = "name" then `name`
+            when sqlc.arg("order_by") = "updated_at" then `GoogleRestaurant`.`updated_at`
+            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "avg_rating" then `avg_rating`
+            else `name`
+        end
+    ) end desc,
+    case when sqlc.arg("order") != "desc" then (
+        case
+            when sqlc.arg("order_by") = "name" then `name`
+            when sqlc.arg("order_by") = "updated_at" then `GoogleRestaurant`.`updated_at`
+            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "avg_rating" then `avg_rating`
+            else `name`
+        end
+    ) end asc,
+    `restaurant_id` asc
+limit ?, ?;

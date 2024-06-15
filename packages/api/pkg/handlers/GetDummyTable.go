@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"net/http"
-	"restaurant-flow/pkg/httputil"
 
 	"github.com/labstack/echo/v4"
 )
@@ -17,15 +16,15 @@ type dummyTable struct {
 //	@Summary	get dummy table
 //	@Produce	json
 //	@Success	200	{array}		dummyTable	"dummy table rows"
-//	@Failure	500	{object}	httputil.HTTPError
+//	@Failure	500	{object}	echo.HTTPError
 //	@Router		/dummy-table [get]
-func (handler Handler) GetDummyTable(context echo.Context) error {
+func (handler Handler) GetDummyTable(context echo.Context) (err error) {
 	data := []dummyTable{}
 
-	err := handler.DB.Select(&data, "SELECT * FROM `dummyTable`")
+	err = handler.DB.Select(&data, "SELECT * FROM `dummyTable`")
 
 	if err != nil {
-		return httputil.NewError(context, http.StatusInternalServerError, err)
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
 	return context.JSON(http.StatusOK, data)
