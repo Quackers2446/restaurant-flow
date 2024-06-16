@@ -26,11 +26,11 @@ type getRestaurantResult struct {
 //
 //	@Accept		json
 //	@Produce	json
-//	@Param		id	path		integer	true	"restaurant id"
-//	@Success	200	{object}	getRestaurantsResult
-//	@Failure	400	{object}	echo.HTTPError
-//	@Failure	404	{object}	echo.HTTPError
-//	@Failure	500	{object}	echo.HTTPError
+//	@Param		requestParams	path		getRestaurantInput	true	"request params"
+//	@Success	200				{object}	getRestaurantsResult
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	404				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/{id} [get]
 func (handler Handler) GetRestaurant(context echo.Context) (err error) {
 	input := getRestaurantInput{}

@@ -10,10 +10,14 @@ import (
 )
 
 type getRestaurantsInput struct {
-	Start   uint16 `query:"start"`
-	Limit   uint8  `query:"limit" validate:"lte=50"`
+	// Page start
+	Start uint16 `query:"start" validate:"omitempty,gt=0"`
+	// Max entries
+	Limit uint8 `query:"limit" validate:"omitempty,lte=50,gt=0"`
+	// Column to order by
 	OrderBy string `query:"orderBy" validate:"omitempty,oneof=name created_at updated_at avg_rating"`
-	Order   string `query:"order" validate:"omitempty,oneof=desc asc"`
+	// Ascending or descending
+	Order string `query:"order" validate:"omitempty,oneof=desc asc"`
 }
 
 type getRestaurantsResult struct {
@@ -29,13 +33,10 @@ type getRestaurantsResult struct {
 //
 //	@Accept		json
 //	@Produce	json
-//	@Param		start	query		integer	false	"page start"				minimum(0)
-//	@Param		limit	query		integer	false	"max entries"				maximum(50)
-//	@Param		orderBy	query		string	false	"column to order by"		Enums(name, created_at, updated_at, avg_rating)
-//	@Param		order	query		string	false	"ascending or descending"	Enums(asc, desc)
-//	@Success	200		{array}		getRestaurantsResult
-//	@Failure	400		{object}	echo.HTTPError
-//	@Failure	500		{object}	echo.HTTPError
+//	@Param		requestQuery	query		getRestaurantsInput	false	"request query"
+//	@Success	200				{array}		getRestaurantsResult
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants [get]
 func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	input := getRestaurantsInput{Start: 0, Limit: 20, OrderBy: "name"}
