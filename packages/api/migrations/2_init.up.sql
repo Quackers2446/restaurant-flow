@@ -14,6 +14,7 @@ CREATE TABLE `Restaurant` (
 );
 
 -- SQLC does not support spatial datatypes, so we cannot use the POINT type.
+-- https://github.com/sqlc-dev/sqlc/issues/2767 what the fuck man I wanted to use fancy new features
 CREATE TABLE `Location` (
     `location_id` int PRIMARY KEY AUTO_INCREMENT,
     `address` varchar(512) NOT NULL,

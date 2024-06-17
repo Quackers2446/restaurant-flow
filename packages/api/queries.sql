@@ -35,6 +35,27 @@ order by
     Restaurant.restaurant_id asc
 limit ?, ?;
 
+-- name: GetRestaurantsInArea :many
+select
+    Restaurant.*,
+    sqlc.embed(GoogleRestaurant),
+    sqlc.embed(Location),
+    ST_Distance(
+        ST_SRID(Point(`Location`.lat, `Location`.lng), 4326),
+        ST_SRID(Point(sqlc.arg("lat"), sqlc.arg("lng")), 4326),
+        "metre"
+    ) as distance
+from Restaurant
+inner join GoogleRestaurant on GoogleRestaurant.google_restaurant_id = Restaurant.google_restaurant_id
+inner join `Location` on `Location`.google_restaurant_id = Restaurant.google_restaurant_id
+where ST_Distance(
+    ST_SRID(Point(`Location`.lat, `Location`.lng), 4326),
+    ST_SRID(Point(sqlc.arg("lat"), sqlc.arg("lng")), 4326),
+    "metre"
+) < sqlc.arg("radius")  -- Unfortunately there's not a great way to DRY this out
+order by distance asc
+limit 100; -- Probably a reasonable default (can change later if needed)
+
 -- name: GetRestaurant :one
 select
     Restaurant.*,

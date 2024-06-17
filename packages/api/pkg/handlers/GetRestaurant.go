@@ -20,7 +20,7 @@ type getRestaurantResult struct {
 	OpeningHours map[string]([]*sqlcClient.OpeningPeriod) `json:"openingHours"`
 }
 
-// GetRestaurants
+// GetRestaurant
 //
 //	@Summary	get a restaurant
 //
