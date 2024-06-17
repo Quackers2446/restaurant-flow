@@ -9,11 +9,15 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type getRestaurantsQuery struct {
-	Start   uint16 `query:"start"`
-	Limit   uint8  `query:"limit" validate:"lte=50"`
+type getRestaurantsInput struct {
+	// Page start
+	Start uint16 `query:"start" validate:"omitempty,gt=0"`
+	// Max entries
+	Limit uint8 `query:"limit" validate:"omitempty,lte=50,gt=0"`
+	// Column to order by
 	OrderBy string `query:"orderBy" validate:"omitempty,oneof=name created_at updated_at avg_rating"`
-	Order   string `query:"order" validate:"omitempty,oneof=desc asc"`
+	// Ascending or descending
+	Order string `query:"order" validate:"omitempty,oneof=desc asc"`
 }
 
 type getRestaurantsResult struct {
@@ -25,35 +29,32 @@ type getRestaurantsResult struct {
 
 // GetRestaurants
 //
-//	@Summary	get all restaurants
+//	@Summary	get many restaurants
 //
 //	@Accept		json
 //	@Produce	json
-//	@Param		start	query		integer	false	"page start"				minimum(0)
-//	@Param		limit	query		integer	false	"max entries"				maximum(50)
-//	@Param		orderBy	query		string	false	"column to order by"		Enums(name, created_at, updated_at, avg_rating)
-//	@Param		order	query		string	false	"ascending or descending"	Enums(asc, desc)
-//	@Success	200		{array}		getRestaurantsResult
-//	@Failure	400		{object}	echo.HTTPError
-//	@Failure	500		{object}	echo.HTTPError
+//	@Param		requestQuery	query		getRestaurantsInput	false	"request query"
+//	@Success	200				{array}		getRestaurantsResult
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants [get]
 func (handler Handler) GetRestaurants(context echo.Context) (err error) {
-	query := getRestaurantsQuery{Start: 0, Limit: 20, OrderBy: "name"}
+	input := getRestaurantsInput{Start: 0, Limit: 20, OrderBy: "name"}
 
-	if err = context.Bind(&query); err != nil {
+	if err = context.Bind(&input); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	if err = context.Validate(&query); err != nil {
+	if err = context.Validate(&input); err != nil {
 		return err
 	}
 
 	restaurants, err := handler.Queries.GetRestaurants(
 		context.Request().Context(),
 		sqlcClient.GetRestaurantsParams{
-			Offset:  int32(query.Start),
-			Limit:   int32(query.Limit),
-			OrderBy: query.OrderBy,
-			Order:   query.Order,
+			Offset:  int32(input.Start),
+			Limit:   int32(input.Limit),
+			OrderBy: input.OrderBy,
+			Order:   input.Order,
 		},
 	)
 
