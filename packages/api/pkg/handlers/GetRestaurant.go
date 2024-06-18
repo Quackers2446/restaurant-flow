@@ -3,7 +3,6 @@ package handlers
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
-	"restaurant-flow/pkg/util"
 	"strings"
 
 	"github.com/labstack/echo/v4"
@@ -14,7 +13,7 @@ type getRestaurantInput struct {
 }
 
 type getRestaurantResult struct {
-	sqlcClient.GetRestaurantRow
+	*sqlcClient.GetRestaurantRow
 
 	Tags         []*sqlcClient.Tag                        `json:"tags"`
 	OpeningHours map[string]([]*sqlcClient.OpeningPeriod) `json:"openingHours"`
@@ -71,7 +70,7 @@ func (handler Handler) GetRestaurant(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	data.Tags = util.Map(tags, func(tag *sqlcClient.Tag) *sqlcClient.Tag { return tag })
+	data.Tags = tags
 
 	// Add opening hours
 	openingHours, err := handler.Queries.GetOpeningHours(

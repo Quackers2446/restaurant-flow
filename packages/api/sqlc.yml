@@ -11,6 +11,7 @@ sql:
         out: "pkg/sqlcClient"
         emit_json_tags: true
         emit_empty_slices: true
+        emit_result_struct_pointers: true
         json_tags_case_style: "camel"
         rename:
           # Workaround for https://github.com/sqlc-dev/sqlc/issues/3089
