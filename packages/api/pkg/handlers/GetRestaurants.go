@@ -21,7 +21,7 @@ type getRestaurantsInput struct {
 }
 
 type getRestaurantsResult struct {
-	sqlcClient.GetRestaurantsRow
+	*sqlcClient.GetRestaurantsRow
 
 	Tags         []*sqlcClient.Tag                        `json:"tags"`
 	OpeningHours map[string]([]*sqlcClient.OpeningPeriod) `json:"openingHours"`
@@ -74,7 +74,7 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 		restaurants,
 		func(restaurant *sqlcClient.GetRestaurantsRow) *getRestaurantsResult {
 			resultItem := &getRestaurantsResult{
-				GetRestaurantsRow: *restaurant,
+				GetRestaurantsRow: restaurant,
 				Tags:              []*sqlcClient.Tag{},
 				OpeningHours:      make(map[string]([]*sqlcClient.OpeningPeriod)),
 			}
@@ -96,7 +96,7 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	}
 
 	for _, tag := range tags {
-		restaurantIndex[*tag.RestaurantID].Tags = append(restaurantIndex[*tag.RestaurantID].Tags, &tag)
+		restaurantIndex[*tag.RestaurantID].Tags = append(restaurantIndex[*tag.RestaurantID].Tags, tag)
 	}
 
 	// Add opening hours
