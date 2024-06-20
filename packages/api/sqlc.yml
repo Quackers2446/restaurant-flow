@@ -20,6 +20,9 @@ sql:
 
         # Need to add for every nullable type in the schema
         overrides:
+          # TABLE NAME WOULD BE CAPITALIZED but same problem as https://github.com/sqlc-dev/sqlc/issues/3089
+          - column: "user.user_id"
+            go_type: "github.com/google/uuid.UUID"
           - db_type: "tinyint"
             nullable: true
             go_type:
