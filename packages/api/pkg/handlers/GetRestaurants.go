@@ -88,7 +88,7 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	// Add tags
 	tags, err := handler.Queries.GetTags(
 		context.Request().Context(),
-		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) *int32 { return &restaurant.RestaurantID }),
+		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) int32 { return restaurant.RestaurantID }),
 	)
 
 	if err != nil {
@@ -96,14 +96,14 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	}
 
 	for _, tag := range tags {
-		restaurantIndex[*tag.RestaurantID].Tags = append(restaurantIndex[*tag.RestaurantID].Tags, tag)
+		restaurantIndex[tag.RestaurantID].Tags = append(restaurantIndex[tag.RestaurantID].Tags, tag)
 	}
 
 	// Add opening hours
 	openingHours, err := handler.Queries.GetOpeningHours(
 		context.Request().Context(),
-		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) *int32 {
-			return &restaurant.GoogleRestaurant.GoogleRestaurantID
+		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) int32 {
+			return restaurant.GoogleRestaurant.GoogleRestaurantID
 		}),
 	)
 
@@ -113,7 +113,7 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 
 	for _, hour := range openingHours {
 		typeKey := strings.ToLower(string(hour.Type))
-		openingHoursForRestaurant := googleRestaurantIndex[*hour.GoogleRestaurantID].OpeningHours
+		openingHoursForRestaurant := googleRestaurantIndex[hour.GoogleRestaurantID].OpeningHours
 
 		val, ok := openingHoursForRestaurant[typeKey]
 

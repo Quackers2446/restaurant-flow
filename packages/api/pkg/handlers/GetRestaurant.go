@@ -63,7 +63,7 @@ func (handler Handler) GetRestaurant(context echo.Context) (err error) {
 	// Add tags
 	tags, err := handler.Queries.GetTags(
 		context.Request().Context(),
-		[]*int32{&data.RestaurantID},
+		[]int32{data.RestaurantID},
 	)
 
 	if err != nil {
@@ -75,7 +75,7 @@ func (handler Handler) GetRestaurant(context echo.Context) (err error) {
 	// Add opening hours
 	openingHours, err := handler.Queries.GetOpeningHours(
 		context.Request().Context(),
-		[]*int32{&data.RestaurantID},
+		[]int32{data.RestaurantID},
 	)
 
 	if err != nil {

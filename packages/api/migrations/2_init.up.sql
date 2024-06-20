@@ -10,7 +10,7 @@ CREATE TABLE `Restaurant` (
     `restaurant_id` int PRIMARY KEY AUTO_INCREMENT,
     `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `google_restaurant_id` int
+    `google_restaurant_id` int NOT NULL
 );
 
 -- SQLC does not support spatial datatypes, so we cannot use the POINT type.
@@ -24,7 +24,7 @@ CREATE TABLE `Location` (
     `viewport_high_lng` float NOT NULL,
     `viewport_low_lat` float NOT NULL,
     `viewport_low_lng` float NOT NULL,
-    `google_restaurant_id` int UNIQUE
+    `google_restaurant_id` int NOT NULL UNIQUE
 );
 
 CREATE TABLE `GoogleRestaurant` (
@@ -55,15 +55,15 @@ CREATE TABLE `GoogleRestaurant` (
 CREATE TABLE `Tag` (
     `tag_id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(64),
-    `restaurant_id` int
+    `restaurant_id` int NOT NULL
 );
 
 CREATE TABLE `Review` (
     `review_id` int PRIMARY KEY AUTO_INCREMENT,
     `rating` int NOT NULL,
     `comments` text,
-    `restaurant_id` int,
-    `user_id` binary(16),
+    `restaurant_id` int NOT NULL,
+    `user_id` binary(16) NOT NULL,
     `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -71,7 +71,7 @@ CREATE TABLE `Review` (
 CREATE TABLE `OpeningHours` (
     `opening_hours_id` int PRIMARY KEY AUTO_INCREMENT,
     `type` ENUM ('Main', 'DriveThrough', 'HappyHour', 'Delivery', 'Takeout', 'Kitchen', 'Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Pickup', 'SeniorHours') NOT NULL,
-    `google_restaurant_id` int
+    `google_restaurant_id` int NOT NULL
 );
 
 CREATE TABLE `OpeningPeriod` (
@@ -80,7 +80,7 @@ CREATE TABLE `OpeningPeriod` (
     `open_time` char(4) NOT NULL,
     `close_day` tinyint,
     `close_time` char(4),
-    `opening_hours_id` int
+    `opening_hours_id` int NOT NULL
 );
 
 CREATE INDEX `GoogleRestaurant_index_0` ON `GoogleRestaurant` (`place_id`);
