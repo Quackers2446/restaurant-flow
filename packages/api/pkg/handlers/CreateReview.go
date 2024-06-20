@@ -12,7 +12,7 @@ import (
 
 // Note: pointers allow validator to tell the difference between 0 and empty
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
-type createReviewInput struct {
+type createReviewBody struct {
 	Rating       *uint8  `body:"rating" validate:"required,gte=0,lte=10" default:"10"`
 	IsAnonymous  bool    `body:"isAnonymous" default:"false"`
 	RestaurantId *int32  `body:"restaurantId" validate:"required"`
@@ -23,31 +23,32 @@ type createReviewInput struct {
 //
 //	@Summary	create a review
 //
+//	@Tags		Reviews
 //	@Accept		json
 //	@Produce	json
 //	@Success	200			{object}	sqlcClient.Review
-//	@Param		requestBody	body		createReviewInput	true	"request body"
+//	@Param		requestBody	body		createReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/create [post]
 func (handler Handler) CreateReview(context echo.Context) (err error) {
-	input := createReviewInput{}
+	body := createReviewBody{}
 
-	if err = context.Bind(&input); err != nil {
+	if err = context.Bind(&body); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	if err = context.Validate(&input); err != nil {
+	if err = context.Validate(&body); err != nil {
 		return err
 	}
 
 	lastInsertId, err := handler.Queries.CreateReview(
 		context.Request().Context(),
 		sqlcClient.CreateReviewParams{
-			Rating:       *input.Rating,
-			Comments:     input.Comments,
-			RestaurantID: *input.RestaurantId,
+			Rating:       *body.Rating,
+			Comments:     body.Comments,
+			RestaurantID: *body.RestaurantId,
 			UserID:       "00000000-0000-0000-0000-000000000000",
-			IsAnonymous:  util.ToPointer(util.BoolToInt[int8](input.IsAnonymous)),
+			IsAnonymous:  util.ToPointer(util.BoolToInt[int8](body.IsAnonymous)),
 		},
 	)
 

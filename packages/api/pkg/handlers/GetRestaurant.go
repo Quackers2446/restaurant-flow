@@ -8,8 +8,8 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type getRestaurantInput struct {
-	RestaurantId uint16 `param:"id" validate:"required"`
+type getRestaurantParams struct {
+	RestaurantId uint16 `param:"id" json:"id" validate:"required"`
 }
 
 type getRestaurantResult struct {
@@ -23,27 +23,28 @@ type getRestaurantResult struct {
 //
 //	@Summary	get a restaurant
 //
+//	@Tags		Restaurants
 //	@Accept		json
 //	@Produce	json
-//	@Param		requestParams	path		getRestaurantInput	true	"request params"
+//	@Param		requestParams	path		getRestaurantParams	true	"request params"
 //	@Success	200				{object}	getRestaurantsResult
 //	@Failure	400				{object}	echo.HTTPError
 //	@Failure	404				{object}	echo.HTTPError
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/{id} [get]
 func (handler Handler) GetRestaurant(context echo.Context) (err error) {
-	input := getRestaurantInput{}
+	params := getRestaurantParams{}
 
-	if err = context.Bind(&input); err != nil {
+	if err = context.Bind(&params); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	if err = context.Validate(&input); err != nil {
+	if err = context.Validate(&params); err != nil {
 		return err
 	}
 
 	restaurant, err := handler.Queries.GetRestaurant(
 		context.Request().Context(),
-		int32(input.RestaurantId),
+		int32(params.RestaurantId),
 	)
 
 	if err != nil {
