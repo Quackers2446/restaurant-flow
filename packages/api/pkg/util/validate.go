@@ -20,10 +20,10 @@ func ValidateInput[T interface{}](context *echo.Context, input *T) (*T, error) {
 		return &newInput, nil
 	}
 
-	if err := (*context).Bind(&input); err != nil {
+	if err := (*context).Bind(input); err != nil {
 		return nil, err
 	}
-	if err := (*context).Validate(&input); err != nil {
+	if err := (*context).Validate(input); err != nil {
 		return nil, err
 	}
 
