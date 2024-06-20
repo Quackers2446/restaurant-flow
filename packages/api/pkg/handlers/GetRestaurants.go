@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type getRestaurantsInput struct {
+type getRestaurantsQuery struct {
 	// Page start
 	Start uint16 `query:"start" validate:"omitempty,gt=0"`
 	// Max entries
@@ -31,30 +31,28 @@ type getRestaurantsResult struct {
 //
 //	@Summary	get many restaurants
 //
+//	@Tags		Restaurants
 //	@Accept		json
 //	@Produce	json
-//	@Param		requestQuery	query		getRestaurantsInput	false	"request query"
+//	@Param		requestQuery	query		getRestaurantsQuery	false	"request query"
 //	@Success	200				{array}		getRestaurantsResult
 //	@Failure	400				{object}	echo.HTTPError
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants [get]
 func (handler Handler) GetRestaurants(context echo.Context) (err error) {
-	input := getRestaurantsInput{Start: 0, Limit: 20, OrderBy: "name"}
+	query, err := util.ValidateInput(&context, &getRestaurantsQuery{Start: 0, Limit: 20, OrderBy: "name"})
 
-	if err = context.Bind(&input); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&input); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	restaurants, err := handler.Queries.GetRestaurants(
 		context.Request().Context(),
 		sqlcClient.GetRestaurantsParams{
-			Offset:  int32(input.Start),
-			Limit:   int32(input.Limit),
-			OrderBy: input.OrderBy,
-			Order:   input.Order,
+			Offset:  int32(query.Start),
+			Limit:   int32(query.Limit),
+			OrderBy: query.OrderBy,
+			Order:   query.Order,
 		},
 	)
 
@@ -88,7 +86,7 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	// Add tags
 	tags, err := handler.Queries.GetTags(
 		context.Request().Context(),
-		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) *int32 { return &restaurant.RestaurantID }),
+		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) int32 { return restaurant.RestaurantID }),
 	)
 
 	if err != nil {
@@ -96,14 +94,14 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 	}
 
 	for _, tag := range tags {
-		restaurantIndex[*tag.RestaurantID].Tags = append(restaurantIndex[*tag.RestaurantID].Tags, tag)
+		restaurantIndex[tag.RestaurantID].Tags = append(restaurantIndex[tag.RestaurantID].Tags, tag)
 	}
 
 	// Add opening hours
 	openingHours, err := handler.Queries.GetOpeningHours(
 		context.Request().Context(),
-		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) *int32 {
-			return &restaurant.GoogleRestaurant.GoogleRestaurantID
+		util.Map(restaurants, func(restaurant *sqlcClient.GetRestaurantsRow) int32 {
+			return restaurant.GoogleRestaurant.GoogleRestaurantID
 		}),
 	)
 
@@ -113,7 +111,7 @@ func (handler Handler) GetRestaurants(context echo.Context) (err error) {
 
 	for _, hour := range openingHours {
 		typeKey := strings.ToLower(string(hour.Type))
-		openingHoursForRestaurant := googleRestaurantIndex[*hour.GoogleRestaurantID].OpeningHours
+		openingHoursForRestaurant := googleRestaurantIndex[hour.GoogleRestaurantID].OpeningHours
 
 		val, ok := openingHoursForRestaurant[typeKey]
 

@@ -3,13 +3,14 @@ package handlers
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
+	"restaurant-flow/pkg/util"
 	"strings"
 
 	"github.com/labstack/echo/v4"
 )
 
-type getRestaurantInput struct {
-	RestaurantId uint16 `param:"id" validate:"required"`
+type getRestaurantParams struct {
+	RestaurantId uint16 `param:"id" json:"id" validate:"required"`
 }
 
 type getRestaurantResult struct {
@@ -23,27 +24,25 @@ type getRestaurantResult struct {
 //
 //	@Summary	get a restaurant
 //
+//	@Tags		Restaurants
 //	@Accept		json
 //	@Produce	json
-//	@Param		requestParams	path		getRestaurantInput	true	"request params"
+//	@Param		requestParams	path		getRestaurantParams	true	"request params"
 //	@Success	200				{object}	getRestaurantsResult
 //	@Failure	400				{object}	echo.HTTPError
 //	@Failure	404				{object}	echo.HTTPError
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/{id} [get]
 func (handler Handler) GetRestaurant(context echo.Context) (err error) {
-	input := getRestaurantInput{}
+	params, err := util.ValidateInput(&context, &getRestaurantParams{})
 
-	if err = context.Bind(&input); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&input); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	restaurant, err := handler.Queries.GetRestaurant(
 		context.Request().Context(),
-		int32(input.RestaurantId),
+		int32(params.RestaurantId),
 	)
 
 	if err != nil {
@@ -63,7 +62,7 @@ func (handler Handler) GetRestaurant(context echo.Context) (err error) {
 	// Add tags
 	tags, err := handler.Queries.GetTags(
 		context.Request().Context(),
-		[]*int32{&data.RestaurantID},
+		[]int32{data.RestaurantID},
 	)
 
 	if err != nil {
@@ -75,7 +74,7 @@ func (handler Handler) GetRestaurant(context echo.Context) (err error) {
 	// Add opening hours
 	openingHours, err := handler.Queries.GetOpeningHours(
 		context.Request().Context(),
-		[]*int32{&data.RestaurantID},
+		[]int32{data.RestaurantID},
 	)
 
 	if err != nil {

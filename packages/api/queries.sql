@@ -2,7 +2,8 @@
 -- functions that are not defined in MySQL used here.
 -- Docs: https://docs.sqlc.dev/en/latest/tutorials/getting-started-mysql.html
 -- Note: we cannot just left join and expect SQLC to handle one-to-many relationships properly
---       see https://github.com/sqlc-dev/sqlc/issues/2348
+--       see https://github.com/sqlc-dev/sqlc/issues/3144
+--       and https://github.com/sqlc-dev/sqlc/issues/2348
 --       and https://github.com/sqlc-dev/sqlc/discussions/2643
 
 -- name: GetRestaurants :many
@@ -75,3 +76,70 @@ select OpeningHours.*, sqlc.embed(OpeningPeriod)
 from OpeningHours
 inner join OpeningPeriod on OpeningPeriod.opening_hours_id = OpeningHours.opening_hours_id
 where OpeningHours.google_restaurant_id in (sqlc.slice("google_restaurant_ids"));
+
+-- REVIEW CRUD
+
+-- name: CreateReview :execlastid
+insert into Review set
+    rating=?,
+    comments=sqlc.narg("comments"),
+    restaurant_id=?,
+    user_id=unhex(replace(sqlc.arg("user_id"),'-','')), -- Accept textual form of UUID
+    is_anonymous=sqlc.narg("is_anonymous");
+
+-- name: GetRestaurantReviews :many
+select Review.*
+from Review
+where restaurant_id = ?
+order by
+    case when sqlc.arg("order") = "desc" then (
+        case
+            when sqlc.arg("order_by") = "rating" then `rating`
+            when sqlc.arg("order_by") = "created_at" then `created_at`
+            else `rating`
+        end
+    ) end desc,
+    case when sqlc.arg("order") != "desc" then (
+        case
+            when sqlc.arg("order_by") = "rating" then `rating`
+            when sqlc.arg("order_by") = "created_at" then `created_at`
+            else `rating`
+        end
+    ) end asc,
+    review_id asc
+limit ?, ?;
+
+-- name: GetUserReviews :many
+select Review.*
+from Review
+where user_id = unhex(replace(sqlc.arg("user_id"),'-','')) -- Accept textual form of UUID
+order by
+    case when sqlc.arg("order") = "desc" then (
+        case
+            when sqlc.arg("order_by") = "rating" then `rating`
+            when sqlc.arg("order_by") = "created_at" then `created_at`
+            else `rating`
+        end
+    ) end desc,
+    case when sqlc.arg("order") != "desc" then (
+        case
+            when sqlc.arg("order_by") = "rating" then `rating`
+            when sqlc.arg("order_by") = "created_at" then `created_at`
+            else `rating`
+        end
+    ) end asc,
+    review_id asc
+limit ?, ?;
+
+-- name: GetReview :one
+select Review.* from Review where review_id = ?;
+
+-- name: UpdateReview :exec
+update Review set
+    rating=?,
+    comments=sqlc.narg("comments"),
+    is_anonymous=sqlc.narg("is_anonymous")
+where review_id = ?;
+
+-- name: DeleteReview :exec
+delete from Review where review_id = ?;

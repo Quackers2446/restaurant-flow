@@ -80,6 +80,9 @@ func main() {
 	e.GET("/restaurants/in-area", h.GetRestaurantsInArea)
 	e.GET("/restaurants/:id", h.GetRestaurant)
 
+	e.POST("/review/create", h.CreateReview)
+	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
+
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 

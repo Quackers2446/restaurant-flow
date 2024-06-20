@@ -13,6 +13,7 @@ type dummyTable struct {
 
 // GetDummyTable godoc
 //
+//	@Tags		Dummy
 //	@Summary	get dummy table
 //	@Produce	json
 //	@Success	200	{array}		dummyTable	"dummy table rows"
