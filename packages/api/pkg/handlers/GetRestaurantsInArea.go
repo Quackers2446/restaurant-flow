@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
+	"restaurant-flow/pkg/util"
 
 	"github.com/labstack/echo/v4"
 )
@@ -31,13 +32,10 @@ type getRestaurantsInAreaQuery struct {
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/in-area [get]
 func (handler Handler) GetRestaurantsInArea(context echo.Context) (err error) {
-	query := getRestaurantsInAreaQuery{}
+	query, err := util.ValidateInput[getRestaurantsInAreaQuery](&context, nil)
 
-	if err = context.Bind(&query); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&query); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	restaurants, err := handler.Queries.GetRestaurantsInArea(

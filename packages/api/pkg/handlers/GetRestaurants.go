@@ -40,13 +40,10 @@ type getRestaurantsResult struct {
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants [get]
 func (handler Handler) GetRestaurants(context echo.Context) (err error) {
-	query := getRestaurantsQuery{Start: 0, Limit: 20, OrderBy: "name"}
+	query, err := util.ValidateInput(&context, &getRestaurantsQuery{Start: 0, Limit: 20, OrderBy: "name"})
 
-	if err = context.Bind(&query); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&query); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	restaurants, err := handler.Queries.GetRestaurants(

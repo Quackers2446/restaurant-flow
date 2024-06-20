@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
+	"restaurant-flow/pkg/util"
 
 	"github.com/labstack/echo/v4"
 )
@@ -36,22 +37,16 @@ type getRestaurantReviewsParams struct {
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/{restaurantId}/reviews [get]
 func (handler Handler) GetRestaurantReviews(context echo.Context) (err error) {
-	query := getRestaurantReviewsQuery{Start: 0, Limit: 20, OrderBy: "created_at"}
+	query, err := util.ValidateInput(&context, &getRestaurantReviewsQuery{Start: 0, Limit: 20, OrderBy: "created_at"})
 
-	if err = context.Bind(&query); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&query); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
-	params := getRestaurantReviewsParams{}
+	params, err := util.ValidateInput(&context, &getRestaurantReviewsParams{})
 
-	if err = context.Bind(&params); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&params); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	reviews, err := handler.Queries.GetRestaurantReviews(

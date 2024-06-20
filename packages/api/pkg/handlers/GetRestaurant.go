@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
+	"restaurant-flow/pkg/util"
 	"strings"
 
 	"github.com/labstack/echo/v4"
@@ -33,13 +34,10 @@ type getRestaurantResult struct {
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/{id} [get]
 func (handler Handler) GetRestaurant(context echo.Context) (err error) {
-	params := getRestaurantParams{}
+	params, err := util.ValidateInput(&context, &getRestaurantParams{})
 
-	if err = context.Bind(&params); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&params); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	restaurant, err := handler.Queries.GetRestaurant(

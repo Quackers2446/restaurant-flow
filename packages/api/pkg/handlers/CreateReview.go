@@ -32,13 +32,10 @@ type createReviewBody struct {
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/create [post]
 func (handler Handler) CreateReview(context echo.Context) (err error) {
-	body := createReviewBody{}
+	body, err := util.ValidateInput(&context, &createReviewBody{})
 
-	if err = context.Bind(&body); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	if err = context.Validate(&body); err != nil {
-		return err
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
 	lastInsertId, err := handler.Queries.CreateReview(
