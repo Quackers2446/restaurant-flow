@@ -1,0 +1,162 @@
+restaurant_id	created_at	updated_at	google_restaurant_id	google_restaurant_id	description	phone	website	google_url	business_status	price_level	supports_curbside_pickup	supports_delivery	supports_dine_in	supports_reservations	place_id	updated_at	supports_takeout	serves_breakfast	serves_brunch	serves_dinner	serves_lunch	serves_vegetarian_food	serves_wine	serves_beer	serves_cocktails	serves_coffee	serves_dessert	good_for_groups	good_for_watching_sports	has_outdoor_seating	has_restroom	accepts_credit_cards	accepts_debit_cards	accepts_cash_only	accepts_nfc	wheelchair_accessible_entrance	wheelchair_accessible_seating	name	avg_rating	location_id	address	lat	lng	viewport_high_lat	viewport_high_lng	viewport_low_lat	viewport_low_lng	google_restaurant_id
+34	2024-06-14 13:35:12	2024-06-14 13:35:12	34	34	Modern brewery & bar featuring global comfort eats, a late-night menu & weekly live music.	(519) 208-0858	http://abeerb.com/	https://maps.google.com/?cid=232551083366812706	Operational	Moderate	NULL	1	NULL	1	ChIJ7XmNWA30K4gRIgw2bPovOgM	2024-06-14 13:35:12	1	1	1	1	1	NULL	1	1	1	1	1	1	1	0	1	1	1	0	1	1	1	ABE ERB - Uptown Waterloo	4.3	34	15 King St S, Waterloo, ON N2J 1N9, Canada	43.4646	-80.5224	43.466	-80.5209	43.4633	-80.5236	34
+17	2024-06-14 13:35:11	2024-06-14 13:35:11	17	17	Informal counter-serve nook providing familiar Indian & Canadian comfort eats in a minimalist space.	(519) 954-5633	http://www.auntyskitchen.ca/	https://maps.google.com/?cid=11317039484750060126	Operational	Moderate	NULL	1	NULL	0	ChIJHwYDnPXzK4gRXtqYfXMzDp0	2024-06-14 13:35:11	1	0	0	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	1	NULL	Aunty's Kitchen - Waterloo	4.1	17	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4722	-80.5373	43.4735	-80.536	43.4708	-80.5387	17
+50	2024-06-14 13:35:12	2024-06-14 13:35:12	50	50	NULL	(519) 208-8897	https://selflane.com/bizs/baba-chicken-grill_waterloo_on	https://maps.google.com/?cid=10336483647459273368	Operational	Inexpensive	NULL	1	NULL	0	ChIJQfln1gb0K4gRmKpxwRyRco8	2024-06-14 13:35:12	1	0	0	1	1	NULL	0	0	0	0	0	1	0	0	1	0	1	1	1	1	NULL	Baba Grill	3.4	50	170 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4726	-80.538	43.474	-80.5366	43.4713	-80.5393	50
+45	2024-06-14 13:35:12	2024-06-14 13:35:12	45	45	NULL	(519) 885-5151	http://www.beertown.ca/	https://maps.google.com/?cid=12636251536426362080	Operational	Moderate	NULL	NULL	NULL	1	ChIJy4uAuxL0K4gR4GQtmdL7XK8	2024-06-14 13:35:12	1	0	1	1	1	NULL	1	1	1	1	1	1	1	1	1	1	NULL	0	1	1	1	Beertown Public House Waterloo	4.3	45	Square, 75 King St S Unit 37, Waterloo, ON N2J 1P2, Canada	43.464	-80.5228	43.4654	-80.5214	43.4627	-80.5241	45
+18	2024-06-14 13:35:11	2024-06-14 13:35:11	18	18	NULL	(519) 208-2988	https://order.mrsdigi.com/dowo.php/213811232702050/e5c224b8-2570-5827-bbe5-a888beef3c8b	https://maps.google.com/?cid=11358052062702898471	Operational	NULL	NULL	1	NULL	1	ChIJ78Mb_YX1K4gRJ43MaSzon50	2024-06-14 13:35:11	1	1	NULL	1	1	NULL	NULL	0	NULL	NULL	1	1	0	NULL	1	1	1	0	1	0	NULL	Better Chef	4.0	18	160 University Ave W Unit22-23, Waterloo, ON N2L 3E9, Canada	43.4724	-80.5371	43.4739	-80.5357	43.4712	-80.5384	18
+57	2024-06-14 13:35:12	2024-06-14 13:35:12	57	57	Intimate restaurant & bar featuring Indonesian, Vietnamese & Thai dishes, plus garden tables.	(519) 747-0722	http://www.bhimaswarung.com/	https://maps.google.com/?cid=14760595375479680304	Operational	Expensive	NULL	NULL	NULL	1	ChIJoV7eWvTzK4gRMG29_Ekr2Mw	2024-06-14 13:35:12	1	0	0	1	NULL	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Bhima's Warung	4.4	57	262 King St N, Waterloo, ON N2J 2Y8, Canada	43.4775	-80.5249	43.4788	-80.5237	43.4761	-80.5264	57
+26	2024-06-14 13:35:12	2024-06-14 13:35:12	26	26	NULL	(519) 813-4300	https://www.boardwalkburgers.ca/	https://maps.google.com/?cid=6417385792414750590	Operational	Moderate	NULL	1	NULL	1	ChIJ70ragAnzK4gRfheFn2AiD1k	2024-06-14 13:35:12	1	NULL	NULL	1	1	NULL	0	0	0	NULL	NULL	1	0	0	1	1	1	0	1	1	NULL	Boardwalk Fries Burgers Shakes - Waterloo	4.6	26	65 University Ave E, Waterloo, ON N2J 2V8, Canada	43.4765	-80.5211	43.478	-80.5198	43.4753	-80.5225	26
+54	2024-06-14 13:35:12	2024-06-14 13:35:12	54	54	The Uyghur cuisine of Central Asia served in a casual space decorated with objects from the region.	(519) 886-2929	NULL	https://maps.google.com/?cid=6997541093063832992	Operational	Moderate	NULL	1	NULL	1	ChIJS6iiUvbzK4gRoLVEsYxCHGE	2024-06-14 13:35:12	1	0	NULL	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	NULL	NULL	Bogda Restaurant	4.5	54	62 Balsam St b103, Waterloo, ON N2L 3H2, Canada	43.4764	-80.5299	43.4776	-80.5285	43.4749	-80.5312	54
+9	2024-06-14 13:35:11	2024-06-14 13:35:11	9	9	Well-known fast-food chain serving grilled burgers, fries & shakes.	(519) 884-6072	https://burgerking.com/store-locator/store/restaurant_11,513	https://maps.google.com/?cid=13318488433988239063	Operational	Inexpensive	NULL	1	NULL	0	ChIJSR96Vgb0K4gR134ElarG1Lg	2024-06-14 13:35:11	1	1	NULL	1	1	NULL	0	0	0	1	1	1	0	0	1	1	1	0	1	1	1	Burger King	3.3	9	150 University Ave W Unit 1a, Waterloo, ON N2L 3E4, Canada	43.4725	-80.5357	43.4738	-80.5343	43.4711	-80.537	9
+47	2024-06-14 13:35:12	2024-06-14 13:35:12	47	47	Basic, long-running pizzeria offering classic pies with gluten-free options. Open late.	(519) 747-9888	http://www.campuspizza.ca/	https://maps.google.com/?cid=2381183722490277947	Operational	Inexpensive	NULL	1	NULL	0	ChIJP_Ie6gb0K4gRO7D5w_qpCyE	2024-06-14 13:35:12	1	0	0	1	1	NULL	0	0	0	0	0	1	0	1	0	1	1	0	1	1	0	Campus Pizza	3.6	47	160 University Ave W #2, Waterloo, ON N2L 3E9, Canada	43.4722	-80.538	43.4735	-80.5367	43.4708	-80.5394	47
+30	2024-06-14 13:35:12	2024-06-14 13:35:12	30	30	NULL	(519) 208-7877	http://champakitchen.ca/	https://maps.google.com/?cid=2770479477366850739	Operational	NULL	NULL	1	NULL	1	ChIJLSW1atT1K4gRswT28We4ciY	2024-06-14 13:35:12	1	NULL	NULL	1	1	NULL	1	1	1	1	1	NULL	0	1	1	1	1	0	1	0	1	Champa Kitchen	4.6	30	21 King St N, Waterloo, ON N2J 2W6, Canada	43.4657	-80.5227	43.467	-80.5213	43.4643	-80.524	30
+38	2024-06-14 13:35:12	2024-06-14 13:35:12	38	38	Homestyle food for delivery, take-out, or to eat in a casual setting.	(519) 342-6464	http://www.chefoncalldelivery.com/	https://maps.google.com/?cid=4232529671478462917	Operational	NULL	NULL	1	NULL	NULL	ChIJn25ny6LzK4gRxUnGsU_3vDo	2024-06-14 13:35:12	1	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	1	1	NULL	Chef On Call	4.6	38	130 Columbia St W #812, Waterloo, ON N2L 0G6, Canada	43.4787	-80.5374	43.4799	-80.5364	43.4772	-80.5391	38
+11	2024-06-14 13:35:11	2024-06-14 13:35:11	11	11	NULL	(519) 208-5885	https://eatcopperbranch.com/	https://maps.google.com/?cid=2234833322488785369	Operational	Moderate	NULL	1	NULL	NULL	ChIJnTdBS230K4gR2Wkm7xC5Ax8	2024-06-14 13:35:11	1	1	1	1	1	NULL	NULL	1	0	1	1	1	0	0	1	1	1	0	1	1	1	Copper Branch	4.5	11	80 King St S #106, Waterloo, ON N2J 1P5, Canada	43.4633	-80.5217	43.4646	-80.5204	43.4619	-80.5231	11
+15	2024-06-14 13:35:11	2024-06-14 13:35:11	15	15	NULL	(226) 647-8800	http://crushsocialeatery.com/	https://maps.google.com/?cid=11233951301485632002	Operational	NULL	NULL	1	NULL	1	ChIJ_3ZnUpf1K4gRApoWTTAD55s	2024-06-14 13:35:11	1	1	NULL	1	1	NULL	1	1	1	1	1	1	NULL	1	1	1	NULL	0	NULL	1	1	Crush Social Eatery	4.2	15	170 University Ave W Unit 15-18, Waterloo, ON N2L 3E9, Canada	43.4722	-80.5391	43.4735	-80.5377	43.4708	-80.5404	15
+5	2024-06-14 13:35:11	2024-06-14 13:35:11	5	5	Family-friendly place offering a range of breakfast classics, plus sandwiches & burgers.	(519) 886-4752	http://dailygrill.ca/	https://maps.google.com/?cid=14235801589712847902	Operational	Inexpensive	NULL	1	NULL	0	ChIJHcK6bs_zK4gRHoTGDx-6j8U	2024-06-14 13:35:11	1	1	1	1	1	NULL	1	1	1	1	1	1	NULL	0	1	1	1	0	1	1	1	Daily Grill Restaurant	4.4	5	615 Davenport Rd, Waterloo, ON N2V 2G2, Canada	43.5038	-80.5293	43.5051	-80.528	43.5024	-80.5307	5
+29	2024-06-14 13:35:12	2024-06-14 13:35:12	29	29	Classic Italian entrees & pizza served with imported wine in warm surrounds with an old-timey vibe.	(519) 893-0543	https://enniospasta.ca/	https://maps.google.com/?cid=3764626037623531435	Operational	Moderate	NULL	1	NULL	1	ChIJ6fQ1DvLzK4gRq6e8dG-jPjQ	2024-06-14 13:35:12	1	0	NULL	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Ennio's Pasta House	4.4	29	384 King St N, Waterloo, ON N2J 2Z3, Canada	43.4834	-80.526	43.4848	-80.5247	43.4821	-80.5274	29
+23	2024-06-14 13:35:12	2024-06-14 13:35:12	23	23	Relaxed long-running tavern with a retro vibe, offering burgers, Tex-Mex staples & a long beer list.	(519) 725-2361	http://ethelslounge.com/	https://maps.google.com/?cid=16813466031908191771	Operational	Inexpensive	NULL	NULL	NULL	NULL	ChIJdy6Mngz0K4gRG_77QkZuVek	2024-06-14 13:35:12	1	NULL	NULL	NULL	NULL	NULL	1	1	1	NULL	NULL	1	1	1	1	1	1	0	1	1	NULL	Ethel's Lounge	4.4	23	114 King St N, Waterloo, ON N2J 2X6, Canada	43.4692	-80.5233	43.4706	-80.5218	43.4679	-80.5245	23
+60	2024-06-14 13:35:13	2024-06-14 13:35:13	60	60	Casual neighborhood spot for authentic Neapolitan pizzas, pasta & sandwiches, plus beer & cocktails.	(519) 954-1900	https://famoso.ca/locations/waterloo/	https://maps.google.com/?cid=5173115091454381474	Operational	Moderate	NULL	1	NULL	1	ChIJNwVfVw30K4gRos1ZcMSYykc	2024-06-14 13:35:13	1	0	0	1	1	NULL	1	1	1	1	1	1	NULL	1	1	1	1	0	1	1	1	Famoso Italian Pizzeria - Waterloo	4.4	60	15 King St S, Waterloo, ON N2J 1N9, Canada	43.4644	-80.5223	43.4658	-80.5211	43.4631	-80.5238	60
+42	2024-06-14 13:35:12	2024-06-14 13:35:12	42	42	NULL	(519) 208-3923	http://www.lanzhou.ca/	https://maps.google.com/?cid=1928924894676172186	Operational	NULL	NULL	1	NULL	0	ChIJs-uUWrL1K4gRmr2UyfjqxBo	2024-06-14 13:35:12	1	0	0	1	1	NULL	NULL	NULL	NULL	0	1	1	0	0	1	1	1	0	1	1	NULL	Gol's Lanzhou Noodle Waterloo	4.6	42	150 University Ave W Unit 6B, Waterloo, ON N2L 3E4, Canada	43.4727	-80.536	43.474	-80.5348	43.4713	-80.5375	42
+13	2024-06-14 13:35:11	2024-06-14 13:35:11	13	13	NULL	(519) 886-1234	http://www.grillies.ca/	https://maps.google.com/?cid=3002274034531115758	Operational	Inexpensive	NULL	1	NULL	NULL	ChIJEe5Pbk_1K4gR7iKb4lM4qik	2024-06-14 13:35:11	1	1	1	1	1	NULL	NULL	NULL	NULL	NULL	1	1	0	NULL	1	1	1	0	1	1	NULL	Grillies (King St. - Waterloo)	4.6	13	52 King St N, Waterloo, ON N2J 2W8, Canada	43.4667	-80.5226	43.4682	-80.5212	43.4655	-80.5239	13
+tag_id	name	restaurant_id
+1	Tag2	34
+2	Tag	34
+opening_hours_id	type	google_restaurant_id	opening_period_id	close_day	opening_hours_id	open_day	open_time	close_time
+5	Main	5	27	0	5	0	800	1400
+5	Main	5	28	2	5	2	800	1900
+5	Main	5	29	3	5	3	800	1900
+5	Main	5	30	4	5	4	800	1900
+5	Main	5	31	5	5	5	800	1900
+5	Main	5	32	6	5	6	800	1500
+9	Main	9	53	1	9	0	900	500
+9	Main	9	54	2	9	1	900	500
+9	Main	9	55	3	9	2	900	500
+9	Main	9	56	4	9	3	900	500
+9	Main	9	57	5	9	4	900	500
+9	Main	9	58	6	9	5	900	500
+9	Main	9	59	0	9	6	900	500
+11	Main	11	61	0	11	0	900	2130
+11	Main	11	62	1	11	1	730	2130
+11	Main	11	63	2	11	2	730	2130
+11	Main	11	64	3	11	3	730	2130
+11	Main	11	65	4	11	4	730	2130
+11	Main	11	66	5	11	5	730	2130
+11	Main	11	67	6	11	6	900	2130
+13	Main	13	74	NULL	13	0	0	NULL
+15	Main	15	82	0	15	0	1100	2200
+15	Main	15	83	2	15	2	1100	2200
+15	Main	15	84	3	15	3	1100	2200
+15	Main	15	85	4	15	4	1100	2200
+15	Main	15	86	5	15	5	1100	2200
+15	Main	15	87	6	15	6	1100	2200
+17	Main	17	95	1	17	0	1030	300
+17	Main	17	96	2	17	1	1100	300
+17	Main	17	97	3	17	2	1100	300
+17	Main	17	98	4	17	3	1100	300
+17	Main	17	99	5	17	4	1100	300
+17	Main	17	100	6	17	5	1100	300
+17	Main	17	101	0	17	6	1030	300
+18	Main	18	102	0	18	0	1100	2200
+18	Main	18	103	1	18	1	1100	2200
+18	Main	18	104	2	18	2	1100	2200
+18	Main	18	105	3	18	3	1100	2200
+18	Main	18	106	4	18	4	1100	2200
+18	Main	18	107	5	18	5	1100	2200
+18	Main	18	108	6	18	6	1100	2200
+23	Main	23	136	1	23	0	1100	0
+23	Main	23	137	2	23	1	1100	0
+23	Main	23	138	3	23	2	1100	100
+23	Main	23	139	4	23	3	1100	100
+23	Main	23	140	5	23	4	1100	100
+23	Main	23	141	6	23	5	1100	200
+23	Main	23	142	0	23	6	1100	200
+26	Main	26	153	0	26	0	1130	2200
+26	Main	26	154	1	26	1	1100	2200
+26	Main	26	155	2	26	2	1100	2200
+26	Main	26	156	3	26	3	1100	2200
+26	Main	26	157	4	26	4	1100	2200
+26	Main	26	158	5	26	5	1100	2300
+26	Main	26	159	6	26	6	1100	2300
+29	Main	29	172	0	29	0	1530	2100
+29	Main	29	173	1	29	1	1530	2100
+29	Main	29	174	2	29	2	1530	2100
+29	Main	29	175	3	29	3	1200	2100
+29	Main	29	176	4	29	4	1200	2100
+29	Main	29	177	5	29	5	1200	2200
+29	Main	29	178	6	29	6	1200	2200
+30	Main	30	179	0	30	0	1500	2030
+30	Main	30	180	2	30	2	1130	2130
+30	Main	30	181	3	30	3	1130	2130
+30	Main	30	182	4	30	4	1130	2130
+30	Main	30	183	5	30	5	1130	2200
+30	Main	30	184	6	30	6	1130	2200
+34	Main	34	204	0	34	0	1200	2100
+34	Main	34	205	2	34	2	1200	2200
+34	Main	34	206	3	34	3	1200	2200
+34	Main	34	207	4	34	4	1200	2200
+34	Main	34	208	6	34	5	1200	0
+34	Main	34	209	0	34	6	1200	0
+38	Main	38	238	1	38	0	1200	200
+38	Main	38	239	2	38	1	1200	200
+38	Main	38	240	3	38	2	1200	200
+38	Main	38	241	4	38	3	1200	200
+38	Main	38	242	5	38	4	1200	200
+38	Main	38	243	6	38	5	1200	400
+38	Main	38	244	0	38	6	1200	400
+42	Main	42	257	0	42	0	1100	2100
+42	Main	42	258	2	42	2	1100	2100
+42	Main	42	259	3	42	3	1100	2100
+42	Main	42	260	4	42	4	1100	2100
+42	Main	42	261	5	42	5	1100	2100
+42	Main	42	262	6	42	6	1100	2100
+45	Main	45	275	1	45	0	1130	0
+45	Main	45	276	2	45	1	1100	0
+45	Main	45	277	3	45	2	1100	0
+45	Main	45	278	4	45	3	1100	0
+45	Main	45	279	5	45	4	1100	0
+45	Main	45	280	6	45	5	1100	100
+45	Main	45	281	0	45	6	1130	100
+47	Main	47	287	1	47	0	1100	400
+47	Main	47	288	2	47	1	1100	400
+47	Main	47	289	3	47	2	1100	400
+47	Main	47	290	4	47	3	1100	400
+47	Main	47	291	5	47	4	1100	400
+47	Main	47	292	6	47	5	1100	400
+47	Main	47	293	0	47	6	1100	400
+50	Main	50	307	0	50	0	1100	2100
+50	Main	50	308	1	50	1	1100	2100
+50	Main	50	309	2	50	2	1100	2100
+50	Main	50	310	3	50	3	1100	2100
+50	Main	50	311	4	50	4	1100	2100
+50	Main	50	312	5	50	5	1100	2100
+54	Main	54	330	0	54	0	1100	2130
+54	Main	54	331	1	54	1	1100	2130
+54	Main	54	332	2	54	2	1100	2130
+54	Main	54	333	3	54	3	1100	2130
+54	Main	54	334	4	54	4	1100	2130
+54	Main	54	335	5	54	5	1100	2130
+54	Main	54	336	6	54	6	1100	2130
+57	Main	57	349	0	57	0	1700	2200
+57	Main	57	350	2	57	2	1700	2200
+57	Main	57	351	3	57	3	1700	2200
+57	Main	57	352	4	57	4	1700	2200
+57	Main	57	353	5	57	5	1700	2200
+57	Main	57	354	6	57	6	1700	2200
+60	Main	60	367	0	60	0	1130	2200
+60	Main	60	368	1	60	1	1130	2200
+60	Main	60	369	2	60	2	1130	2200
+60	Main	60	370	3	60	3	1130	2200
+60	Main	60	371	4	60	4	1130	2200
+60	Main	60	372	5	60	5	1130	2300
+60	Main	60	373	6	60	6	1130	2300
+review_id	comments	restaurant_id	user_id	created_at	updated_at	rating	is_anonymous
+2	COMMENT	1	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-06-20 18:49:31	2024-06-20 18:49:31	10	0
+restaurant_id	created_at	updated_at	google_restaurant_id	google_restaurant_id	description	phone	website	google_url	business_status	price_level	supports_curbside_pickup	supports_delivery	supports_dine_in	supports_reservations	place_id	updated_at	supports_takeout	serves_breakfast	serves_brunch	serves_dinner	serves_lunch	serves_vegetarian_food	serves_wine	serves_beer	serves_cocktails	serves_coffee	serves_dessert	good_for_groups	good_for_watching_sports	has_outdoor_seating	has_restroom	accepts_credit_cards	accepts_debit_cards	accepts_cash_only	accepts_nfc	wheelchair_accessible_entrance	wheelchair_accessible_seating	name	avg_rating	location_id	address	lat	lng	viewport_high_lat	viewport_high_lng	viewport_low_lat	viewport_low_lng	google_restaurant_id	distance
+48	2024-06-14 13:35:12	2024-06-14 13:35:12	48	48	Relaxed strip-mall eatery serving hot pot, BBQ & other Chinese dishes in a contemporary space.	(519) 747-5588	http://waterloostar.ca/	https://maps.google.com/?cid=14032169753479681876	Operational	Inexpensive	NULL	1	NULL	NULL	ChIJQdQ9MgH0K4gRVBcjkAtIvMI	2024-06-14 13:35:12	1	0	NULL	1	1	NULL	0	0	0	0	NULL	1	0	0	1	NULL	1	0	NULL	NULL	NULL	Waterloo Star	3.7	48	170 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4728	-80.5377	43.4741	-80.5363	43.4714	-80.539	48	4.3119281242770535
+10	2024-06-14 13:35:11	2024-06-14 13:35:11	10	10	Casual counter-serve chain for build-your-own sandwiches & salads, with health-conscious options.	(519) 884-7821	https://restaurants.subway.com/canada/on/waterloo/160-university-ave-west?utm_source=yxt-goog&utm_medium=local&utm_term=acq&utm_content=2969&utm_campaign=evergreen-2020&y_source=1_MTQ5MjExNTYtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D	https://maps.google.com/?cid=11416089624802639945	Operational	Inexpensive	NULL	1	NULL	0	ChIJXZ7mzwb0K4gRSUBiWgcZbp4	2024-06-14 13:35:11	1	1	1	1	1	NULL	0	0	0	1	NULL	1	0	0	1	1	1	0	1	0	1	Subway	3.4	10	160 University Ave W Units 5 & 6, Waterloo, ON N2L 3E9, Canada	43.4723	-80.5378	43.4736	-80.5365	43.4709	-80.5392	10	17.93001625665808
+58	2024-06-14 13:35:12	2024-06-14 13:35:12	58	58	Small, strip-mall restaurant serving homestyle noodle soups & rice dishes in low-key surrounds.	(519) 886-3999	https://m.facebook.com/HGTasteOfTaiwan/	https://maps.google.com/?cid=12554815119678506201	Operational	NULL	NULL	1	NULL	NULL	ChIJH5vP7gb0K4gR2QQkRdWpO64	2024-06-14 13:35:12	1	NULL	NULL	1	1	NULL	NULL	NULL	NULL	NULL	NULL	1	0	0	1	1	1	0	1	NULL	NULL	Home Garden Taste of Taiwan	4.3	58	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4723	-80.5375	43.4736	-80.5363	43.4709	-80.539	58	20.896707420952623
+50	2024-06-14 13:35:12	2024-06-14 13:35:12	50	50	NULL	(519) 208-8897	https://selflane.com/bizs/baba-chicken-grill_waterloo_on	https://maps.google.com/?cid=10336483647459273368	Operational	Inexpensive	NULL	1	NULL	0	ChIJQfln1gb0K4gRmKpxwRyRco8	2024-06-14 13:35:12	1	0	0	1	1	NULL	0	0	0	0	0	1	0	0	1	0	1	1	1	1	NULL	Baba Grill	3.4	50	170 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4726	-80.538	43.474	-80.5366	43.4713	-80.5393	50	33.3065457797413
+47	2024-06-14 13:35:12	2024-06-14 13:35:12	47	47	Basic, long-running pizzeria offering classic pies with gluten-free options. Open late.	(519) 747-9888	http://www.campuspizza.ca/	https://maps.google.com/?cid=2381183722490277947	Operational	Inexpensive	NULL	1	NULL	0	ChIJP_Ie6gb0K4gRO7D5w_qpCyE	2024-06-14 13:35:12	1	0	0	1	1	NULL	0	0	0	0	0	1	0	1	0	1	1	0	1	1	0	Campus Pizza	3.6	47	160 University Ave W #2, Waterloo, ON N2L 3E9, Canada	43.4722	-80.538	43.4735	-80.5367	43.4708	-80.5394	47	37.466478413031794
+17	2024-06-14 13:35:11	2024-06-14 13:35:11	17	17	Informal counter-serve nook providing familiar Indian & Canadian comfort eats in a minimalist space.	(519) 954-5633	http://www.auntyskitchen.ca/	https://maps.google.com/?cid=11317039484750060126	Operational	Moderate	NULL	1	NULL	0	ChIJHwYDnPXzK4gRXtqYfXMzDp0	2024-06-14 13:35:11	1	0	0	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	1	NULL	Aunty's Kitchen - Waterloo	4.1	17	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4722	-80.5373	43.4735	-80.536	43.4708	-80.5387	17	40.594573559557546
+55	2024-06-14 13:35:12	2024-06-14 13:35:12	55	55	Relaxed option offering Mediterranean dishes such as shawarma & falafel plates plus hearty sides.	(226) 908-0536	http://www.shawermaplus.com/	https://maps.google.com/?cid=6248472801143395938	Operational	Inexpensive	NULL	1	NULL	0	ChIJ816IxAb0K4gRYpbXJOgIt1Y	2024-06-14 13:35:12	1	0	1	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	1	1	Shawerma Plus (Shawarma Plus)	4.5	55	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4721	-80.5372	43.4734	-80.536	43.4707	-80.5387	55	49.22766164611548
