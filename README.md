@@ -15,6 +15,12 @@
 
 Run `docker-compose up` to host the database. See the `README` files of each service for further instructions.
 
+To seed the database with sample data, go to [packages/seed](./packages/seed/).
+
 ## Database
 
-Connect with `mycli -P 3306 -u user -p password` or if you don't have MyCLI instaled run `mysql -P 3306 -u user -p` and enter password `password`.
+Connect with `mycli -P 3306 -u user -p password` or if you don't have MyCLI instaled run `mysql -P 3306 -h 127.0.0.1 -u user --password=password`.
+
+DB migrations can be found at [packages/api/migrations](./packages/api/migrations/).
+
+Queries can be found at [packages/api/queries.sql](./packages/api/queries.sql). Queries are pre-processed with SQLC. See API README for more details.
