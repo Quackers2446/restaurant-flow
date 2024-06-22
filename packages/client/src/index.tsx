@@ -1,33 +1,33 @@
 import {AppShell, Burger, MantineProvider} from "@mantine/core"
 import "@mantine/core/styles.css"
 import {useDisclosure} from "@mantine/hooks"
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
+import "leaflet/dist/leaflet.css"
 import React from "react"
 import ReactDOM from "react-dom/client"
+import {RestaurantMap} from "./components"
+import "./index.scss"
 import reportWebVitals from "./reportWebVitals"
+
+const queryClient = new QueryClient()
 
 const App: React.FC = () => {
     const [opened, {toggle}] = useDisclosure()
 
     return (
-        <MantineProvider defaultColorScheme="dark">
-            <AppShell
-                header={{height: 60}}
-                navbar={{
-                    width: 300,
-                    breakpoint: "sm",
-                    collapsed: {mobile: !opened},
-                }}
-                padding="md"
-            >
-                <AppShell.Header>
-                    <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                </AppShell.Header>
+        <QueryClientProvider client={queryClient}>
+            <MantineProvider defaultColorScheme="dark">
+                <AppShell header={{height: 60}} padding={0}>
+                    <AppShell.Header>
+                        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+                    </AppShell.Header>
 
-                <AppShell.Navbar p="lg">Navbar</AppShell.Navbar>
-
-                <AppShell.Main>Main</AppShell.Main>
-            </AppShell>
-        </MantineProvider>
+                    <AppShell.Main className="mantine-main">
+                        <RestaurantMap />
+                    </AppShell.Main>
+                </AppShell>
+            </MantineProvider>
+        </QueryClientProvider>
     )
 }
 

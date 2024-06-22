@@ -1,0 +1,1 @@
+export {RestaurantMap} from "./restaurantMap"
