@@ -5,7 +5,6 @@ services:
     image: mysql:latest
     container_name: restaurantFlow
     restart: always
-    command: --lower_case_table_names=1 # Workaround (undesirable) for https://github.com/sqlc-dev/sqlc/issues/3089
     ports:
       - "3306:3306"
     environment:

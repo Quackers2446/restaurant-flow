@@ -1,8 +1,8 @@
-alter table `OpeningPeriod` modify column `open_time` char(4) not null;
-alter table `OpeningPeriod` modify column `close_time` char(4) null;
+alter table `opening_period` modify column `open_time` char(4) not null;
+alter table `opening_period` modify column `close_time` char(4) null;
 
-alter table `Review` modify column `rating` int not null;
+alter table `review` modify column `rating` int not null;
 
-alter table `GoogleRestaurant` modify column `name` varchar(64) not null;
+alter table `google_restaurant` modify column `name` varchar(64) not null;
 
-alter table `GoogleRestaurant` modify column `avg_rating` tinyint;
+alter table `google_restaurant` modify column `avg_rating` tinyint;

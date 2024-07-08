@@ -22,7 +22,7 @@ type dummyTable struct {
 func (handler Handler) GetDummyTable(context echo.Context) (err error) {
 	data := []dummyTable{}
 
-	err = handler.DB.Select(&data, "SELECT * FROM `dummyTable`")
+	err = handler.DB.Select(&data, "SELECT * FROM `dummy_table`")
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)

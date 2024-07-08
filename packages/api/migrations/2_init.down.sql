@@ -1,10 +1,10 @@
 DROP INDEX `GoogleRestaurant_index_0`;
 
-DROP TABLE `OpeningPeriod`;
-DROP TABLE `OpeningHours`;
-DROP TABLE `Review`;
-DROP TABLE `Tag`;
-DROP TABLE `Restaurant`;
-DROP TABLE `Location`;
-DROP TABLE `GoogleRestaurant`;
-DROP TABLE `User`;
+DROP TABLE `opening_period`;
+DROP TABLE `opening_hours`;
+DROP TABLE `review`;
+DROP TABLE `tag`;
+DROP TABLE `restaurant`;
+DROP TABLE `location`;
+DROP TABLE `google_restaurant`;
+DROP TABLE `user`;

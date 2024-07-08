@@ -1,1 +1,1 @@
-drop table `dummyTable`;
+drop table `dummy_table`;

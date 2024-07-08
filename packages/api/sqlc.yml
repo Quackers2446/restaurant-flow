@@ -13,14 +13,9 @@ sql:
         emit_empty_slices: true
         emit_result_struct_pointers: true
         json_tags_case_style: "camel"
-        rename:
-          # Workaround for https://github.com/sqlc-dev/sqlc/issues/3089
-          googlerestaurant: GoogleRestaurant
-          openingperiod: OpeningPeriod
 
         # Need to add for every nullable type in the schema
         overrides:
-          # TABLE NAME WOULD BE CAPITALIZED but same problem as https://github.com/sqlc-dev/sqlc/issues/3089
           - column: "user.user_id"
             go_type: "github.com/google/uuid.UUID"
           - column: "review.user_id"

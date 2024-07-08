@@ -1,4 +1,4 @@
-CREATE TABLE `User` (
+CREATE TABLE `user` (
     `user_id` binary(16) PRIMARY KEY,
     `name` varchar(32) NOT NULL,
     `username` varchar(32) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE `User` (
     `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE `Restaurant` (
+CREATE TABLE `restaurant` (
     `restaurant_id` int PRIMARY KEY AUTO_INCREMENT,
     `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -15,7 +15,7 @@ CREATE TABLE `Restaurant` (
 
 -- SQLC does not support spatial datatypes, so we cannot use the POINT type.
 -- https://github.com/sqlc-dev/sqlc/issues/2767 what the fuck man I wanted to use fancy new features
-CREATE TABLE `Location` (
+CREATE TABLE `location` (
     `location_id` int PRIMARY KEY AUTO_INCREMENT,
     `address` varchar(512) NOT NULL,
     `lat` float NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `Location` (
     `google_restaurant_id` int NOT NULL UNIQUE
 );
 
-CREATE TABLE `GoogleRestaurant` (
+CREATE TABLE `google_restaurant` (
     `google_restaurant_id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(64) NOT NULL,
     `description` text,
@@ -52,13 +52,13 @@ CREATE TABLE `GoogleRestaurant` (
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE `Tag` (
+CREATE TABLE `tag` (
     `tag_id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(64),
     `restaurant_id` int NOT NULL
 );
 
-CREATE TABLE `Review` (
+CREATE TABLE `review` (
     `review_id` int PRIMARY KEY AUTO_INCREMENT,
     `rating` int NOT NULL,
     `comments` text,
@@ -68,13 +68,13 @@ CREATE TABLE `Review` (
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE `OpeningHours` (
+CREATE TABLE `opening_hours` (
     `opening_hours_id` int PRIMARY KEY AUTO_INCREMENT,
     `type` ENUM ('Main', 'DriveThrough', 'HappyHour', 'Delivery', 'Takeout', 'Kitchen', 'Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Pickup', 'SeniorHours') NOT NULL,
     `google_restaurant_id` int NOT NULL
 );
 
-CREATE TABLE `OpeningPeriod` (
+CREATE TABLE `opening_period` (
     `opening_period_id` int PRIMARY KEY AUTO_INCREMENT,
     `open_day` tinyint NOT NULL,
     `open_time` char(4) NOT NULL,
@@ -83,18 +83,18 @@ CREATE TABLE `OpeningPeriod` (
     `opening_hours_id` int NOT NULL
 );
 
-CREATE INDEX `GoogleRestaurant_index_0` ON `GoogleRestaurant` (`place_id`);
+CREATE INDEX `GoogleRestaurant_index_0` ON `google_restaurant` (`place_id`);
 
-ALTER TABLE `Restaurant` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `GoogleRestaurant` (`google_restaurant_id`);
+ALTER TABLE `restaurant` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `google_restaurant` (`google_restaurant_id`);
 
-ALTER TABLE `Location` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `GoogleRestaurant` (`google_restaurant_id`);
+ALTER TABLE `location` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `google_restaurant` (`google_restaurant_id`);
 
-ALTER TABLE `Tag` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
+ALTER TABLE `tag` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`);
 
-ALTER TABLE `Review` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`restaurant_id`);
+ALTER TABLE `review` ADD FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`);
 
-ALTER TABLE `Review` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`);
+ALTER TABLE `review` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
-ALTER TABLE `OpeningHours` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `GoogleRestaurant` (`google_restaurant_id`);
+ALTER TABLE `opening_hours` ADD FOREIGN KEY (`google_restaurant_id`) REFERENCES `google_restaurant` (`google_restaurant_id`);
 
-ALTER TABLE `OpeningPeriod` ADD FOREIGN KEY (`opening_hours_id`) REFERENCES `OpeningHours` (`opening_hours_id`);
+ALTER TABLE `opening_period` ADD FOREIGN KEY (`opening_hours_id`) REFERENCES `opening_hours` (`opening_hours_id`);

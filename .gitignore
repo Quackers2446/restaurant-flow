@@ -133,3 +133,4 @@ swagger.json
 swagger.yaml
 docs.go
 sqlcClient/
+.DS_STORE
