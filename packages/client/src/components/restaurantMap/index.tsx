@@ -1,11 +1,11 @@
-import styles from "./index.module.scss"
 import {useQuery} from "@tanstack/react-query"
+import {type LatLngLiteral} from "leaflet"
 import qs from "qs"
 import React from "react"
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet"
-import {type LatLngLiteral} from "leaflet"
 import {apiURL} from "../../globals"
 import {getRestaurantsInAreaResponse} from "../../schema/restaurant"
+import styles from "./index.module.scss"
 
 // TODO: make these modifiable
 const position: LatLngLiteral = {lat: 43.472587, lng: -80.537681}
@@ -44,6 +44,9 @@ export const RestaurantMap: React.FC = () => {
                     key={restaurant.restaurantId}
                     position={[restaurant.location.lat, restaurant.location.lng]}
                 >
+                    {/* <Tooltip permanent direction="left">
+                        {restaurant.googleRestaurant.name}
+                    </Tooltip> */}
                     <Popup>{restaurant.googleRestaurant.name}</Popup>
                 </Marker>
             ))}
