@@ -45,7 +45,7 @@ const insertPlace = async (place) => {
     return await connection.query(
         /*sql*/ `
         start transaction;
-        insert into GoogleRestaurant set
+        insert into google_restaurant set
             name=:name,
             description=:description,
             phone=:phone,
@@ -116,7 +116,7 @@ const insertPlace = async (place) => {
             wheelchair_accessible_entrance=new.wheelchair_accessible_entrance,
             wheelchair_accessible_seating=new.wheelchair_accessible_seating;
 
-        insert into Location set
+        insert into location set
             address=:address,
             lat=:coordLat,
             lng=:coordLng,
@@ -124,16 +124,16 @@ const insertPlace = async (place) => {
             viewport_high_lng=:highLng,
             viewport_low_lat=:lowLat,
             viewport_low_lng=:lowLng,
-            google_restaurant_id=(select google_restaurant_id from GoogleRestaurant where place_id=:placeId)
+            google_restaurant_id=(select google_restaurant_id from google_restaurant where place_id=:placeId)
         as new
         -- On duplicate key, no-op
         on duplicate key update google_restaurant_id=new.google_restaurant_id;
 
-        insert into Restaurant set google_restaurant_id=(select google_restaurant_id from GoogleRestaurant where place_id=:placeId) as new
+        insert into restaurant set google_restaurant_id=(select google_restaurant_id from google_restaurant where place_id=:placeId) as new
             -- On duplicate key, no-op
             on duplicate key update google_restaurant_id=new.google_restaurant_id;
 
-        insert into OpeningHours set type="Main", google_restaurant_id=(select google_restaurant_id from GoogleRestaurant where place_id=:placeId) as new
+        insert into opening_hours set type="Main", google_restaurant_id=(select google_restaurant_id from google_restaurant where place_id=:placeId) as new
             -- On duplicate key, no-op
             on duplicate key update google_restaurant_id=new.google_restaurant_id;
 
@@ -141,12 +141,12 @@ const insertPlace = async (place) => {
             place.regularOpeningHours?.periods
                 .map(
                     (_, index) => /*sql*/ `
-                    insert into OpeningPeriod set
+                    insert into opening_period set
                         open_day=:openDay${index},
                         open_time=:openTime${index},
                         close_day=:closeDay${index},
                         close_time=:closeTime${index},
-                        opening_hours_id=(select opening_hours_id from OpeningHours where type="Main" and google_restaurant_id=(select google_restaurant_id from GoogleRestaurant where place_id=:placeId))
+                        opening_hours_id=(select opening_hours_id from opening_hours where type="Main" and google_restaurant_id=(select google_restaurant_id from google_restaurant where place_id=:placeId))
                     as new
                     on duplicate key update
                         open_day=new.open_day,
