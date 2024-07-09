@@ -1,30 +1,25 @@
-import { AppShell, Image, MantineProvider, createTheme, virtualColor, stylesToString } from "@mantine/core"
+import "./index.scss"
 import "@mantine/core/styles.css"
-import { useDisclosure } from "@mantine/hooks"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import "leaflet/dist/leaflet.css"
+import { AppShell, MantineProvider } from "@mantine/core"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { RestaurantMap } from "./components"
-import "./index.scss"
 import { HomePage } from "./pages"
 import reportWebVitals from "./reportWebVitals"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Header } from "./components/header"
 
 const queryClient = new QueryClient()
 
 const App: React.FC = () => {
-    const [opened, { toggle }] = useDisclosure()
-
     return (
         <QueryClientProvider client={queryClient}>
             <MantineProvider defaultColorScheme="dark">
                 <AppShell header={{ height: 60 }}
                     padding="md">
-                    <AppShell.Header className="header">
-                        <h1 className="logo">UW Eats</h1>
-                    </AppShell.Header>
-
+                    <Header />
                     <AppShell.Main className="mantine-main">
                         <Router>
                             <Routes>
