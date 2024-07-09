@@ -1,29 +1,32 @@
-import {AppShell, Burger, MantineProvider} from "@mantine/core"
+import "./index.scss"
 import "@mantine/core/styles.css"
-import {useDisclosure} from "@mantine/hooks"
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import "leaflet/dist/leaflet.css"
+import { AppShell, MantineProvider } from "@mantine/core"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import React from "react"
 import ReactDOM from "react-dom/client"
-import {RestaurantMap} from "./components"
-import "./index.scss"
+import { RestaurantMap } from "./components"
+import { HomePage } from "./pages"
 import reportWebVitals from "./reportWebVitals"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Header } from "./components/header"
 
 const queryClient = new QueryClient()
 
 const App: React.FC = () => {
-    const [opened, {toggle}] = useDisclosure()
-
     return (
         <QueryClientProvider client={queryClient}>
             <MantineProvider defaultColorScheme="dark">
-                <AppShell header={{height: 60}} padding={0}>
-                    <AppShell.Header>
-                        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    </AppShell.Header>
-
+                <AppShell header={{ height: 60 }}
+                    padding="md">
+                    <Header />
                     <AppShell.Main className="mantine-main">
-                        <RestaurantMap />
+                        <Router>
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="/map" element={<RestaurantMap />} />
+                            </Routes>
+                        </Router>
                     </AppShell.Main>
                 </AppShell>
             </MantineProvider>
