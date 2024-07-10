@@ -1,0 +1,246 @@
+restaurant_id	created_at	updated_at	google_restaurant_id	google_restaurant_id	description	phone	website	google_url	business_status	price_level	supports_curbside_pickup	supports_delivery	supports_dine_in	supports_reservations	place_id	updated_at	supports_takeout	serves_breakfast	serves_brunch	serves_dinner	serves_lunch	serves_vegetarian_food	serves_wine	serves_beer	serves_cocktails	serves_coffee	serves_dessert	good_for_groups	good_for_watching_sports	has_outdoor_seating	has_restroom	accepts_credit_cards	accepts_debit_cards	accepts_cash_only	accepts_nfc	wheelchair_accessible_entrance	wheelchair_accessible_seating	name	avg_rating	location_id	address	lat	lng	viewport_high_lat	viewport_high_lng	viewport_low_lat	viewport_low_lng	google_restaurant_id
+410	2024-07-09 21:04:52	2024-07-09 21:04:52	412	412	Polished Italian eatery specializing in housemade pasta & elevated mains in cozy surroundings.	(519) 954-8821	http://www.271west.com/	https://maps.google.com/?cid=4571198981215279079	Operational	Moderate	NULL	0	NULL	1	ChIJ8aqFofT0K4gR59f2EEEpcD8	2024-07-09 21:04:52	1	0	0	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	271West Restaurant	4.6	410	60 Charles St W, Kitchener, ON N2G 1B1, Canada	43.4504	-80.4931	43.4516	-80.4918	43.4489	-80.4945	412
+729	2024-07-09 21:08:30	2024-07-09 21:08:30	731	731	This local brewpub chain pours its own beers & serves them along with comfort food staples.	(519) 208-0788	http://www.abeerb.com/	https://maps.google.com/?cid=5679334671942108698	Operational	Moderate	NULL	1	NULL	1	ChIJ9QVtZPX0K4gRGkarMcsM0U4	2024-07-09 21:08:30	1	0	0	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	ABE ERB - Downtown Kitchener	4.3	729	151 Charles St W, Kitchener, ON N2G 1H6, Canada	43.4514	-80.499	43.453	-80.4975	43.4503	-80.5002	731
+18	2024-07-09 14:54:25	2024-07-09 14:54:25	20	20	Modern brewery & bar featuring global comfort eats, a late-night menu & weekly live music.	(519) 208-0858	http://abeerb.com/	https://maps.google.com/?cid=232551083366812706	Operational	Moderate	NULL	1	NULL	1	ChIJ7XmNWA30K4gRIgw2bPovOgM	2024-07-09 14:54:25	1	1	1	1	1	NULL	1	1	1	1	1	1	1	0	1	1	1	0	1	1	1	ABE ERB - Uptown Waterloo	4.3	18	15 King St S, Waterloo, ON N2J 1N9, Canada	43.4646	-80.5224	43.466	-80.5209	43.4633	-80.5236	20
+754	2024-07-09 21:08:31	2024-07-09 21:08:31	756	756	NULL	(519) 741-5030	https://www.facebook.com/Algarve-Restaurant-1252236461541984/	https://maps.google.com/?cid=10515597932624173420	Operational	Inexpensive	NULL	NULL	NULL	1	ChIJ4SYACeX0K4gRbFnlDpvo7pE	2024-07-09 21:08:31	1	NULL	0	1	1	NULL	1	1	1	1	1	1	NULL	0	1	1	1	0	1	1	1	Algarve Restaurant	4.3	754	248 Stirling Ave S, Kitchener, ON N2G 4L1, Canada	43.4406	-80.4858	43.442	-80.4844	43.4393	-80.4871	756
+596	2024-07-09 21:08:04	2024-07-09 21:08:04	598	598	NULL	(519) 603-8111	http://www.almadinacuisine.com/	https://maps.google.com/?cid=4247810236188715582	Operational	Moderate	NULL	1	NULL	1	ChIJPaFOYGH2K4gRPupLaedA8zo	2024-07-09 21:08:04	1	0	NULL	1	1	NULL	0	0	0	1	1	1	0	1	1	1	1	0	1	1	1	ALMADINA Woodstone Oven & Grill	4.3	596	330 The Boardwalk, Waterloo, ON N2T 0A6, Canada	43.4379	-80.5627	43.4392	-80.5613	43.4365	-80.564	598
+722	2024-07-09 21:08:30	2024-07-09 21:08:30	724	724	NULL	(519) 569-4592	https://www.ihg.com/crowneplaza/hotels/us/en/kitchener/ykfcp/hoteldetail/dining	https://maps.google.com/?cid=751852696496341438	Operational	NULL	NULL	0	NULL	1	ChIJv8uHj-30K4gRvoEVQgsebwo	2024-07-09 21:08:30	1	1	1	1	0	NULL	1	1	1	1	1	1	1	0	1	1	1	0	NULL	1	1	Aqua Lounge & Restaurant	4.8	722	105 King St E, Kitchener, ON N2G 2K8, Canada	43.4489	-80.4874	43.4503	-80.4861	43.4476	-80.4888	724
+744	2024-07-09 21:08:31	2024-07-09 21:08:31	746	746	Large, casual eatery offering Lebanese favourites like shawarma & kebabs, plus baked goods.	(519) 954-2212	http://www.arabesquecafekw.com/	https://maps.google.com/?cid=9523204131490391036	Operational	Moderate	NULL	1	NULL	1	ChIJp1-W86X0K4gR_GMElbM3KYQ	2024-07-09 21:08:31	1	1	1	1	1	NULL	0	0	0	1	1	1	0	0	1	1	1	0	1	1	1	Arabesque Family Restaurant	4.4	744	869 Victoria St N, Kitchener, ON N2B 3C3, Canada	43.4631	-80.4664	43.4645	-80.465	43.4618	-80.4677	746
+54	2024-07-09 14:54:28	2024-07-09 14:54:28	56	56	NULL	(519) 580-6666	http://www.asakusaramen.ca/	https://maps.google.com/?cid=11745970536503676669	Operational	NULL	NULL	1	NULL	NULL	ChIJZdaPHAj1K4gR_Y6BWvgRAqM	2024-07-09 14:54:28	1	NULL	NULL	1	1	NULL	NULL	1	NULL	0	1	NULL	0	0	1	1	1	0	1	NULL	NULL	Asakusa	4.5	54	150 University Ave W, Waterloo, ON N2L 6J3, Canada	43.4727	-80.5361	43.4741	-80.5347	43.4714	-80.5374	56
+24	2024-07-09 14:54:27	2024-07-09 14:54:27	26	26	Informal counter-serve nook providing familiar Indian & Canadian comfort eats in a minimalist space.	(519) 954-5633	http://www.auntyskitchen.ca/	https://maps.google.com/?cid=11317039484750060126	Operational	Moderate	NULL	1	NULL	0	ChIJHwYDnPXzK4gRXtqYfXMzDp0	2024-07-09 14:54:27	1	0	0	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	1	NULL	Aunty's Kitchen - Waterloo	4.1	24	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4722	-80.5373	43.4735	-80.536	43.4708	-80.5387	26
+389	2024-07-09 21:04:51	2024-07-09 21:04:51	391	391	NULL	(519) 886-3350	http://huetherhotel.com/Barley-Works-Public-Spaces.htm	https://maps.google.com/?cid=13502551606737229141	Operational	NULL	NULL	NULL	NULL	1	ChIJ68K34Qz0K4gRVdXzkCWzYrs	2024-07-09 21:04:51	1	NULL	NULL	1	1	NULL	1	1	1	1	1	1	NULL	1	1	1	NULL	0	NULL	NULL	NULL	Barley Works	2.1	389	59 King St N, Waterloo, ON N2J 2X2, Canada	43.467	-80.5232	43.4682	-80.5219	43.4655	-80.5246	391
+20	2024-07-09 14:54:25	2024-07-09 14:54:25	22	22	NULL	(519) 885-5151	http://www.beertown.ca/	https://maps.google.com/?cid=12636251536426362080	Operational	Moderate	NULL	NULL	NULL	1	ChIJy4uAuxL0K4gR4GQtmdL7XK8	2024-07-09 14:54:25	1	0	1	1	1	NULL	1	1	1	1	1	1	1	1	1	1	NULL	0	1	1	1	Beertown Public House Waterloo	4.3	20	Square, 75 King St S Unit 37, Waterloo, ON N2J 1P2, Canada	43.464	-80.5228	43.4654	-80.5214	43.4627	-80.5241	22
+22	2024-07-09 14:54:27	2024-07-09 14:54:27	24	24	NULL	(519) 208-2988	https://order.mrsdigi.com/dowo.php/213811232702050/e5c224b8-2570-5827-bbe5-a888beef3c8b	https://maps.google.com/?cid=11358052062702898471	Operational	NULL	NULL	1	NULL	1	ChIJ78Mb_YX1K4gRJ43MaSzon50	2024-07-09 14:54:27	1	1	NULL	1	1	NULL	NULL	0	NULL	NULL	1	1	0	NULL	1	1	1	0	1	0	NULL	Better Chef	4.0	22	160 University Ave W Unit22-23, Waterloo, ON N2L 3E9, Canada	43.4724	-80.5371	43.4739	-80.5357	43.4712	-80.5384	24
+29	2024-07-09 14:54:27	2024-07-09 14:54:27	31	31	Intimate restaurant & bar featuring Indonesian, Vietnamese & Thai dishes, plus garden tables.	(519) 747-0722	http://www.bhimaswarung.com/	https://maps.google.com/?cid=14760595375479680304	Operational	Expensive	NULL	NULL	NULL	1	ChIJoV7eWvTzK4gRMG29_Ekr2Mw	2024-07-09 14:54:27	1	0	0	1	NULL	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Bhima's Warung	4.4	29	262 King St N, Waterloo, ON N2J 2Y8, Canada	43.4775	-80.5249	43.4788	-80.5237	43.4761	-80.5264	31
+17	2024-07-09 14:54:25	2024-07-09 14:54:25	19	19	NULL	(519) 813-4300	https://www.boardwalkburgers.ca/	https://maps.google.com/?cid=6417385792414750590	Operational	Moderate	NULL	1	NULL	1	ChIJ70ragAnzK4gRfheFn2AiD1k	2024-07-09 14:54:25	1	NULL	NULL	1	1	NULL	0	0	0	NULL	NULL	1	0	0	1	1	1	0	1	1	NULL	Boardwalk Fries Burgers Shakes - Waterloo	4.6	17	65 University Ave E, Waterloo, ON N2J 2V8, Canada	43.4765	-80.5211	43.478	-80.5198	43.4753	-80.5225	19
+748	2024-07-09 21:08:31	2024-07-09 21:08:31	750	750	Casual, comfy haunt offering classic pub eats, beer & a huge outdoor space with sand volleyball.	(519) 743-5657	http://www.bobbyskitchener.com/	https://maps.google.com/?cid=18289740298262046455	Operational	Inexpensive	NULL	1	NULL	1	ChIJo2Z3G_P0K4gR92YO6OU10v0	2024-07-09 21:08:31	1	0	0	1	1	NULL	1	1	1	1	1	1	1	1	1	1	1	0	1	NULL	1	Bobby O'Brien's	3.9	748	125 King St W, Kitchener, ON N2G 1A7, Canada	43.4505	-80.4917	43.452	-80.4902	43.4493	-80.4929	750
+36	2024-07-09 14:54:27	2024-07-09 14:54:27	38	38	NULL	(519) 880-1705	https://bodegarose.ca/	https://maps.google.com/?cid=10091118233489978270	Operational	NULL	NULL	NULL	NULL	1	ChIJP1gK3zf1K4gRnjOjfZHaCow	2024-07-09 14:54:27	1	NULL	NULL	NULL	NULL	NULL	1	1	1	NULL	NULL	1	0	1	1	1	1	0	1	1	NULL	Bodega Rose	4.6	36	17 Erb St E, Waterloo, ON N2J 1L4, Canada	43.4651	-80.5214	43.4666	-80.5201	43.4639	-80.5228	38
+19	2024-07-09 14:54:25	2024-07-09 14:54:25	21	21	The Uyghur cuisine of Central Asia served in a casual space decorated with objects from the region.	(519) 886-2929	NULL	https://maps.google.com/?cid=6997541093063832992	Operational	Moderate	NULL	1	NULL	1	ChIJS6iiUvbzK4gRoLVEsYxCHGE	2024-07-09 14:54:25	1	0	NULL	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	NULL	NULL	Bogda Restaurant	4.5	19	62 Balsam St b103, Waterloo, ON N2L 3H2, Canada	43.4764	-80.5299	43.4776	-80.5285	43.4749	-80.5312	21
+594	2024-07-09 21:08:04	2024-07-09 21:08:04	596	596	Contemporary restaurant offering locally sourced American plates, creative cocktails & craft brews.	(519) 219-9007	http://www.borealisgrille.ca/	https://maps.google.com/?cid=226984558205706018	Operational	Moderate	NULL	1	NULL	1	ChIJRx5s-UKKK4gRIp9ZyUBpJgM	2024-07-09 21:08:04	1	1	1	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Borealis Grille & Bar (Kitchener)	4.4	594	4336 King St E, Kitchener, ON N2P 3W6, Canada	43.4081	-80.3967	43.4095	-80.3956	43.4068	-80.3983	596
+81	2024-07-09 20:28:49	2024-07-09 20:28:49	83	83	NULL	(519) 746-2939	https://browndonkatsu.ca/	https://maps.google.com/?cid=17145265999896977140	Operational	NULL	NULL	1	NULL	NULL	ChIJLZpOWzP1K4gR9B5xX5Y48O0	2024-07-09 20:28:49	1	NULL	NULL	1	1	NULL	NULL	NULL	NULL	NULL	NULL	NULL	0	NULL	NULL	1	NULL	0	NULL	NULL	NULL	Brown Donkatsu Waterloo	4.5	81	150 University Ave W #3, Waterloo, ON N2L 3E4, Canada	43.4725	-80.5359	43.4737	-80.5344	43.471	-80.5371	83
+592	2024-07-09 21:08:04	2024-07-09 21:08:04	594	594	NULL	(519) 804-9070	https://brownssocialhouse.com/	https://maps.google.com/?cid=16514661858745426367	Operational	Moderate	NULL	1	NULL	1	ChIJyZxyGgjzK4gRv6E2THbdL-U	2024-07-09 21:08:04	1	1	1	1	1	NULL	1	1	1	1	1	1	1	1	1	1	1	0	1	1	1	Browns Socialhouse Waterloo	4.6	592	259 Northfield Dr E, Waterloo, ON N2K 0G5, Canada	43.5109	-80.5212	43.5123	-80.5199	43.5096	-80.5226	594
+46	2024-07-09 14:54:28	2024-07-09 14:54:28	48	48	Well-known fast-food chain serving grilled burgers, fries & shakes.	(519) 884-4426	https://burgerking.com/store-locator/store/restaurant_11,513	https://maps.google.com/?cid=13318488433988239063	Operational	Inexpensive	NULL	1	NULL	0	ChIJSR96Vgb0K4gR134ElarG1Lg	2024-07-09 14:54:28	1	1	NULL	1	1	NULL	0	0	0	1	1	1	0	0	1	1	1	0	1	1	1	Burger King	3.3	46	150 University Ave W Unit 1a, Waterloo, ON N2L 3E4, Canada	43.4725	-80.5357	43.4738	-80.5343	43.4711	-80.537	48
+755	2024-07-09 21:08:31	2024-07-09 21:08:31	757	757	Laid-back coffee shop offering organic vegan light bites & thoughtfully sourced espresso drinks.	(519) 954-7705	http://cafepyrus.com/	https://maps.google.com/?cid=3346927895690982796	Operational	Moderate	NULL	1	NULL	0	ChIJZZvwpvP0K4gRjLWBNzCtci4	2024-07-09 21:08:31	1	1	1	1	1	NULL	0	0	0	1	1	1	0	1	1	1	1	0	1	1	1	Cafe Pyrus	4.5	755	305 King St W, Kitchener, ON N2G 1B7, Canada	43.4515	-80.495	43.453	-80.4936	43.4503	-80.4963	757
+49	2024-07-09 14:54:28	2024-07-09 14:54:28	51	51	Basic, long-running pizzeria offering classic pies with gluten-free options. Open late.	(519) 747-9888	http://www.campuspizza.ca/	https://maps.google.com/?cid=2381183722490277947	Operational	Inexpensive	NULL	1	NULL	0	ChIJP_Ie6gb0K4gRO7D5w_qpCyE	2024-07-09 14:54:28	1	0	0	1	1	NULL	0	0	0	0	0	1	0	1	0	1	1	0	1	1	0	Campus Pizza	3.6	49	160 University Ave W #2, Waterloo, ON N2L 3E9, Canada	43.4722	-80.538	43.4735	-80.5367	43.4708	-80.5394	51
+738	2024-07-09 21:08:30	2024-07-09 21:08:30	740	740	Long-standing option for pizzas, pasta & traditional Italian entrees in a cozy, casual setting.	(519) 744-9081	http://casarugantino.ca/	https://maps.google.com/?cid=14219981920151456792	Operational	Moderate	NULL	1	NULL	1	ChIJk80zzEH0K4gRGMwaNzeGV8U	2024-07-09 21:08:30	1	0	0	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Casa Rugantino	4.4	738	709 Belmont Ave W, Kitchener, ON N2M 1P1, Canada	43.4538	-80.5185	43.4553	-80.5173	43.4526	-80.52	740
+12	2024-07-09 14:54:25	2024-07-09 14:54:25	14	14	NULL	(519) 208-7877	http://champakitchen.ca/	https://maps.google.com/?cid=2770479477366850739	Operational	NULL	NULL	1	NULL	1	ChIJLSW1atT1K4gRswT28We4ciY	2024-07-09 14:54:25	1	NULL	NULL	1	1	NULL	1	1	1	1	1	NULL	0	1	1	1	1	0	1	0	1	Champa Kitchen	4.6	12	21 King St N, Waterloo, ON N2J 2W6, Canada	43.4657	-80.5227	43.467	-80.5213	43.4643	-80.524	14
+586	2024-07-09 21:08:04	2024-07-09 21:08:04	588	588	Upscale venue offering choice steak dishes, including ribeye & prime rib, with seafood & pasta.	(519) 893-6570	http://www.charcoalsteakhouse.ca/	https://maps.google.com/?cid=431896420400227705	Operational	Expensive	NULL	NULL	NULL	1	ChIJ3Sdd-R-LK4gReeW3jYFn_gU	2024-07-09 21:08:04	1	0	1	1	1	NULL	1	1	1	1	1	1	NULL	1	1	1	1	0	1	1	1	Charcoal Steak House	4.6	586	2980 King St E, Kitchener, ON N2A 1A9, Canada	43.4289	-80.4328	43.4302	-80.4314	43.4276	-80.4341	588
+10	2024-07-09 14:54:25	2024-07-09 14:54:25	12	12	Homestyle food for delivery, take-out, or to eat in a casual setting.	(519) 342-6464	http://www.chefoncalldelivery.com/	https://maps.google.com/?cid=4232529671478462917	Operational	NULL	NULL	1	NULL	NULL	ChIJn25ny6LzK4gRxUnGsU_3vDo	2024-07-09 14:54:25	1	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	1	1	NULL	Chef On Call	4.6	10	130 Columbia St W #812, Waterloo, ON N2L 0G6, Canada	43.4787	-80.5374	43.4799	-80.5364	43.4772	-80.5391	12
+749	2024-07-09 21:08:31	2024-07-09 21:08:31	751	751	NULL	(519) 576-7608	http://www.choiceindianrestaurant.ca/	https://maps.google.com/?cid=15648025293265439099	Operational	Moderate	NULL	1	NULL	1	ChIJ3_drkAX1K4gRewlq8Rj0KNk	2024-07-09 21:08:31	1	1	NULL	1	1	NULL	0	0	0	1	1	1	0	0	1	1	1	0	1	1	1	Choice Indian Restaurant	4.4	749	720 Westmount Rd E Unit 103, Kitchener, ON N2E 1J2, Canada	43.4178	-80.5	43.4192	-80.4987	43.4165	-80.5014	751
+418	2024-07-09 21:04:52	2024-07-09 21:04:52	420	420	NULL	(519) 208-5885	https://eatcopperbranch.com/	https://maps.google.com/?cid=2234833322488785369	Operational	Moderate	NULL	1	NULL	NULL	ChIJnTdBS230K4gR2Wkm7xC5Ax8	2024-07-09 21:04:52	1	1	1	1	1	NULL	NULL	1	0	1	1	1	0	0	1	1	1	0	1	1	1	Copper Branch	4.5	418	80 King St S #106, Waterloo, ON N2J 1P5, Canada	43.4633	-80.5217	43.4646	-80.5204	43.4619	-80.5231	420
+51	2024-07-09 14:54:28	2024-07-09 14:54:28	53	53	NULL	(519) 725-9041	http://www.crabbyjoes.com/	https://maps.google.com/?cid=10896400283250489072	Operational	Moderate	NULL	1	NULL	1	ChIJ5QTVOovzK4gR8HacdVPKN5c	2024-07-09 14:54:28	1	0	0	1	1	NULL	1	1	1	1	1	1	1	1	1	1	1	0	1	1	1	Crabby Joe's Bar • Grill	3.9	51	65 University Ave, Waterloo, ON N2J 2V9, Canada	43.4775	-80.5205	43.4788	-80.5194	43.4761	-80.5221	53
+739	2024-07-09 21:08:30	2024-07-09 21:08:30	741	741	Laid-back nook for artisanal Japanese ramen, plus take-out, outdoor seating & vegan options.	(519) 340-2721	http://www.craftyramen.com/	https://maps.google.com/?cid=17485563314811319951	Operational	Moderate	NULL	1	NULL	NULL	ChIJoyvsLX_1K4gRjzbuPDEzqfI	2024-07-09 21:08:30	1	0	0	1	1	NULL	1	1	NULL	0	1	1	0	0	1	1	1	0	1	1	1	Crafty Ramen	4.2	739	276 King St W Suite 5, Kitchener, ON N2G 1B6, Canada	43.452	-80.4942	43.4534	-80.4929	43.4507	-80.4956	741
+115	2024-07-09 20:28:50	2024-07-09 20:28:50	117	117	Family-friendly place offering a range of breakfast classics, plus sandwiches & burgers.	(519) 886-4752	http://dailygrill.ca/	https://maps.google.com/?cid=14235801589712847902	Operational	Inexpensive	NULL	1	NULL	0	ChIJHcK6bs_zK4gRHoTGDx-6j8U	2024-07-09 20:28:50	1	1	1	1	1	NULL	1	1	1	1	1	1	NULL	0	1	1	1	0	1	1	1	Daily Grill Restaurant	4.4	115	615 Davenport Rd, Waterloo, ON N2V 2G2, Canada	43.5038	-80.5293	43.5051	-80.528	43.5024	-80.5307	117
+110	2024-07-09 20:28:50	2024-07-09 20:28:50	112	112	NULL	(519) 888-9997	https://www.daldongnaebbq.com/	https://maps.google.com/?cid=14529963636413091620	Operational	Moderate	NULL	0	NULL	1	ChIJDwoPGJz1K4gRJM--u_HMpMk	2024-07-09 20:28:50	NULL	NULL	NULL	1	1	NULL	NULL	1	1	NULL	1	1	0	0	1	1	NULL	0	NULL	0	NULL	Daldongnae Korean BBQ - Waterloo	4.8	110	51 King St N, Waterloo, ON N2J 2W9, Canada	43.4666	-80.5231	43.468	-80.5216	43.4653	-80.5243	112
+611	2024-07-09 21:08:05	2024-07-09 21:08:05	613	613	NULL	(519) 746-0321	http://dearbornrestaurant.ca/	https://maps.google.com/?cid=17129805106789445636	Operational	Inexpensive	NULL	1	NULL	1	ChIJKb3b65PzK4gRBHDbrfxKue0	2024-07-09 21:08:05	1	1	1	1	1	NULL	1	1	1	1	1	1	0	0	1	1	1	0	1	1	1	Dearborn Restaurant	4.5	611	105 Lexington Rd, Waterloo, ON N2J 4R7, Canada	43.4866	-80.5175	43.488	-80.5162	43.4853	-80.5189	613
+719	2024-07-09 21:08:29	2024-07-09 21:08:29	721	721	Elevated Italian fare including hearth-baked pizzas, cocktails & wine by the ounce in artful digs.	(519) 893-2911	http://delsitaliankitchen.ca/	https://maps.google.com/?cid=12463055181050134235	Operational	Moderate	NULL	0	NULL	1	ChIJI0YX0iiLK4gR276Vsqeq9aw	2024-07-09 21:08:29	1	0	0	1	0	NULL	1	1	1	1	1	1	0	1	1	1	1	0	NULL	1	1	Del's Italian Kitchen	4.5	719	2980 King St E, Kitchener, ON N2A 1A9, Canada	43.4291	-80.4328	43.4305	-80.4316	43.4278	-80.4343	721
+734	2024-07-09 21:08:30	2024-07-09 21:08:30	736	736	NULL	(548) 288-4477	http://donjuliotacosandtequila.com/	https://maps.google.com/?cid=3189620984199177527	Operational	NULL	NULL	NULL	NULL	1	ChIJu1SxonL1K4gRN-VSw2LPQyw	2024-07-09 21:08:30	1	NULL	NULL	1	NULL	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	NULL	1	Don Julio Tacos & Tequila Bar	4.4	734	147 King St W, Kitchener, ON N2G 1A7, Canada	43.4506	-80.4919	43.452	-80.4905	43.4493	-80.4932	736
+589	2024-07-09 21:08:04	2024-07-09 21:08:04	591	591	Intimate eatery offering creative, French-inspired dishes along with a bar & patio seating.	(519) 576-2800	https://elixirbistro.ca/	https://maps.google.com/?cid=13146488807450747722	Operational	NULL	NULL	0	NULL	1	ChIJSTTnZrZ3LIgRSiPA0-q1cbY	2024-07-09 21:08:04	1	0	0	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Elixir Bistro	4.7	589	693 Belmont Ave W, Kitchener, ON N2M 1P1, Canada	43.4535	-80.5184	43.4549	-80.5169	43.4522	-80.5196	591
+9	2024-07-09 14:54:25	2024-07-09 14:54:25	11	11	Classic Italian entrees & pizza served with imported wine in warm surrounds with an old-timey vibe.	(519) 893-0543	https://enniospasta.ca/	https://maps.google.com/?cid=3764626037623531435	Operational	Moderate	NULL	1	NULL	1	ChIJ6fQ1DvLzK4gRq6e8dG-jPjQ	2024-07-09 14:54:25	1	0	NULL	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Ennio's Pasta House	4.4	9	384 King St N, Waterloo, ON N2J 2Z3, Canada	43.4834	-80.526	43.4848	-80.5247	43.4821	-80.5274	11
+5	2024-07-09 14:54:25	2024-07-09 14:54:25	7	7	Relaxed long-running tavern with a retro vibe, offering burgers, Tex-Mex staples & a long beer list.	(519) 725-2361	http://ethelslounge.com/	https://maps.google.com/?cid=16813466031908191771	Operational	Inexpensive	NULL	NULL	NULL	NULL	ChIJdy6Mngz0K4gRG_77QkZuVek	2024-07-09 14:54:25	1	NULL	NULL	NULL	NULL	NULL	1	1	1	NULL	NULL	1	1	1	1	1	1	0	1	1	NULL	Ethel's Lounge	4.4	5	114 King St N, Waterloo, ON N2J 2X6, Canada	43.4692	-80.5233	43.4706	-80.5218	43.4679	-80.5245	7
+398	2024-07-09 21:04:51	2024-07-09 21:04:51	400	400	Casual neighborhood spot for authentic Neapolitan pizzas, pasta & sandwiches, plus beer & cocktails.	(519) 954-1900	https://famoso.ca/locations/waterloo/	https://maps.google.com/?cid=5173115091454381474	Operational	Moderate	NULL	1	NULL	1	ChIJNwVfVw30K4gRos1ZcMSYykc	2024-07-09 21:04:51	1	0	0	1	1	NULL	1	1	1	1	1	1	1	1	1	1	1	0	1	1	1	Famoso Italian Pizzeria - Waterloo	4.4	398	15 King St S, Waterloo, ON N2J 1N9, Canada	43.4644	-80.5223	43.4658	-80.5211	43.4631	-80.5238	400
+758	2024-07-09 21:08:31	2024-07-09 21:08:31	760	760	Laid-back spot for casual grub, including breakfast, pizza, burgers, pasta & deli sandwiches.	(519) 581-1200	NULL	https://maps.google.com/?cid=4359311497215535861	Operational	Moderate	NULL	1	NULL	1	ChIJ8y1M-w_1K4gR9erOyLVifzw	2024-07-09 21:08:31	1	1	1	1	1	NULL	1	1	1	1	1	1	0	1	1	1	1	0	1	1	1	Fireside Deli & Family Restaurant	4.2	758	800 Ottawa St S, Kitchener, ON N2E 3M6, Canada	43.4229	-80.4887	43.4242	-80.4873	43.4215	-80.49	760
+53	2024-07-09 14:54:28	2024-07-09 14:54:28	55	55	NULL	(226) 240-3613	https://freshburrito.ca/	https://maps.google.com/?cid=3669748086371508792	Operational	Inexpensive	NULL	1	NULL	1	ChIJwcxORmf1K4gROOJX_3CQ7TI	2024-07-09 14:54:28	1	0	0	1	1	NULL	0	0	0	0	0	1	0	0	1	1	1	0	1	1	NULL	Fresh Burrito	4.0	53	170 University Ave W #31, Waterloo, ON N2L 3E9, Canada	43.4727	-80.5379	43.474	-80.5365	43.4713	-80.5392	55
+117	2024-07-09 20:28:50	2024-07-09 20:28:50	119	119	NULL	(519) 707-1226	https://www.thegcburger.com/	https://maps.google.com/?cid=11604281830930737564	Operational	NULL	NULL	0	NULL	NULL	ChIJQ4KsZ8_zK4gRnGkl1tewCqE	2024-07-09 20:28:50	1	NULL	NULL	1	1	NULL	NULL	NULL	NULL	NULL	NULL	1	0	NULL	1	1	NULL	0	NULL	1	NULL	GC Burger Waterloo	4.9	117	308 King St N, Waterloo, ON N2L 3V2, Canada	43.4787	-80.5252	43.48	-80.524	43.4773	-80.5267	119
+112	2024-07-09 20:28:50	2024-07-09 20:28:50	114	114	NULL	(519) 725-7777	http://www.gladiatorburger.com/	https://maps.google.com/?cid=18362367787053773474	Operational	NULL	NULL	1	NULL	1	ChIJ2UBkrS71K4gRonJq3jY81P4	2024-07-09 20:28:50	1	NULL	NULL	1	1	NULL	0	0	0	NULL	NULL	1	0	0	1	1	1	0	1	1	1	Gladiator Burger Waterloo	4.8	112	222 Albert St, Waterloo, ON N2L 3T6, Canada	43.474	-80.5316	43.4753	-80.5304	43.4726	-80.5331	114
+39	2024-07-09 14:54:27	2024-07-09 14:54:27	41	41	NULL	(519) 208-3923	http://www.lanzhou.ca/	https://maps.google.com/?cid=1928924894676172186	Operational	NULL	NULL	1	NULL	0	ChIJs-uUWrL1K4gRmr2UyfjqxBo	2024-07-09 14:54:27	1	0	0	1	1	NULL	NULL	NULL	NULL	0	1	1	0	0	1	1	1	0	1	1	NULL	Gol's Lanzhou Noodle Waterloo	4.6	39	150 University Ave W Unit 6B, Waterloo, ON N2L 3E4, Canada	43.4727	-80.536	43.474	-80.5348	43.4713	-80.5375	41
+737	2024-07-09 21:08:30	2024-07-09 21:08:30	739	739	Spacious, venerable bar/eatery with refined seafood & steak mains, plus Sunday brunch & a salad bar.	(519) 579-4050	http://www.golfssteakhouse.com/	https://maps.google.com/?cid=8573907833132236027	Operational	Moderate	NULL	1	NULL	1	ChIJPSm_Xm_zK4gR-zzJar-j_HY	2024-07-09 21:08:30	1	0	1	1	1	NULL	1	1	1	1	1	1	0	NULL	1	1	1	0	1	1	1	Golf's Steak House & Seafood	4.5	737	598 Lancaster St W, Kitchener, ON N2K 1M3, Canada	43.4806	-80.4833	43.4821	-80.4821	43.4794	-80.4848	739
+420	2024-07-09 21:04:52	2024-07-09 21:04:52	422	422	Rustic-industrial market for Detroit-style pizza, house-made pastas, rotisserie chicken & beers.	(519) 514-1820	https://graffitimarket.ca/	https://maps.google.com/?cid=8675867169541919683	Operational	Moderate	NULL	1	NULL	1	ChIJF_n75UT1K4gRwxMFVznfZng	2024-07-09 21:04:52	1	NULL	1	1	1	NULL	1	1	1	1	1	1	NULL	1	1	1	1	0	1	1	1	Graffiti Market	4.2	420	137 Glasgow St suite 385, Kitchener, ON N2G 4X8, Canada	43.4511	-80.5141	43.4526	-80.5129	43.4499	-80.5156	422
+751	2024-07-09 21:08:31	2024-07-09 21:08:31	753	753	NULL	(519) 581-1158	https://gramaskitchen.ca/	https://maps.google.com/?cid=14222434472116480228	Operational	Moderate	NULL	1	NULL	1	ChIJD823Pjj1K4gR5OjFd8w8YMU	2024-07-09 21:08:31	1	1	1	1	1	NULL	NULL	NULL	NULL	1	1	1	0	0	1	1	1	0	NULL	1	1	Grama's kitchen	4.5	751	751 Victoria St S, Kitchener, ON N2M 5N4, Canada	43.4387	-80.521	43.44	-80.5197	43.4373	-80.5224	753
+724	2024-07-09 21:08:30	2024-07-09 21:08:30	726	726	NULL	(519) 744-7455	https://www.facebook.com/grillhousekitchener/	https://maps.google.com/?cid=8496168075518474821	Operational	Inexpensive	NULL	NULL	NULL	0	ChIJa0jeNdL0K4gRRfpKndlz6HU	2024-07-09 21:08:30	1	NULL	NULL	1	1	NULL	0	0	0	1	NULL	1	0	0	1	1	1	0	1	1	1	Grill House	4.6	724	1-825 Weber St E, Kitchener, ON N2H 1H5, Canada	43.438	-80.4592	43.4393	-80.4576	43.4366	-80.4603	726
+113	2024-07-09 20:28:50	2024-07-09 20:28:50	115	115	NULL	(519) 886-1234	http://www.grillies.ca/	https://maps.google.com/?cid=3002274034531115758	Operational	Inexpensive	NULL	1	NULL	NULL	ChIJEe5Pbk_1K4gR7iKb4lM4qik	2024-07-09 20:28:50	1	1	1	1	1	NULL	NULL	NULL	NULL	NULL	1	1	0	NULL	1	1	1	0	1	1	1	Grillies (King St. - Waterloo)	4.6	113	52 King St N, Waterloo, ON N2J 2W8, Canada	43.4667	-80.5226	43.4682	-80.5212	43.4655	-80.5239	115
+opening_hours_id	type	google_restaurant_id	opening_period_id	close_day	opening_hours_id	open_day	open_time	close_time
+3	Main	5	13	3	3	3	1700	2200
+3	Main	5	14	4	3	4	1700	2200
+3	Main	5	15	5	3	5	1700	2300
+3	Main	5	16	6	3	6	1700	2300
+7	Main	9	38	2	7	2	1130	2100
+7	Main	9	39	3	7	3	1130	2100
+7	Main	9	40	4	7	4	1130	2100
+7	Main	9	41	5	7	5	1130	2100
+7	Main	9	42	6	7	6	1030	2100
+9	Main	11	49	0	9	0	1530	2100
+9	Main	11	50	1	9	1	1530	2100
+9	Main	11	51	2	9	2	1530	2100
+9	Main	11	52	3	9	3	1200	2100
+9	Main	11	53	4	9	4	1200	2100
+9	Main	11	54	5	9	5	1200	2200
+9	Main	11	55	6	9	6	1200	2200
+11	Main	13	63	0	11	0	1130	2230
+11	Main	13	64	1	11	1	1130	2230
+11	Main	13	65	2	11	2	1130	2230
+11	Main	13	66	3	11	3	1130	2230
+11	Main	13	67	4	11	4	1130	2230
+11	Main	13	68	5	11	5	1130	2230
+11	Main	13	69	6	11	6	1130	2230
+13	Main	15	76	0	13	0	1100	2200
+13	Main	15	78	1	13	1	1130	2300
+13	Main	15	80	2	13	2	1130	2300
+13	Main	15	82	3	13	3	1130	2300
+13	Main	15	84	4	13	4	1130	2300
+13	Main	15	86	5	13	5	1130	2300
+13	Main	15	88	6	13	6	1100	2300
+15	Main	17	97	0	15	0	1030	2300
+15	Main	17	98	1	15	1	1130	2300
+15	Main	17	99	2	15	2	1130	2300
+15	Main	17	100	3	15	3	1130	2300
+15	Main	17	101	4	15	4	1130	2300
+15	Main	17	102	6	15	5	1130	0
+15	Main	17	103	0	15	6	1030	0
+16	Main	18	104	0	16	0	1600	2100
+16	Main	18	106	1	16	1	1600	2200
+16	Main	18	108	2	16	2	1600	2200
+16	Main	18	110	3	16	3	1600	2200
+16	Main	18	112	4	16	4	1600	2200
+16	Main	18	114	5	16	5	1600	2200
+16	Main	18	116	6	16	6	1600	2200
+21	Main	23	145	0	21	0	1000	2300
+21	Main	23	146	1	21	1	1100	2300
+21	Main	23	147	2	21	2	1100	2300
+21	Main	23	148	3	21	3	1100	2300
+21	Main	23	149	5	21	4	1100	0
+21	Main	23	150	6	21	5	1100	0
+21	Main	23	151	0	21	6	1000	0
+24	Main	26	166	1	24	0	1030	300
+24	Main	26	167	2	24	1	1100	300
+24	Main	26	168	3	24	2	1100	300
+24	Main	26	169	4	24	3	1100	300
+24	Main	26	170	5	24	4	1100	300
+24	Main	26	171	6	24	5	1100	300
+24	Main	26	172	0	24	6	1030	300
+27	Main	29	187	0	27	0	1600	2200
+27	Main	29	188	2	27	2	1600	2300
+27	Main	29	189	3	27	3	1600	2300
+27	Main	29	190	5	27	4	1600	0
+27	Main	29	191	6	27	5	1600	100
+27	Main	29	192	0	27	6	1600	100
+28	Main	30	193	0	28	0	1200	2300
+28	Main	30	194	1	28	1	1130	2300
+28	Main	30	195	2	28	2	1130	2300
+28	Main	30	196	3	28	3	1130	2300
+28	Main	30	197	5	28	4	1130	0
+28	Main	30	198	6	28	5	1130	0
+28	Main	30	199	0	28	6	1200	0
+32	Main	34	218	0	32	0	900	1900
+32	Main	34	219	1	32	1	900	1900
+32	Main	34	220	2	32	2	900	1900
+32	Main	34	221	3	32	3	900	1900
+32	Main	34	222	4	32	4	900	1900
+32	Main	34	223	5	32	5	900	1900
+32	Main	34	224	6	32	6	900	1900
+36	Main	38	242	0	36	0	1000	1500
+36	Main	38	243	3	36	3	1700	2230
+36	Main	38	245	4	36	4	1700	2230
+36	Main	38	247	6	36	5	1700	0
+36	Main	38	249	0	36	6	1700	200
+40	Main	42	268	0	40	0	1600	2200
+40	Main	42	269	1	40	1	1130	2200
+40	Main	42	270	2	40	2	1130	2200
+40	Main	42	271	3	40	3	1130	2200
+40	Main	42	272	4	40	4	1130	2200
+40	Main	42	273	5	40	5	1130	2300
+40	Main	42	274	6	40	6	1130	2300
+43	Main	45	288	0	43	0	1100	2230
+43	Main	45	289	1	43	1	1100	2230
+43	Main	45	290	2	43	2	1100	2230
+43	Main	45	291	3	43	3	1100	2230
+43	Main	45	292	4	43	4	1100	2230
+43	Main	45	293	5	43	5	1100	2230
+43	Main	45	294	6	43	6	1200	2230
+45	Main	47	302	0	45	0	830	2230
+45	Main	47	303	1	45	1	730	2230
+45	Main	47	304	2	45	2	730	2230
+45	Main	47	305	3	45	3	730	2230
+45	Main	47	306	4	45	4	730	2230
+45	Main	47	307	5	45	5	730	2230
+45	Main	47	308	6	45	6	830	2230
+48	Main	50	323	1	48	1	1100	2100
+48	Main	50	324	2	48	2	1100	2100
+48	Main	50	325	3	48	3	1100	2100
+48	Main	50	326	4	48	4	1100	2100
+48	Main	50	327	5	48	5	1100	2100
+52	Main	54	349	1	52	0	1100	0
+52	Main	54	350	2	52	1	1100	0
+52	Main	54	351	3	52	2	1100	0
+52	Main	54	352	4	52	3	1100	0
+52	Main	54	353	5	52	4	1100	0
+52	Main	54	354	6	52	5	1100	0
+52	Main	54	355	0	52	6	1100	0
+55	Main	57	370	1	55	0	1100	0
+55	Main	57	371	1	55	1	1100	2200
+55	Main	57	372	2	55	2	1100	2200
+55	Main	57	373	4	55	3	1100	0
+55	Main	57	374	5	55	4	1100	0
+55	Main	57	375	6	55	5	1100	0
+55	Main	57	376	0	55	6	1100	0
+58	Main	60	390	0	58	0	1100	2300
+58	Main	60	391	1	58	1	1100	2300
+58	Main	60	392	2	58	2	1100	2300
+58	Main	60	393	3	58	3	1100	2300
+58	Main	60	394	4	58	4	1100	2300
+58	Main	60	395	6	58	5	1100	0
+58	Main	60	396	0	58	6	1100	0
+review_id	rating	comments	restaurant_id	user_id	created_at	updated_at	is_anonymous
+1	9	COMMENT 1	1	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+2	7	COMMENT 2	2	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+3	8	COMMENT 3	3	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+4	9	COMMENT 4	4	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+5	1	COMMENT 5	5	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+6	9	COMMENT 6	6	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+7	2	COMMENT 7	7	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+8	3	COMMENT 8	8	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+9	0	COMMENT 9	9	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+10	1	COMMENT 10	10	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+11	6	COMMENT 11	11	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+12	4	COMMENT 12	12	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+13	5	COMMENT 13	13	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+14	1	COMMENT 14	14	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+15	10	COMMENT 15	15	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+16	7	COMMENT 16	16	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+17	3	COMMENT 17	17	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+18	7	COMMENT 18	18	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+19	5	COMMENT 19	19	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+20	4	COMMENT 20	20	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+21	7	COMMENT 21	21	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+22	1	COMMENT 22	22	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+23	6	COMMENT 23	23	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+24	4	COMMENT 24	24	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+25	3	COMMENT 25	25	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+26	1	COMMENT 26	26	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+27	8	COMMENT 27	27	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+28	7	COMMENT 28	28	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+29	1	COMMENT 29	29	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+30	4	COMMENT 30	30	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+31	9	COMMENT 31	31	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+32	10	COMMENT 32	32	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+33	3	COMMENT 33	33	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+34	7	COMMENT 34	34	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+35	5	COMMENT 35	35	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+36	6	COMMENT 36	36	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+37	2	COMMENT 37	37	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+38	3	COMMENT 38	38	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+39	7	COMMENT 39	39	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+40	7	COMMENT 40	40	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+41	6	COMMENT 41	41	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+42	9	COMMENT 42	42	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+43	5	COMMENT 43	43	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+44	7	COMMENT 44	44	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+45	2	COMMENT 45	45	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+46	7	COMMENT 46	46	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+47	2	COMMENT 47	47	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+48	7	COMMENT 48	48	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+49	0	COMMENT 49	49	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+50	9	COMMENT 50	50	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	0
+review_id	comments	restaurant_id	user_id	created_at	updated_at	rating	is_anonymous
+1	COMMENT 1	1	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	2024-07-10 00:08:02	2024-07-10 00:08:02	9	0
+restaurant_id	created_at	updated_at	google_restaurant_id	google_restaurant_id	description	phone	website	google_url	business_status	price_level	supports_curbside_pickup	supports_delivery	supports_dine_in	supports_reservations	place_id	updated_at	supports_takeout	serves_breakfast	serves_brunch	serves_dinner	serves_lunch	serves_vegetarian_food	serves_wine	serves_beer	serves_cocktails	serves_coffee	serves_dessert	good_for_groups	good_for_watching_sports	has_outdoor_seating	has_restroom	accepts_credit_cards	accepts_debit_cards	accepts_cash_only	accepts_nfc	wheelchair_accessible_entrance	wheelchair_accessible_seating	name	avg_rating	location_id	address	lat	lng	viewport_high_lat	viewport_high_lng	viewport_low_lat	viewport_low_lng	google_restaurant_id	distance
+43	2024-07-09 14:54:28	2024-07-09 14:54:28	45	45	Relaxed strip-mall eatery serving hot pot, BBQ & other Chinese dishes in a contemporary space.	(519) 747-5588	http://waterloostar.ca/	https://maps.google.com/?cid=14032169753479681876	Operational	Inexpensive	NULL	1	NULL	NULL	ChIJQdQ9MgH0K4gRVBcjkAtIvMI	2024-07-09 14:54:28	1	0	NULL	1	1	NULL	0	0	0	0	NULL	1	0	0	1	NULL	1	0	NULL	NULL	NULL	Waterloo Star	3.7	43	170 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4728	-80.5377	43.4741	-80.5363	43.4714	-80.539	45	4.3119281242770535
+56	2024-07-09 14:54:28	2024-07-09 14:54:28	58	58	NULL	(519) 888-6600	NULL	https://maps.google.com/?cid=17787796534443587387	Operational	NULL	NULL	1	NULL	NULL	ChIJwVegtjz1K4gROzdvTLTy2vY	2024-07-09 14:54:28	1	NULL	NULL	1	1	NULL	NULL	NULL	NULL	NULL	NULL	1	0	NULL	NULL	1	1	0	1	NULL	NULL	Yummy Chongqing	3.9	56	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4723	-80.5376	43.4736	-80.5364	43.4709	-80.5391	58	11.964331739221556
+55	2024-07-09 14:54:28	2024-07-09 14:54:28	57	57	NULL	(519) 885-3022	NULL	https://maps.google.com/?cid=4872992219004047941	Operational	Moderate	NULL	1	NULL	NULL	ChIJXd6cWZL1K4gRRZL63ppYoEM	2024-07-09 14:54:28	1	0	NULL	1	1	NULL	0	NULL	NULL	0	NULL	1	0	0	1	1	1	0	1	1	1	Nuri Village	3.8	55	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4723	-80.5378	43.4736	-80.5364	43.4709	-80.5391	57	12.52816282562525
+53	2024-07-09 14:54:28	2024-07-09 14:54:28	55	55	NULL	(226) 240-3613	https://freshburrito.ca/	https://maps.google.com/?cid=3669748086371508792	Operational	Inexpensive	NULL	1	NULL	1	ChIJwcxORmf1K4gROOJX_3CQ7TI	2024-07-09 14:54:28	1	0	0	1	1	NULL	0	0	0	0	0	1	0	0	1	1	1	0	1	1	NULL	Fresh Burrito	4.0	53	170 University Ave W #31, Waterloo, ON N2L 3E9, Canada	43.4727	-80.5379	43.474	-80.5365	43.4713	-80.5392	55	19.75751460931489
+48	2024-07-09 14:54:28	2024-07-09 14:54:28	50	50	Small, strip-mall restaurant serving homestyle noodle soups & rice dishes in low-key surrounds.	(519) 886-3999	https://m.facebook.com/HGTasteOfTaiwan/	https://maps.google.com/?cid=12554815119678506201	Operational	NULL	NULL	1	NULL	NULL	ChIJH5vP7gb0K4gR2QQkRdWpO64	2024-07-09 14:54:28	1	NULL	NULL	1	1	NULL	NULL	NULL	NULL	NULL	NULL	1	0	0	1	1	1	0	1	NULL	NULL	Home Garden Taste of Taiwan	4.3	48	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4723	-80.5375	43.4736	-80.5363	43.4709	-80.539	50	20.896707420952623
+49	2024-07-09 14:54:28	2024-07-09 14:54:28	51	51	Basic, long-running pizzeria offering classic pies with gluten-free options. Open late.	(519) 747-9888	http://www.campuspizza.ca/	https://maps.google.com/?cid=2381183722490277947	Operational	Inexpensive	NULL	1	NULL	0	ChIJP_Ie6gb0K4gRO7D5w_qpCyE	2024-07-09 14:54:28	1	0	0	1	1	NULL	0	0	0	0	0	1	0	1	0	1	1	0	1	1	0	Campus Pizza	3.6	49	160 University Ave W #2, Waterloo, ON N2L 3E9, Canada	43.4722	-80.538	43.4735	-80.5367	43.4708	-80.5394	51	37.466478413031794
+89	2024-07-09 20:28:49	2024-07-09 20:28:49	91	91	NULL	(519) 885-0892	http://www.mollyblooms.ca/	https://maps.google.com/?cid=13963847168954097697	Operational	Moderate	NULL	1	NULL	1	ChIJQdQ9MgH0K4gRIWBaOwSNycE	2024-07-09 20:28:49	1	1	NULL	1	1	NULL	1	1	1	1	1	1	1	1	1	1	1	0	1	1	1	Molly Bloom's Irish Pub	4.2	89	University Shops Plaza, 170 University Ave W, Waterloo, ON N2L 3E9, Canada	43.473	-80.5373	43.4743	-80.5359	43.4716	-80.5386	91	39.94623185416518
+24	2024-07-09 14:54:27	2024-07-09 14:54:27	26	26	Informal counter-serve nook providing familiar Indian & Canadian comfort eats in a minimalist space.	(519) 954-5633	http://www.auntyskitchen.ca/	https://maps.google.com/?cid=11317039484750060126	Operational	Moderate	NULL	1	NULL	0	ChIJHwYDnPXzK4gRXtqYfXMzDp0	2024-07-09 14:54:27	1	0	0	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	1	NULL	Aunty's Kitchen - Waterloo	4.1	24	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4722	-80.5373	43.4735	-80.536	43.4708	-80.5387	26	40.594573559557546
+50	2024-07-09 14:54:28	2024-07-09 14:54:28	52	52	NULL	(519) 725-1010	http://www.slapburgers.ca/	https://maps.google.com/?cid=11156639613317039286	Operational	NULL	NULL	1	NULL	NULL	ChIJ60EDhxz1K4gRtkTQLp5Y1Jo	2024-07-09 14:54:28	1	NULL	NULL	1	1	NULL	0	0	0	0	NULL	1	0	0	1	1	NULL	0	NULL	1	NULL	Slap Burgers	4.7	50	170 University Ave W #32, Waterloo, ON N2L 3E9, Canada	43.4726	-80.5381	43.4739	-80.5367	43.4712	-80.5394	52	43.51305778830226
+47	2024-07-09 14:54:28	2024-07-09 14:54:28	49	49	Relaxed option offering Mediterranean dishes such as shawarma & falafel plates plus hearty sides.	(519) 208-5552	http://www.shawermaplus.com/	https://maps.google.com/?cid=6248472801143395938	Operational	Inexpensive	NULL	1	NULL	0	ChIJ816IxAb0K4gRYpbXJOgIt1Y	2024-07-09 14:54:28	1	0	1	1	1	NULL	0	0	0	0	1	1	0	0	1	1	1	0	1	1	1	Shawerma Plus (Shawarma)	4.5	47	160 University Ave W, Waterloo, ON N2L 3E9, Canada	43.4721	-80.5372	43.4734	-80.536	43.4707	-80.5387	49	49.22766164611548
