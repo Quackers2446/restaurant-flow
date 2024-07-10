@@ -1,15 +1,17 @@
-import {AppShell, Burger, MantineProvider} from "@mantine/core"
+import {AppShell, MantineProvider} from "@mantine/core"
 import "@mantine/core/styles.css"
-import {useDisclosure} from "@mantine/hooks"
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import Leaflet from "leaflet"
-import icon from "./mapMarker.svg"
 import iconShadow from "leaflet/dist/images/marker-shadow.png"
 import "leaflet/dist/leaflet.css"
 import React from "react"
 import ReactDOM from "react-dom/client"
+import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import {RestaurantMap} from "./components"
+import {Header} from "./components/header"
 import "./index.scss"
+import icon from "./mapMarker.svg"
+import {HomePage} from "./pages"
 import reportWebVitals from "./reportWebVitals"
 
 const markerWidth = 25
@@ -25,18 +27,18 @@ Leaflet.Marker.prototype.options.icon = Leaflet.icon({
 const queryClient = new QueryClient()
 
 const App: React.FC = () => {
-    const [opened, {toggle}] = useDisclosure()
-
     return (
         <QueryClientProvider client={queryClient}>
             <MantineProvider defaultColorScheme="dark">
-                <AppShell header={{height: 60}} padding={0}>
-                    <AppShell.Header>
-                        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    </AppShell.Header>
-
+                <AppShell header={{height: 60}} padding="md">
+                    <Header />
                     <AppShell.Main className="mantine-main">
-                        <RestaurantMap />
+                        <Router>
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="/map" element={<RestaurantMap />} />
+                            </Routes>
+                        </Router>
                     </AppShell.Main>
                 </AppShell>
             </MantineProvider>
