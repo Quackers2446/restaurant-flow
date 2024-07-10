@@ -85,6 +85,7 @@ func main() {
 	e.GET("/dummy-table", h.GetDummyTable)
 	e.GET("/restaurants", h.GetRestaurants)
 	e.GET("/restaurants/in-area", h.GetRestaurantsInArea)
+	e.GET("/restaurants/search", h.GetRestaurantsSearch)
 	e.GET("/restaurants/:id", h.GetRestaurant)
 
 	e.POST("/review/create", h.CreateReview)
