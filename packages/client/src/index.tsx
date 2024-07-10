@@ -1,15 +1,16 @@
-import "./index.scss"
+import {AppShell, MantineProvider} from "@mantine/core"
 import "@mantine/core/styles.css"
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import "leaflet/dist/leaflet.css"
-import { AppShell, MantineProvider } from "@mantine/core"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { RestaurantMap } from "./components"
-import { HomePage } from "./pages"
+import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
+import {RestaurantMap} from "./components"
+import {Header} from "./components/header"
+import "./index.scss"
+import "./leaflet"
+import {HomePage} from "./pages"
 import reportWebVitals from "./reportWebVitals"
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header } from "./components/header"
 
 const queryClient = new QueryClient()
 
@@ -17,8 +18,7 @@ const App: React.FC = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <MantineProvider defaultColorScheme="dark">
-                <AppShell header={{ height: 60 }}
-                    padding="md">
+                <AppShell header={{height: 60}} padding="md">
                     <Header />
                     <AppShell.Main className="mantine-main">
                         <Router>

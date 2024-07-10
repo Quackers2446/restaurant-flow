@@ -57,6 +57,19 @@ where ST_Distance(
 order by distance asc
 limit 100; -- Probably a reasonable default (can change later if needed)
 
+-- TODO: combine this with GetRestaurants later
+-- name: GetRestaurantsSearch :many
+select restaurant.*,
+    sqlc.embed(google_restaurant),
+    sqlc.embed(location),
+    concat(sqlc.arg("search")) as search_query
+from restaurant
+inner join google_restaurant on google_restaurant.google_restaurant_id = restaurant.google_restaurant_id
+inner join `location` on `location`.google_restaurant_id = restaurant.google_restaurant_id
+having match (google_restaurant.name, google_restaurant.description) against (search_query in natural language mode);
+-- TODO: see if there's a way to use where instead of having because having is slower
+-- Not trivial: see https://github.com/sqlc-dev/sqlc/issues/3091
+
 -- name: GetRestaurant :one
 select
     restaurant.*,
