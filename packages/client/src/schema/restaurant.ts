@@ -89,7 +89,7 @@ const getRestaurantsSchema = z.object({
     googleRestaurantId: nullableNumberBoolean,
     location: locationSchema,
     openingHours: openingHoursSchema,
-    restaurantId: nullableNumberBoolean,
+    restaurantId: z.number(),
     tags: z.array(tagSchema),
     updatedAt: z.string(),
 })
