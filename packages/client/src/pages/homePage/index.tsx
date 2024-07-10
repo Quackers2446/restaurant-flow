@@ -1,12 +1,21 @@
-import {TextInput} from "@mantine/core"
+import {
+    Badge,
+    Card,
+    Container,
+    Group,
+    Image,
+    SimpleGrid,
+    Text,
+    TextInput,
+    Title,
+} from "@mantine/core"
+import qs from "qs"
 import React from "react"
-import {Text, Title, Container, Card, Image, Badge, SimpleGrid, Group} from "@mantine/core"
-import styles from "./index.module.scss"
 import {CiSearch} from "react-icons/ci"
 import {apiURL} from "../../globals"
 import {getRestaurantsResponse} from "../../schema/restaurant"
 import {debounce} from "../../utils/debounce"
-import qs from "qs"
+import styles from "./index.module.scss"
 
 export const HomePage: React.FC = () => {
     const [data, setData] = React.useState<typeof getRestaurantsResponse._type>()
