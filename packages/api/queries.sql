@@ -147,12 +147,15 @@ limit ?, ?;
 -- name: GetReview :one
 select review.* from review where review_id = ?;
 
+-- name: GetUpdatedReview :one
+select review.* from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: DeleteReview :exec
+delete from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
 -- name: UpdateReview :exec
 update review set
     rating=?,
     comments=sqlc.narg("comments"),
     is_anonymous=sqlc.narg("is_anonymous")
-where review_id = ?;
-
--- name: DeleteReview :exec
-delete from review where review_id = ?;
+where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));

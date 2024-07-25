@@ -12,35 +12,36 @@ import (
 
 // Note: pointers allow validator to tell the difference between 0 and empty
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
-type createReviewBody struct {
+type updateReviewBody struct {
 	Rating       *uint8  `body:"rating" validate:"required,gte=0,lte=10"`
 	IsAnonymous  bool    `body:"isAnonymous" default:"false"`
 	RestaurantId *int32  `body:"restaurantId" validate:"required"`
 	Comments     *string `body:"comments"`
 }
 
-// CreateReview
+// UpdateReview
 //
-//	@Summary	create a review
+//	@Summary	update a review
 //
 //	@Tags		Reviews
 //	@Accept		json
 //	@Produce	json
 //	@Success	200			{object}	sqlcClient.Review
-//	@Param		requestBody	body		createReviewBody	true	"request body"
+//	@Param		requestBody	body		updateReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
-//	@Router		/review/create [post]
-func (handler Handler) CreateReview(context echo.Context) (err error) {
-	body, err := util.ValidateInput(&context, &createReviewBody{})
+//	@Router		/review/update [post]
+
+func (handler Handler) UpdateReview(context echo.Context) (err error) {
+	body, err := util.ValidateInput(&context, &updateReviewBody{})
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
-	lastInsertId, err := handler.Queries.CreateReview(
+	err2 := handler.Queries.UpdateReview(
 		context.Request().Context(),
-		sqlcClient.CreateReviewParams{
+		sqlcClient.UpdateReviewParams{
 			Rating:       *body.Rating,
 			Comments:     body.Comments,
 			RestaurantID: *body.RestaurantId,
@@ -49,13 +50,16 @@ func (handler Handler) CreateReview(context echo.Context) (err error) {
 		},
 	)
 
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	if err2 != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err2)
 	}
 
-	review, err := handler.Queries.GetReview(
+	review, err := handler.Queries.GetUpdatedReview(
 		context.Request().Context(),
-		int32(lastInsertId),
+		sqlcClient.GetUpdatedReviewParams{
+			UserID:       "00000000-0000-0000-0000-000000000000",
+			RestaurantID: *body.RestaurantId,
+		},
 	)
 
 	if err != nil {
