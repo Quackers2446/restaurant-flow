@@ -3,19 +3,13 @@ package handlers
 import (
 	"encoding/base64"
 	"errors"
-	"fmt"
 	"net/http"
-	"restaurant-flow-auth/pkg/util"
 	"time"
 
 	"github.com/labstack/echo/v4"
 )
 
-type refreshResponse struct {
-	AccessToken string `json:"accessToken"`
-}
-
-func (handler Handler) Refresh(context echo.Context) (err error) {
+func (handler Handler) ClearSessions(context echo.Context) (err error) {
 	cookie, err := context.Cookie("refresh_token")
 
 	if err != nil {
@@ -24,7 +18,11 @@ func (handler Handler) Refresh(context echo.Context) (err error) {
 
 	refreshToken := cookie.Value
 
-	fmt.Println(refreshToken)
+	cookie.Value = ""
+	cookie.Expires = time.Now()
+	cookie.HttpOnly = true
+
+	context.SetCookie(cookie)
 
 	decodedRefreshToken, err := base64.URLEncoding.DecodeString(refreshToken)
 
@@ -41,17 +39,11 @@ func (handler Handler) Refresh(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusUnauthorized, errors.New("refresh token expired"))
 	}
 
-	err = handler.Queries.UpdateSessionLastUsed(context.Request().Context(), currentSession.SessionID)
+	err = handler.Queries.InvalidateAllSessions(context.Request().Context(), string(currentSession.UserID))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	accessToken, err := util.GenerateJWT(string(currentSession.UserID))
-
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, err)
-	}
-
-	return context.JSON(http.StatusOK, refreshResponse{AccessToken: accessToken})
+	return context.NoContent(http.StatusNoContent)
 }

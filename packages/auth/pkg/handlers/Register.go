@@ -4,12 +4,13 @@ import (
 	"net/http"
 	"restaurant-flow-auth/pkg/util"
 
+	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 	passwordValidator "github.com/wagslane/go-password-validator"
 	"golang.org/x/crypto/bcrypt"
 )
 
-const minEntropyBits = 60 // Between 50 and 70 is "reasonable"
+const minEntropyBits = 50 // Between 50 and 70 is "reasonable"
 const bcryptCost = 14
 
 type registerBody struct {
@@ -30,27 +31,39 @@ func (handler Handler) Register(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
-	bytes, err := bcrypt.GenerateFromPassword([]byte(body.Password), bcryptCost)
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(body.Password), bcryptCost)
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	_, err = handler.DB.Exec( /*sql*/ `
-		start transaction;
+	newUserId := uuid.New().String()
 
-		set new_user_id = unhex(uuid(),'-','')); -- Is this ok???
+	transaction, err := handler.DB.BeginTx(context.Request().Context(), nil)
 
+	defer transaction.Rollback()
+
+	_, err = transaction.Exec( /*sql*/ `
 		insert into user set
-			user_id=new_user_id,
+			user_id=unhex(replace(?,'-','')),
 			email=?;
+	`, newUserId, body.Email)
 
-		insert into user_auth
-			user_id=new_user_id,
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	_, err = transaction.Exec( /*sql*/ `
+		insert into user_auth set
+			user_id=unhex(replace(?,'-','')),
 			password_hash=?;
+	`, newUserId, hashedPassword)
 
-		commit;
-	`, body.Email, bytes)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	err = transaction.Commit()
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)

@@ -30,7 +30,8 @@ create table `session` (
     `created_at` timestamp not null default current_timestamp,
     `last_used_at` timestamp not null default current_timestamp on update current_timestamp,
     `expires_at` timestamp not null,
-    `refresh_key` char(64) not null unique,
+    `refresh_key` binary(64) not null unique,
+    `valid` boolean not null default true,
 
     index `session_user_id` (`user_id`)
 );

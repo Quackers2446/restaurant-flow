@@ -85,8 +85,10 @@ func main() {
 	e.POST("/register", h.Register)
 	e.POST("/login", h.Login)
 	e.GET("/get-sessions", h.GetSessions)
-	e.POST("/refresh", h.Refresh)
+	e.GET("/refresh", h.Refresh)
+	e.POST("/clear-sessions", h.ClearSessions)
+	e.POST("/logout", h.Logout)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":3333"))
+	e.Logger.Fatal(e.Start(":3334"))
 }

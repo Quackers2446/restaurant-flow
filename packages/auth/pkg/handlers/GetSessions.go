@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/base64"
 	"errors"
 	"net/http"
 	"time"
@@ -17,12 +18,18 @@ func (handler Handler) GetSessions(context echo.Context) (err error) {
 
 	refreshToken := cookie.Value
 
-	currentSession, err := handler.Queries.GetSession(context.Request().Context(), refreshToken)
+	decodedRefreshToken, err := base64.URLEncoding.DecodeString(refreshToken)
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusUnauthorized, err)
 	}
-	if currentSession.ExpiresAt.Before(time.Now()) {
+
+	currentSession, err := handler.Queries.GetSession(context.Request().Context(), decodedRefreshToken)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+	if currentSession.ExpiresAt.Before(time.Now()) || !currentSession.Valid {
 		return echo.NewHTTPError(http.StatusUnauthorized, errors.New("refresh token expired"))
 
 	}

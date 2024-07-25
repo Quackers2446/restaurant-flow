@@ -21,7 +21,7 @@ type Claims interface {
 
 func GenerateJWT(userId string) (string, error) {
 	if privateKey == nil {
-		readKey, err := os.ReadFile("../../jwtRS256-sample.key")
+		readKey, err := os.ReadFile("./jwtRS256-sample.key")
 
 		if err != nil {
 			return "", err
@@ -40,7 +40,13 @@ func GenerateJWT(userId string) (string, error) {
 		Subject:   userId,
 	}
 
-	tokenString, err := token.SignedString(privateKey)
+	paredKey, err := jwt.ParseRSAPrivateKeyFromPEM(privateKey)
+
+	if err != nil {
+		return "", errors.New("key error")
+	}
+
+	tokenString, err := token.SignedString(paredKey)
 
 	if err != nil {
 		return "", err
@@ -51,7 +57,7 @@ func GenerateJWT(userId string) (string, error) {
 
 func ValidateJWT(tokenString string) (*jwt.Token, *jwt.RegisteredClaims, error) {
 	if publicKey == nil {
-		readKey, err := os.ReadFile("../../jwtRS256-sample.key.pub")
+		readKey, err := os.ReadFile("./jwtRS256-sample.key.pub")
 
 		if err != nil {
 			return nil, nil, err
@@ -61,7 +67,7 @@ func ValidateJWT(tokenString string) (*jwt.Token, *jwt.RegisteredClaims, error) 
 	}
 
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		return publicKey, nil
+		return jwt.ParseRSAPublicKeyFromPEM(publicKey)
 	}, jwt.WithValidMethods([]string{"RS256"}))
 
 	if !token.Valid || err != nil {

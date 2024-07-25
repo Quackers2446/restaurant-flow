@@ -1,6 +1,8 @@
 package handlers
 
 import (
+	"encoding/base64"
+	"fmt"
 	"net/http"
 	"restaurant-flow-auth/pkg/sqlcClient"
 	"restaurant-flow-auth/pkg/util"
@@ -53,7 +55,7 @@ func (handler Handler) Login(context echo.Context) (err error) {
 		IpAddr:     context.Echo().IPExtractor(context.Request()),
 		UserAgent:  context.Request().UserAgent(),
 		ExpiresAt:  exp,
-		RefreshKey: string(refreshToken),
+		RefreshKey: refreshToken,
 	})
 
 	if err != nil {
@@ -68,14 +70,15 @@ func (handler Handler) Login(context echo.Context) (err error) {
 
 	cookie := new(http.Cookie)
 	cookie.Name = "refresh_token"
-	cookie.Name = "username"
-	cookie.Value = string(refreshToken)
+	cookie.Value = base64.URLEncoding.EncodeToString(refreshToken)
 	cookie.Expires = exp
 	cookie.HttpOnly = true
 
+	fmt.Println(cookie.Value)
+
 	context.SetCookie(cookie)
 
-	return context.JSON(http.StatusNoContent, loginResponse{
+	return context.JSON(http.StatusOK, loginResponse{
 		AccessToken: accessToken,
 	})
 }
