@@ -1,8 +1,11 @@
 package handlers
 
 import (
+	"encoding/base64"
 	"net/http"
+	"restaurant-flow-auth/pkg/sqlcClient"
 	"restaurant-flow-auth/pkg/util"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
@@ -69,5 +72,42 @@ func (handler Handler) Register(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	return context.NoContent(http.StatusNoContent)
+	// Same as login:
+	refreshToken, err := util.GenerateRandomBytes(64)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	exp := time.Now().Add(24 * time.Hour * refreshTokenExpDays)
+
+	err = handler.Queries.CreateSession(context.Request().Context(), sqlcClient.CreateSessionParams{
+		UserID:     newUserId,
+		IpAddr:     context.Echo().IPExtractor(context.Request()),
+		UserAgent:  context.Request().UserAgent(),
+		ExpiresAt:  exp,
+		RefreshKey: refreshToken,
+	})
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	accessToken, err := util.GenerateJWT(newUserId)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	cookie := new(http.Cookie)
+	cookie.Name = "refresh_token"
+	cookie.Value = base64.URLEncoding.EncodeToString(refreshToken)
+	cookie.Expires = exp
+	cookie.HttpOnly = true
+
+	context.SetCookie(cookie)
+
+	return context.JSON(http.StatusOK, loginResponse{
+		AccessToken: accessToken,
+	})
 }

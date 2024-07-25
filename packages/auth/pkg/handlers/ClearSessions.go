@@ -39,7 +39,7 @@ func (handler Handler) ClearSessions(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusUnauthorized, errors.New("refresh token expired"))
 	}
 
-	err = handler.Queries.InvalidateAllSessions(context.Request().Context(), string(currentSession.UserID))
+	err = handler.Queries.InvalidateAllSessions(context.Request().Context(), string(*currentSession.UserIDText))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)

@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/base64"
-	"fmt"
 	"net/http"
 	"restaurant-flow-auth/pkg/sqlcClient"
 	"restaurant-flow-auth/pkg/util"
@@ -73,8 +72,6 @@ func (handler Handler) Login(context echo.Context) (err error) {
 	cookie.Value = base64.URLEncoding.EncodeToString(refreshToken)
 	cookie.Expires = exp
 	cookie.HttpOnly = true
-
-	fmt.Println(cookie.Value)
 
 	context.SetCookie(cookie)
 

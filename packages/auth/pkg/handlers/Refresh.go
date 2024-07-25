@@ -47,7 +47,7 @@ func (handler Handler) Refresh(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	accessToken, err := util.GenerateJWT(string(currentSession.UserID))
+	accessToken, err := util.GenerateJWT(string(*currentSession.UserIDText))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)

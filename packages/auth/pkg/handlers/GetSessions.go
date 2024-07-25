@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/base64"
 	"errors"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -34,17 +35,19 @@ func (handler Handler) GetSessions(context echo.Context) (err error) {
 
 	}
 
+	fmt.Printf("CURRENT SESSION %#v\n", currentSession)
+
 	err = handler.Queries.UpdateSessionLastUsed(context.Request().Context(), currentSession.SessionID)
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	sessions, err := handler.Queries.GetUserSessions(context.Request().Context(), string(currentSession.UserID))
+	sessions, err := handler.Queries.GetUserSessions(context.Request().Context(), string(*currentSession.UserIDText))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	return context.JSON(http.StatusNoContent, sessions)
+	return context.JSON(http.StatusOK, sessions)
 }
