@@ -71,6 +71,7 @@ func (handler Handler) Login(context echo.Context) (err error) {
 	cookie.Name = "username"
 	cookie.Value = string(refreshToken)
 	cookie.Expires = exp
+	cookie.HttpOnly = true
 
 	context.SetCookie(cookie)
 

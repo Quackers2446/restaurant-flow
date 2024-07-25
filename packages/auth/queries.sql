@@ -2,7 +2,13 @@
 select * from user where user.user_id = unhex(replace(sqlc.arg("user_id"),'-',''));
 
 -- name: GetUserSessions :many
-select session_id, user_id, ip_addr, user_agent, created_at, last_used_at, expires_at from `session` where user_id = ?;
+select session_id, user_id, ip_addr, user_agent, created_at, last_used_at, expires_at from `session` where user_id = unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: GetSession :one
+select session_id, user_id, ip_addr, user_agent, created_at, last_used_at, expires_at from `session` where refresh_key = ? limit 1;
+
+-- name: UpdateSessionLastUsed :exec
+update `session` set last_used_at=current_timestamp where session_id = ?;
 
 -- name: GetAuthDetails :one
 select * from user_auth where user_id = unhex(replace(sqlc.arg("user_id"),'-',''));

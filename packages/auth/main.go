@@ -84,6 +84,8 @@ func main() {
 	// Routes
 	e.POST("/register", h.Register)
 	e.POST("/login", h.Login)
+	e.GET("/get-sessions", h.GetSessions)
+	e.POST("/refresh", h.Refresh)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":3333"))
