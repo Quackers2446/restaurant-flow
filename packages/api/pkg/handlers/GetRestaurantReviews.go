@@ -17,9 +17,7 @@ type getRestaurantReviewsQuery struct {
 	OrderBy string `query:"orderBy" validate:"omitempty,oneof=created_at rating"`
 	// Ascending or descending
 	Order string `query:"order" validate:"omitempty,oneof=desc asc"`
-}
 
-type getRestaurantReviewsParams struct {
 	RestaurantId uint16 `param:"restaurantId" json:"restaurantId" validate:"required"`
 }
 
@@ -43,16 +41,10 @@ func (handler Handler) GetRestaurantReviews(context echo.Context) (err error) {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
-	params, err := util.ValidateInput(&context, &getRestaurantReviewsParams{})
-
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err)
-	}
-
 	reviews, err := handler.Queries.GetRestaurantReviews(
 		context.Request().Context(),
 		sqlcClient.GetRestaurantReviewsParams{
-			RestaurantID: int32(params.RestaurantId),
+			RestaurantID: int32(query.RestaurantId),
 			Offset:       int32(query.Start),
 			Limit:        int32(query.Limit),
 			OrderBy:      query.OrderBy,
