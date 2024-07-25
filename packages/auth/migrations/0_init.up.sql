@@ -25,8 +25,8 @@ alter table `user_auth` add foreign key (`user_id`) references `user`(`user_id`)
 create table `session` (
     `session_id` int primary key auto_increment,
     `user_id` binary(16) not null,
-    `ip_addr` char(45),
-    `user_agent` text,
+    `ip_addr` char(45) not null,
+    `user_agent` text not null,
     `created_at` timestamp not null default current_timestamp,
     `last_used_at` timestamp not null default current_timestamp on update current_timestamp,
     `expires_at` timestamp not null,

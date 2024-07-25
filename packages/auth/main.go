@@ -49,6 +49,7 @@ func main() {
 	e := echo.New()
 
 	e.Validator = &CustomValidator{validator: validator.New()}
+	e.IPExtractor = echo.ExtractIPFromXFFHeader()
 
 	// Middleware
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
@@ -81,6 +82,8 @@ func main() {
 	h := handlers.New(DB, queries)
 
 	// Routes
+	e.POST("/register", h.Register)
+	e.POST("/login", h.Login)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":3333"))
