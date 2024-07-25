@@ -89,6 +89,8 @@ func main() {
 	e.GET("/restaurants/:id", h.GetRestaurant)
 
 	e.POST("/review/create", h.CreateReview)
+	e.POST("/review/update", h.UpdateReview)
+	e.DELETE("/review/delete", h.DeleteReview)
 	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
 
 	// Swagger

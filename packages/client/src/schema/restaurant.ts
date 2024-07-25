@@ -106,4 +106,17 @@ const getRestaurantsInAreaSchema = z.object({
     updatedAt: z.string(),
 })
 
+const getRestaurantReviewsSchema = z.object({
+    comments: z.string(),
+    createdAt: z.string(),
+    isAnonymous: z.boolean(),
+    rating: z.number(),
+    restaurantId: z.number(),
+    reviewId: z.number(),
+    userId: z.string(),
+})
+
+
+export const getRestaurantReviewsResponse = z.array(getRestaurantReviewsSchema)
+
 export const getRestaurantsInAreaResponse = z.array(getRestaurantsInAreaSchema)
