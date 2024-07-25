@@ -1,9 +1,13 @@
 .logo {
     padding-left: 1rem;
+    color: white;
 }
 
 .header {
     align-items: center;
     justify-content: space-between;
     display: flex;
+    z-index: 10000;
+    background-color: #FF4D4D;
+    border: none;
 }

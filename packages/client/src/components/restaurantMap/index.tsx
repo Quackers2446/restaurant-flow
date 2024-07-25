@@ -1,25 +1,25 @@
-import {useQuery} from "@tanstack/react-query"
-import {type LatLngLiteral} from "leaflet"
+import { useQuery } from "@tanstack/react-query"
+import { type LatLngLiteral } from "leaflet"
 import qs from "qs"
 import React from "react"
-import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet"
-import {apiURL} from "../../globals"
-import {getRestaurantsInAreaResponse} from "../../schema/restaurant"
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
+import { apiURL } from "../../globals"
+import { getRestaurantsInAreaResponse } from "../../schema/restaurant"
 import styles from "./index.module.scss"
 
 // TODO: make these modifiable
-const position: LatLngLiteral = {lat: 43.472587, lng: -80.537681}
+const position: LatLngLiteral = { lat: 43.472587, lng: -80.537681 }
 
 export const RestaurantMap: React.FC = () => {
-    const {error, data} = useQuery({
+    const { error, data } = useQuery({
         queryKey: ["restaurantList"],
         queryFn: () =>
             fetch(
-                `${apiURL}/restaurants/in-area?${qs.stringify({lat: position.lat, lng: position.lng, radius: 200})}`,
+                `${apiURL}/restaurants/in-area?${qs.stringify({ lat: position.lat, lng: position.lng, radius: 200 })}`,
             ).then(async (res) => await getRestaurantsInAreaResponse.parseAsync(await res.json())),
     })
 
-    console.log({data, error})
+    console.log({ data, error })
 
     return (
         <MapContainer
