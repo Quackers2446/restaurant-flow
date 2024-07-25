@@ -9,12 +9,8 @@ import {
     TextInput,
     Title,
 } from "@mantine/core"
-import qs from "qs"
 import React from "react"
 import { CiSearch } from "react-icons/ci"
-import { apiURL } from "../../globals"
-import { getRestaurantsResponse } from "../../schema/restaurant"
-import { debounce } from "../../utils/debounce"
 import styles from "./index.module.scss"
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +21,7 @@ export const HomePage: React.FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (searchQuery.trim()) {
-            
+
             navigate('/search', { state: { query: searchQuery } });
         }
     };
