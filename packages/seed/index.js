@@ -79,6 +79,7 @@ const insertPlace = async (place) => {
             accepts_nfc=:acceptsNfc,
             wheelchair_accessible_entrance=:wheelchairAccessibleEntrance,
             wheelchair_accessible_seating=:wheelchairAccessibleSeating,
+            photos=:photos,
             place_id=:placeId
         as new
         on duplicate key update
@@ -114,7 +115,9 @@ const insertPlace = async (place) => {
             accepts_cash_only=new.accepts_cash_only,
             accepts_nfc=new.accepts_nfc,
             wheelchair_accessible_entrance=new.wheelchair_accessible_entrance,
-            wheelchair_accessible_seating=new.wheelchair_accessible_seating;
+            wheelchair_accessible_seating=new.wheelchair_accessible_seating,
+            photos=new.photos
+            ;
 
         insert into location set
             address=:address,
@@ -208,6 +211,7 @@ const insertPlace = async (place) => {
             highLng: place.viewport.high.longitude,
             lowLat: place.viewport.low.latitude,
             lowLng: place.viewport.low.longitude,
+            photos: place.photos[0].authorAttributions[0].photoUri.substring(2, place.photos[0].authorAttributions[0].photoUri.length),
 
             ...Object.fromEntries(
                 place.regularOpeningHours?.periods.flatMap((period, index) => [
