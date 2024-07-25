@@ -1,0 +1,64 @@
+.itemCard {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin: 2em;
+    margin-top: 1em;
+    margin-bottom: 10px;
+  
+    .itemImage {
+      width: 20em;
+      border-radius: 10px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    .itemDetails {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+  
+      .itemTitle {
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      .itemRating {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+      }
+  
+      .itemTag {
+        margin-top: 0.5rem;
+      }
+  
+      .itemPopularDish {
+        margin-top: 10px;
+      }
+  
+      .itemReview {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        font-size: 14px;
+  
+        .reviewText {
+          margin-left: 5px;
+          color: #666;
+        }
+  
+        .moreLink {
+          margin-left: 5px;
+          color: #e74c3c;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
