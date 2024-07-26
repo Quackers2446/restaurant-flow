@@ -12,9 +12,7 @@ const googleRestaurantSchema = z.object({
     acceptsNfc: nullableNumberBoolean,
     avgRating: nullableNumberBoolean,
     businessStatus: z.object({
-        googlerestaurantBusinessStatus: z
-            .enum(["Operational", "ClosedTemporarily", "ClosedPermanently"])
-            .optional(),
+        googlerestaurantBusinessStatus: z.enum(["Operational", "ClosedTemporarily", "ClosedPermanently"]).optional(),
         valid: z.boolean(),
     }),
     description: z.string().nullable(),
@@ -52,6 +50,7 @@ const googleRestaurantSchema = z.object({
     website: z.string().nullable(),
     wheelchairAccessibleEntrance: nullableNumberBoolean,
     wheelchairAccessibleSeating: nullableNumberBoolean,
+    photos: z.string().nullable(),
 })
 
 const locationSchema = z.object({
@@ -94,6 +93,8 @@ const getRestaurantsSchema = z.object({
     updatedAt: z.string(),
 })
 
+export const getRestaurantResponse = getRestaurantsSchema
+
 export const getRestaurantsResponse = z.array(getRestaurantsSchema)
 
 const getRestaurantsInAreaSchema = z.object({
@@ -114,8 +115,8 @@ const getRestaurantReviewsSchema = z.object({
     restaurantId: z.number(),
     reviewId: z.number(),
     userId: z.string(),
+    username: z.string(),
 })
-
 
 export const getRestaurantReviewsResponse = z.array(getRestaurantReviewsSchema)
 

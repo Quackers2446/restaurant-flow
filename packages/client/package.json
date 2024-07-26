@@ -5,6 +5,7 @@
   "dependencies": {
     "@luke-zhang-04/utils": "github:Luke-zhang-04/utils#semver:3",
     "@mantine/core": "^7.10.0",
+    "@mantine/form": "^7.11.2",
     "@mantine/hooks": "^7.10.0",
     "@tabler/icons-react": "^3.11.0",
     "@tanstack/react-query": "^5.45.1",

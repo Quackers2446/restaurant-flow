@@ -1,30 +1,19 @@
-import {
-    Badge,
-    Card,
-    Container,
-    Group,
-    Image,
-    SimpleGrid,
-    Text,
-    TextInput,
-    Title,
-} from "@mantine/core"
+import {Badge, Card, Container, Group, Image, SimpleGrid, Text, TextInput, Title} from "@mantine/core"
 import React from "react"
-import { CiSearch } from "react-icons/ci"
+import {CiSearch} from "react-icons/ci"
 import styles from "./index.module.scss"
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from "react-router-dom"
 
 export const HomePage: React.FC = () => {
-    const [searchQuery, setSearchQuery] = React.useState('');
-    const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = React.useState("")
+    const navigate = useNavigate()
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
         if (searchQuery.trim()) {
-
-            navigate('/search', { state: { query: searchQuery } });
+            navigate("/search", {state: {query: searchQuery}})
         }
-    };
+    }
 
     return (
         <Container>
@@ -51,7 +40,7 @@ export const HomePage: React.FC = () => {
                 <Card shadow="sm" padding="lg" radius="20" className={styles.card}>
                     <Card.Section>
                         <Image
-                            src="https://via.placeholder.com/150"
+                            src="https://yunshang.ca/wp-content/uploads/%E6%96%B0-%E7%95%AA%E8%8C%84%E9%87%91%E9%92%88%E8%8F%87%E8%82%A5%E7%89%9B%E7%B1%B3%E7%BA%BF.jpg"
                             alt="Tomato Rice Noodle Soup"
                         />
                     </Card.Section>
@@ -64,22 +53,29 @@ export const HomePage: React.FC = () => {
 
                 <Card shadow="sm" padding="lg" radius="20" className={styles.card}>
                     <Card.Section>
-                        <Image src="https://via.placeholder.com/150" alt="Loren Ipsum" />
+                        <Image
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK05gWd8Vi0TR929n_R3NWoc_ALPGCmDhqdA&s"
+                            alt="Wagyu"
+                        />
                     </Card.Section>
-                    <Text className={styles.cardTitle}>Loren ipsum | Loren ipsum</Text>
+                    <Text className={styles.cardTitle}>Wagyu | Daldongnae</Text>
                     <Group className={styles.cardBadge}>
                         <Badge className={styles.cardBadgeHealthy}>Healthy</Badge>
-                        <Badge className={styles.cardBadgeCheap}>Cheap eats</Badge>
+                        <Badge className={styles.cardBadgeEastAsian}>East Asian</Badge>
                     </Group>
                 </Card>
 
                 <Card shadow="sm" padding="lg" radius="20" className={styles.card}>
                     <Card.Section>
-                        <Image src="https://via.placeholder.com/150" alt="Loren Ipsum" />
+                        <Image
+                            src="https://images.squarespace-cdn.com/content/v1/5c658114ab1a625acb417fc9/1575597714451-V4PZPRV96M4GJ0H1CB5X/IMG_3574.jpg"
+                            alt="Loren Ipsum"
+                        />
                     </Card.Section>
-                    <Text className={styles.cardTitle}>Loren ipsum | Loren ipsum</Text>
+                    <Text className={styles.cardTitle}>Deerioca Fever | The Alley</Text>
                     <Group className={styles.cardBadge}>
                         <Badge className={styles.cardBadgeStudy}>Study snacks</Badge>
+                        <Badge className={styles.cardBadgeCheap}>Cheap eats</Badge>
                     </Group>
                 </Card>
             </SimpleGrid>

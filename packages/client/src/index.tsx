@@ -113,10 +113,10 @@ const App: React.FC = () => {
             >
                 <QueryClientProvider client={queryClient}>
                     <MantineProvider>
-                        <AppShell header={{height: 60}} padding="md">
-                            <Header />
-                            <AppShell.Main className="mantine-main">
-                                <Router>
+                        <Router>
+                            <AppShell header={{height: 60}} padding="md">
+                                <Header />
+                                <AppShell.Main className="mantine-main">
                                     <Routes>
                                         <Route path="/" element={<HomePage />} />
                                         <Route path="/map" element={<RestaurantMap />} />
@@ -125,9 +125,9 @@ const App: React.FC = () => {
                                         <Route path="/register" element={<LoginPage type="register" />} />
                                         <Route path="/restaurant/:id" element={<RestaurantPage />} />
                                     </Routes>
-                                </Router>
-                            </AppShell.Main>
-                        </AppShell>
+                                </AppShell.Main>
+                            </AppShell>
+                        </Router>
                     </MantineProvider>
                 </QueryClientProvider>
             </AuthContext.Provider>
