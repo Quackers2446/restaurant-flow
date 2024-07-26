@@ -68,6 +68,8 @@ func main() {
 		AllowOrigins: []string{
 			"http://localhost:3000",
 			"http://127.0.0.1:3000",
+			"http://localhost:3334",
+			"http://127.0.0.1:3334",
 		},
 		AllowCredentials: true,
 	}))
@@ -92,6 +94,7 @@ func main() {
 	e.POST("/review/update", h.UpdateReview)
 	e.DELETE("/review/delete", h.DeleteReview)
 	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
+	e.POST("/internal/register", h.InternalRegister)
 
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)

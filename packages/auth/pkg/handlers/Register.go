@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/base64"
 	"net/http"
+	"restaurant-flow-auth/pkg/hooks"
 	"restaurant-flow-auth/pkg/sqlcClient"
 	"restaurant-flow-auth/pkg/util"
 	"time"
@@ -19,6 +20,8 @@ const bcryptCost = 14
 type registerBody struct {
 	Email    string `body:"email" validate:"required,email"`
 	Password string `body:"password" validate:"required"`
+	Username string `body:"username" validate:"required"`
+	Name     string `body:"name" validate:"required"`
 }
 
 func (handler Handler) Register(context echo.Context) (err error) {
@@ -61,6 +64,12 @@ func (handler Handler) Register(context echo.Context) (err error) {
 			user_id=unhex(replace(?,'-','')),
 			password_hash=?;
 	`, newUserId, hashedPassword)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, err)
+	}
+
+	err = hooks.PreRegister(newUserId, body.Email, body.Username, body.Name, body.Password)
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
