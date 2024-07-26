@@ -2,7 +2,7 @@
 
 ## About
 
-Restaurant Flow is an application built for students and by students. Restaurant Flow features restaurant reviews by students, but it is not just a Yelp or Google Reviews duplicate. The value proposition of Restaurant Flow is that students know these are reviews from other students, who understand their needs and wants.
+Restaurant Flow (UW Flow for food) is an application built for students and by students. Restaurant Flow features restaurant reviews by students, but it is not just a Yelp or Google Reviews duplicate. The value proposition of Restaurant Flow is that students know these are reviews from other students, who understand their needs and wants.
 
 Functionalities: In addition to the main value proposition of Restaurant Flow, we also have a number of other functionalities we would like to support. These include:
 Categorizing meals and restaurants into different categories such as 
