@@ -1,0 +1,24 @@
+[
+  {
+    "reviewId": 39,
+    "comments": "COMMENT 39",
+    "restaurantId": 39,
+    "userId": "00000000-0000-0000-0000-000000000000",
+    "createdAt": "2024-07-10T00:08:02Z",
+    "updatedAt": "2024-07-10T00:08:02Z",
+    "rating": 7,
+    "isAnonymous": false,
+    "username": "Placeholder"
+  },
+  {
+    "reviewId": 155,
+    "comments": "VERY GOOD NOODLES 10/10 WOULD EAT AGAIN",
+    "restaurantId": 39,
+    "userId": "6316ae02-87c2-46c2-9f3b-312604dba41b",
+    "createdAt": "2024-07-26T01:28:07Z",
+    "updatedAt": "2024-07-26T01:29:24Z",
+    "rating": 10,
+    "isAnonymous": false,
+    "username": "lukez"
+  }
+]
