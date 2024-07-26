@@ -1,0 +1,35 @@
+/* UserReviews.module.scss */
+.userReviews {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 2rem;
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.deleteButton {
+  position: flex; /* Position the button absolutely */
+  top: 30px;          /* Adjust as necessary */
+  right: 20px;        /* Adjust as necessary */
+  background: none;   /* No background */
+  border: none;       /* No border */
+  font-size: 16px;    /* Font size for the 'X' */
+  color: #888;        /* Color for the 'X' */
+  cursor: pointer;    /* Pointer cursor on hover */
+  justify-content: flex-end;
+}

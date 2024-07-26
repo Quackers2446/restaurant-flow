@@ -41,6 +41,7 @@ const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
                             const date = new Date(review.updatedAt)
                             return (
                                 <ReviewCard
+                                    id={review.reviewId}
                                     author={review.username}
                                     tags={["Comfort Food", "East Asian"]}
                                     comments={review.comments}
