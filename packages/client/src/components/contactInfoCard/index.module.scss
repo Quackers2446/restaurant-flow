@@ -1,9 +1,8 @@
 .card {
-  border: 1px solid #fff;
+  border: 1px solid #d9d9d9;
   border-radius: 8px;
   padding: 16px;
-  color: #fff; /* Text color for visibility */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #000000; /* Text color for visibility */
   max-width: 300px;
   margin: auto;
   font-family: Arial, sans-serif;
@@ -15,11 +14,11 @@
 
 .label {
   font-weight: bold;
-  color: #ff6347;
+  color: #FF4D4D;
 }
 
 a {
-  color: #fff; /* Text color for visibility */
+  color: #000000; /* Text color for visibility */
   text-decoration: none;
 }
 
