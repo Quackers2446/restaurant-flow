@@ -1,7 +1,5 @@
 package handlers
 
-// TODO: Implemented authentication. This file is using the placeholder user.
-
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
@@ -28,8 +26,13 @@ type deleteReviewBody struct {
 //	@Failure	400			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/delete [delete]
-
 func (handler Handler) DeleteReview(context echo.Context) (err error) {
+	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+
 	body, err := util.ValidateInput(&context, &deleteReviewBody{})
 
 	if err != nil {
@@ -40,7 +43,7 @@ func (handler Handler) DeleteReview(context echo.Context) (err error) {
 		context.Request().Context(),
 		sqlcClient.DeleteReviewParams{
 			RestaurantID: *body.RestaurantId,
-			UserID:       "00000000-0000-0000-0000-000000000000",
+			UserID:       claims.Subject,
 		},
 	)
 

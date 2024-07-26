@@ -1,7 +1,5 @@
 package handlers
 
-// TODO: Implemented authentication. This file is using the placeholder user.
-
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
@@ -33,6 +31,12 @@ type updateReviewBody struct {
 //	@Router		/review/update [post]
 
 func (handler Handler) UpdateReview(context echo.Context) (err error) {
+	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+
 	body, err := util.ValidateInput(&context, &updateReviewBody{})
 
 	if err != nil {
@@ -45,7 +49,7 @@ func (handler Handler) UpdateReview(context echo.Context) (err error) {
 			Rating:       *body.Rating,
 			Comments:     body.Comments,
 			RestaurantID: *body.RestaurantId,
-			UserID:       "00000000-0000-0000-0000-000000000000",
+			UserID:       claims.Subject,
 			IsAnonymous:  util.ToPointer(util.BoolToInt[int8](body.IsAnonymous)),
 		},
 	)
@@ -57,7 +61,7 @@ func (handler Handler) UpdateReview(context echo.Context) (err error) {
 	review, err := handler.Queries.GetUpdatedReview(
 		context.Request().Context(),
 		sqlcClient.GetUpdatedReviewParams{
-			UserID:       "00000000-0000-0000-0000-000000000000",
+			UserID:       claims.Subject,
 			RestaurantID: *body.RestaurantId,
 		},
 	)
