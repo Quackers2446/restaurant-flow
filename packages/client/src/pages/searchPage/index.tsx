@@ -1,12 +1,12 @@
-import React, {useEffect} from "react"
-import {Button, Text, Flex, TextInput} from "@mantine/core"
-import {CiSearch} from "react-icons/ci"
+import React, { useEffect } from "react"
+import { Button, Text, Flex, TextInput } from "@mantine/core"
+import { CiSearch } from "react-icons/ci"
 import styles from "./index.module.scss"
-import {RestaurantMap, RestaurantCard} from "../../components"
-import {getRestaurantsResponse, getRestaurantReviewsResponse} from "../../schema/restaurant"
-import {debounce} from "../../utils/debounce"
-import {apiURL} from "../../globals"
-import {useLocation} from "react-router-dom"
+import { RestaurantMap, RestaurantCard } from "../../components"
+import { getRestaurantsResponse, getRestaurantReviewsResponse } from "../../schema/restaurant"
+import { debounce } from "../../utils/debounce"
+import { apiURL } from "../../globals"
+import { useLocation } from "react-router-dom"
 import qs from "qs"
 
 const Sidebar: React.FC = () => {
@@ -59,13 +59,12 @@ const Sidebar: React.FC = () => {
 export const SearchPage: React.FC = () => {
     const [data, setData] = React.useState<typeof getRestaurantsResponse._type>()
     const [allReviews, setAllReviews] = React.useState<(typeof getRestaurantReviewsResponse._type)[]>()
-
     const location = useLocation()
-    const {query} = location.state || {query: ""}
+    const [query, setQuery] = React.useState<string>(location.state.query)
 
     useEffect(() => {
         const getRestauants = async () => {
-            const res = await fetch(`${apiURL}/restaurants/search?${qs.stringify({search: query})}`).then(
+            const res = await fetch(`${apiURL}/restaurants/search?${qs.stringify({ search: query })}`).then(
                 async (res) => await getRestaurantsResponse.parseAsync(await res.json()),
             )
             setData(res)
@@ -91,7 +90,7 @@ export const SearchPage: React.FC = () => {
     }, [data])
 
     return (
-        <div className={styles.searchPage} style={{height: "100dvh"}}>
+        <div className={styles.searchPage} style={{ height: "100dvh" }}>
             <Sidebar />
             <div className={styles.cardsContainer}>
                 <TextInput
@@ -104,10 +103,12 @@ export const SearchPage: React.FC = () => {
                     onChange={debounce(async (event) => {
                         // TODO: use react query and clean this shit up
                         const res = await fetch(
-                            `${apiURL}/restaurants/search?${qs.stringify({search: event.target.value})}`,
+                            `${apiURL}/restaurants/search?${qs.stringify({ search: event.target.value })}`,
                         ).then(async (res) => await getRestaurantsResponse.parseAsync(await res.json()))
 
                         setData(res)
+                        console.log("event:", event.target.value);
+                        setQuery(qs.stringify(event.target.value))
                     }, 500)}
                 />
                 <>
