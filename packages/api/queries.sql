@@ -106,21 +106,22 @@ insert into tag set
     name=sqlc.narg("name");
 
 -- name: GetRestaurantReviews :many
-select review.*
+select review.*, user.username
 from review
+inner join user on user.user_id = review.user_id
 where restaurant_id = ?
 order by
     case when sqlc.arg("order") = "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end desc,
     case when sqlc.arg("order") != "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end asc,
@@ -135,14 +136,14 @@ order by
     case when sqlc.arg("order") = "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end desc,
     case when sqlc.arg("order") != "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end asc,
@@ -159,6 +160,7 @@ select review.* from review where restaurant_id=? and user_id=unhex(replace(sqlc
 
 -- name: DeleteReview :exec
 delete from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
 -- name: GetTag :one
 select tag.* from tag where tag_id = ?;
 
@@ -167,4 +169,11 @@ update review set
     rating=?,
     comments=sqlc.narg("comments"),
     is_anonymous=sqlc.narg("is_anonymous")
-where review_id = ?;
+where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: CreateUser :exec
+insert into user set
+    user_id=unhex(replace(sqlc.arg("user_id"),'-','')),
+    name=?,
+    username=?,
+    email=?;
