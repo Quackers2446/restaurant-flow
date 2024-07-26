@@ -13,6 +13,8 @@ import "./index.scss"
 import "./leaflet"
 import {HomePage, LoginPage, RestaurantPage, SearchPage} from "./pages"
 import reportWebVitals from "./reportWebVitals"
+import Restaurant from "./pages/RestaurantPage"
+import UserReviews from "./pages/UserReviews"
 import {FullUser, ownProfileResponse, refreshResponse} from "./schema/user"
 import request from "./utils/request"
 
@@ -124,6 +126,7 @@ const App: React.FC = () => {
                                         <Route path="/login" element={<LoginPage type="login" />} />
                                         <Route path="/register" element={<LoginPage type="register" />} />
                                         <Route path="/restaurant/:id" element={<RestaurantPage />} />
+                                      <Route path="/user-profile" element={<UserReviews />} />
                                     </Routes>
                                 </AppShell.Main>
                             </AppShell>

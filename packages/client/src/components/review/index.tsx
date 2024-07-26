@@ -6,21 +6,25 @@ import {ReactComponent as GreyStar} from "./grey-star.svg"
 import {ReactComponent as HalfStar} from "./half-star.svg"
 
 interface ReviewCardProps {
+    id: number
     author: string
     tags: string[]
     comments: string
     date: Date
     order: string
     rating: number
+    onDelete?: () => void
 }
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({
+    id,
     author,
     tags,
     comments,
     order,
     date,
     rating,
+    onDelete,
 }) => {
     return (
         <div className={styles.reviewCard}>
@@ -54,6 +58,12 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
                 <strong className={styles.order}>What they got: </strong>
                 {order}
             </div>
+
+            {onDelete && (
+                <button className={styles.deleteButton} onClick={onDelete}>
+                    Delete
+                </button>
+            )}
         </div>
     )
 }
