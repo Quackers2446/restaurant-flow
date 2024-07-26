@@ -10,41 +10,41 @@ import (
 
 // Note: pointers allow validator to tell the difference between 0 and empty
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
-type deleteReviewBody struct {
-	RestaurantId *int32 `body:"restaurantId" validate:"required"`
+type leavePartyBody struct {
+	PartyId int32 `body:"PartyId" validate:"required"`
 }
 
-// DeleteReview
+// LeaveParty
 //
-//	@Summary	delete a review
+//	@Summary	leave a party
 //
-//	@Tags		Reviews
+//	@Tags		Party
 //	@Accept		json
 //	@Produce	json
 //	@Success	200
-//	@Param		requestBody	body		deleteReviewBody	true	"request body"
+//	@Param		requestBody	body		leavePartyBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
 //	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
-//	@Router		/review/delete [delete]
-func (handler Handler) DeleteReview(context echo.Context) (err error) {
+//	@Router		/party/leave [delete]
+func (handler Handler) LeaveParty(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusUnauthorized, err)
 	}
 
-	body, err := util.ValidateInput(&context, &deleteReviewBody{})
+	body, err := util.ValidateInput(&context, &leavePartyBody{})
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
-	err = handler.Queries.DeleteReview(
+	err = handler.Queries.LeaveParty(
 		context.Request().Context(),
-		sqlcClient.DeleteReviewParams{
-			RestaurantID: *body.RestaurantId,
-			UserID:       claims.Subject,
+		sqlcClient.LeavePartyParams{
+			PartyID: body.PartyId,
+			UserID:  claims.Subject,
 		},
 	)
 

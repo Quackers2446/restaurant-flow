@@ -27,6 +27,7 @@ type createReviewBody struct {
 //	@Success	200			{object}	sqlcClient.Review
 //	@Param		requestBody	body		createReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/create [post]
 func (handler Handler) CreateReview(context echo.Context) (err error) {

@@ -151,7 +151,8 @@ order by
 limit ?, ?;
 
 -- name: GetReview :one
-select review.*, user.username from review
+select review.*, user.username
+from review
 inner join user on user.user_id = review.user_id
 where review_id = ?;
 
@@ -170,6 +171,66 @@ update review set
     comments=sqlc.narg("comments"),
     is_anonymous=sqlc.narg("is_anonymous")
 where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: CreateParty :execlastid
+insert into party set
+    max_members=?,
+    `description`=?,
+    restaurant_id=?,
+    `time`=?;
+
+-- name: JoinParty :execlastid
+insert into party_members set
+    party_id=?,
+    user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: GetParties :many
+select party.*
+from party
+where party.`time` >= current_timestamp
+order by
+    case when sqlc.arg("order") = "desc" then (
+        case
+            when sqlc.arg("order_by") = "time" then `time`
+            else `time`
+        end
+    ) end desc,
+    case when sqlc.arg("order") != "desc" then (
+        case
+            when sqlc.arg("order_by") = "time" then `time`
+            else `time`
+        end
+    ) end asc,
+    party_id asc
+limit ?, ?;
+
+-- name: GetPartyDetails :one
+select party.*
+from party
+where party_id=?;
+
+-- name: GetPartyMembers :many
+select party_members.*, user.username, (insert(
+        insert(
+            insert(
+                insert(hex(party_members.user_id),9,0,'-'),
+                14,0,'-'
+            ),
+            19,0,'-'
+        ),
+        24,0,'-')
+    ) as user_id_text
+from party_members
+inner join user on user.user_id = party_members.user_id
+where party_id in (sqlc.slice("party_ids"));
+
+-- name: GetPartySize :one
+select COUNT(*)
+from party_members
+where party_id=?;
+
+-- name: LeaveParty :exec
+delete from party_members where party_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
 
 -- name: CreateUser :exec
 insert into user set
