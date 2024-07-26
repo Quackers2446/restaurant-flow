@@ -26,6 +26,7 @@ type registerBody struct {
 //	@Success	204
 //	@Param		requestBody	body		registerBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/internal/register [post]
 func (handler Handler) InternalRegister(context echo.Context) (err error) {

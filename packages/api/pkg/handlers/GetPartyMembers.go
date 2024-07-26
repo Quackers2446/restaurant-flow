@@ -7,38 +7,37 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type getPartyMembersQuery struct {
-	PartyId uint16 `param:"partyId" json:"partyId" validate:"required"`
+type getPartyMembersParams struct {
+	PartyId int32 `param:"partyId" json:"partyId" validate:"required"`
 }
 
 // GetPartyMembers
 //
 //	@Summary	get members for a party
 //
-//	@Tags		Restaurants, Reviews
+//	@Tags		Party
 //	@Accept		json
 //	@Produce	json
-//	@Success	200				{array}		sqlcClient.PartyMembers
-//	@Param		requestQuery	query		getRestaurantReviewsQuery	false	"request query"
-//	@Param		requestParams	path		getRestaurantReviewsParams	true	"request params"
+//	@Success	200				{array}		sqlcClient.PartyMember
+//	@Param		requestParams	path		getPartyMembersParams	true	"request params"
 //	@Failure	400				{object}	echo.HTTPError
 //	@Failure	500				{object}	echo.HTTPError
-//	@Router		/restaurants/{restaurantId}/reviews [get]
+//	@Router		/party/members/{partyId} [get]
 func (handler Handler) GetPartyMembers(context echo.Context) (err error) {
-	query, err := util.ValidateInput(&context, &getPartyMembersQuery{})
+	params, err := util.ValidateInput(&context, &getPartyMembersParams{})
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
-	reviews, err := handler.Queries.GetPartyMembers(
+	members, err := handler.Queries.GetPartyMembers(
 		context.Request().Context(),
-		int32(query.PartyId),
+		params.PartyId,
 	)
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	return context.JSON(http.StatusOK, reviews)
+	return context.JSON(http.StatusOK, members)
 }

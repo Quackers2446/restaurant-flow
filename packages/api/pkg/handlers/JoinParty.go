@@ -13,24 +13,31 @@ import (
 
 // Note: pointers allow validator to tell the difference between 0 and empty
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
-type joinPartyQuery struct {
+type joinPartyParams struct {
 	PartyId *int32 `param:"partyId" validate:"required"`
 }
 
-// CreateReview
+// Join party
 //
-//	@Summary	create a review
+//	@Summary	join a party
 //
-//	@Tags		Reviews
+//	@Tags		Party
 //	@Accept		json
 //	@Produce	json
 //	@Success	200			{object}	sqlcClient.Review
-//	@Param		requestBody	body		createReviewBody	true	"request body"
+//	@Param		requestBody	body		joinPartyParams	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
-//	@Router		/review/create [post]
+//	@Router		/party/join/{partyId} [post]
 func (handler Handler) JoinParty(context echo.Context) (err error) {
-	body, err := util.ValidateInput(&context, &joinPartyQuery{})
+	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+
+	params, err := util.ValidateInput(&context, &joinPartyParams{})
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
@@ -38,7 +45,7 @@ func (handler Handler) JoinParty(context echo.Context) (err error) {
 
 	party, err := handler.Queries.GetPartyDetails(
 		context.Request().Context(),
-		*body.PartyId,
+		*params.PartyId,
 	)
 
 	if err != nil {
@@ -47,7 +54,7 @@ func (handler Handler) JoinParty(context echo.Context) (err error) {
 
 	partySize, err := handler.Queries.GetPartySize(
 		context.Request().Context(),
-		*body.PartyId,
+		*params.PartyId,
 	)
 
 	if err != nil {
@@ -62,8 +69,8 @@ func (handler Handler) JoinParty(context echo.Context) (err error) {
 	joined, err := handler.Queries.JoinParty(
 		context.Request().Context(),
 		sqlcClient.JoinPartyParams{
-			PartyID: *body.PartyId,
-			UserID:  "00000000-0000-0000-0000-000000000002",
+			PartyID: *params.PartyId,
+			UserID:  claims.Subject,
 		},
 	)
 

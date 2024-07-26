@@ -27,9 +27,9 @@ type updateReviewBody struct {
 //	@Success	200			{object}	sqlcClient.Review
 //	@Param		requestBody	body		updateReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/update [put]
-
 func (handler Handler) UpdateReview(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
 

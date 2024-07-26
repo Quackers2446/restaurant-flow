@@ -24,6 +24,7 @@ type deleteReviewBody struct {
 //	@Success	200
 //	@Param		requestBody	body		deleteReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/delete [delete]
 func (handler Handler) DeleteReview(context echo.Context) (err error) {

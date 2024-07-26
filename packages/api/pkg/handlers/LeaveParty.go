@@ -1,7 +1,5 @@
 package handlers
 
-// TODO: Implemented authentication. This file is using the placeholder user.
-
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
@@ -13,23 +11,29 @@ import (
 // Note: pointers allow validator to tell the difference between 0 and empty
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
 type leavePartyBody struct {
-	PartyId *int32 `body:"PartyId" validate:"required"`
+	PartyId int32 `body:"PartyId" validate:"required"`
 }
 
-// DeleteReview
+// LeaveParty
 //
-//	@Summary	delete a review
+//	@Summary	leave a party
 //
-//	@Tags		Reviews
+//	@Tags		Party
 //	@Accept		json
 //	@Produce	json
 //	@Success	200
-//	@Param		requestBody	body		deleteReviewBody	true	"request body"
+//	@Param		requestBody	body		leavePartyBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
-//	@Router		/review/delete [delete]
-
+//	@Router		/party/leave [delete]
 func (handler Handler) LeaveParty(context echo.Context) (err error) {
+	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+
 	body, err := util.ValidateInput(&context, &leavePartyBody{})
 
 	if err != nil {
@@ -39,8 +43,8 @@ func (handler Handler) LeaveParty(context echo.Context) (err error) {
 	err = handler.Queries.LeaveParty(
 		context.Request().Context(),
 		sqlcClient.LeavePartyParams{
-			PartyID: *body.PartyId,
-			UserID:  "00000000-0000-0000-0000-000000000001",
+			PartyID: body.PartyId,
+			UserID:  claims.Subject,
 		},
 	)
 

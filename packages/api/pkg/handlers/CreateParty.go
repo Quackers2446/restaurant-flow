@@ -1,7 +1,5 @@
 package handlers
 
-// TODO: Implemented authentication. This file is using the placeholder user.
-
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
@@ -15,7 +13,7 @@ import (
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
 type createPartyBody struct {
 	MaxMembers   *uint8  `body:"max_members" validate:"gte=2"`
-	RestaurantId *int32  `body:"restaurantId" validate:"required"`
+	RestaurantId int32   `body:"restaurantId" validate:"required"`
 	Description  *string `body:"description"`
 	Time         *int64  `body:"time"`
 }
@@ -24,15 +22,22 @@ type createPartyBody struct {
 //
 //	@Summary	create a party
 //
-//	@Tags		Reviews
+//	@Tags		Party
 //	@Accept		json
 //	@Produce	json
 //	@Success	200			{object}	sqlcClient.Party
 //	@Param		requestBody	body		createPartyBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
-//	@Router		/review/create [post]
+//	@Router		/party/create [post]
 func (handler Handler) CreateParty(context echo.Context) (err error) {
+	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+
 	body, err := util.ValidateInput(&context, &createPartyBody{})
 
 	if err != nil {
@@ -44,7 +49,7 @@ func (handler Handler) CreateParty(context echo.Context) (err error) {
 		sqlcClient.CreatePartyParams{
 			MaxMembers:   int32(*body.MaxMembers),
 			Description:  body.Description,
-			RestaurantID: *body.RestaurantId,
+			RestaurantID: body.RestaurantId,
 			Time:         time.Unix(*body.Time, 0),
 		},
 	)
@@ -56,7 +61,7 @@ func (handler Handler) CreateParty(context echo.Context) (err error) {
 	party, err := handler.Queries.JoinParty(
 		context.Request().Context(),
 		sqlcClient.JoinPartyParams{
-			UserID:  "00000000-0000-0000-0000-000000000000",
+			UserID:  claims.Subject,
 			PartyID: int32(lastInsertId),
 		},
 	)
