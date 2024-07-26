@@ -3,16 +3,15 @@ package main
 import (
 	"fmt"
 	"net/http"
-	_ "restaurant-flow/docs"
-	"restaurant-flow/pkg/db"
-	"restaurant-flow/pkg/handlers"
-	"restaurant-flow/pkg/sqlcClient"
-	"restaurant-flow/pkg/util"
+
+	"restaurant-flow-auth/pkg/db"
+	"restaurant-flow-auth/pkg/handlers"
+	"restaurant-flow-auth/pkg/sqlcClient"
+	"restaurant-flow-auth/pkg/util"
 
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 // For stdout coloring
@@ -50,6 +49,7 @@ func main() {
 	e := echo.New()
 
 	e.Validator = &CustomValidator{validator: validator.New()}
+	e.IPExtractor = echo.ExtractIPFromXFFHeader()
 
 	// Middleware
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
@@ -68,8 +68,6 @@ func main() {
 		AllowOrigins: []string{
 			"http://localhost:3000",
 			"http://127.0.0.1:3000",
-			"http://localhost:3334",
-			"http://127.0.0.1:3334",
 		},
 		AllowCredentials: true,
 	}))
@@ -84,27 +82,13 @@ func main() {
 	h := handlers.New(DB, queries)
 
 	// Routes
-	e.GET("/dummy-table", h.GetDummyTable)
-	e.GET("/restaurants", h.GetRestaurants)
-	e.GET("/restaurants/in-area", h.GetRestaurantsInArea)
-	e.GET("/restaurants/search", h.GetRestaurantsSearch)
-	e.GET("/restaurants/:id", h.GetRestaurant)
-
-	e.POST("/review/create", h.CreateReview)
-	e.PUT("/review/update", h.UpdateReview)
-	e.DELETE("/review/delete", h.DeleteReview)
-	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
-	e.POST("/internal/register", h.InternalRegister)
-
-	e.POST("/party/create", h.CreateParty)
-	e.GET("/party/all", h.GetParties)
-	e.GET("/party/members/:partyId", h.GetPartyMembers)
-	e.POST("/party/join/:partyId", h.JoinParty)
-	e.DELETE("/party/leave", h.LeaveParty)
-
-	// Swagger
-	e.GET("/swagger/*", echoSwagger.WrapHandler)
+	e.POST("/register", h.Register)
+	e.POST("/login", h.Login)
+	e.GET("/get-sessions", h.GetSessions)
+	e.GET("/refresh", h.Refresh)
+	e.POST("/clear-sessions", h.ClearSessions)
+	e.POST("/logout", h.Logout)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":3333"))
+	e.Logger.Fatal(e.Start(":3334"))
 }
