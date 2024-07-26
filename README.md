@@ -1,5 +1,23 @@
 # Restaurant Flow
 
+## About
+
+Restaurant Flow is an application built for students and by students. Restaurant Flow features restaurant reviews by students, but it is not just a Yelp or Google Reviews duplicate. The value proposition of Restaurant Flow is that students know these are reviews from other students, who understand their needs and wants.
+
+Functionalities: In addition to the main value proposition of Restaurant Flow, we also have a number of other functionalities we would like to support. These include:
+Categorizing meals and restaurants into different categories such as 
+- “comfort food” (for stressful study periods)
+- “study snacks” (for when you want to reward yourself after a hard study session)
+- “cheap eats” (for when you are on a budget)
+- “grab and go” (for when you are in a time crunch and need something quick)
+- Featuring many on campus restaurants such as those in SLC and student cafeterias, which may not be on Google Maps
+- Filtering by different cuisines
+- Listing meals a user has bought within each review and popular meals
+- Star ratings
+- Incorporating Google Maps to retrieve restaurant information and to allow users to see their location in relation to the location of other restaurants
+- Enabling people to join groups and eat together
+
+
 ## Setup
 
 ### Things to Install
