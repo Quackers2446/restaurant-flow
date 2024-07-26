@@ -32,7 +32,7 @@ func (handler Handler) GetPartyMembers(context echo.Context) (err error) {
 
 	members, err := handler.Queries.GetPartyMembers(
 		context.Request().Context(),
-		params.PartyId,
+		[]int32{params.PartyId},
 	)
 
 	if err != nil {
