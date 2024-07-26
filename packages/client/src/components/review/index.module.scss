@@ -1,0 +1,62 @@
+.reviewCard {
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #fff; /* Text color for visibility */
+  font-family: Arial, sans-serif;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.authorIcon {
+  font-size: 2em;
+  margin-right: 10px;
+}
+
+.authorDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.categories {
+  display: flex;
+}
+
+.category {
+  background-color: #ff6347;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+.reviewText {
+  margin: 10px 0;
+}
+
+.order {
+  color: #ff6347;
+}
+
+.cardBadge {
+    margin-bottom: 5px;
+    margin-top: 1rem;
+}
+
+.cardBadgeComfort {
+    background-color: #FFA500;
+}
+
+.cardBadgeEastAsian {
+    background-color: #FF6347; 
+}
