@@ -168,6 +168,3 @@ update review set
     comments=sqlc.narg("comments"),
     is_anonymous=sqlc.narg("is_anonymous")
 where review_id = ?;
-
--- name: DeleteReview :exec
-delete from review where review_id = ?;
