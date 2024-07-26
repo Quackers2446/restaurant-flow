@@ -6,6 +6,7 @@ import data from "./reviews.json"
 import {useParams} from "react-router-dom"
 import request from "../../utils/request"
 import {apiURL, authURL} from "../../globals"
+import ReviewModal from "../../components/ReviewModal"
 
 export const RestaurantPage: React.FC = () => {
     const {id: restaurantId} = useParams() as {id: string}
@@ -19,8 +20,16 @@ export const RestaurantPage: React.FC = () => {
         })()
     }, [restaurantId])
 
+    const handleOpenModal = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+    }
+
     return (
-        <div>
+        <div className={styles.page}>
             <div className={styles.imageContainer}>
                 {image ? <img src={image} alt={name} className={styles.image} /> : null}
                 <div className={styles.overlay}></div>
@@ -28,7 +37,10 @@ export const RestaurantPage: React.FC = () => {
             </div>
             <div className={styles.margins}>
                 <div className={styles.actions}>
-                    <button className={styles.button}>Add review</button>
+                    <button className={styles.button} onClick={handleOpenModal}>
+                        Add review
+                    </button>
+                    {isModalOpen && <ReviewModal onClose={handleCloseModal} />}
                 </div>
                 <div className={styles.content}>
                     <div className={styles.reviews}>

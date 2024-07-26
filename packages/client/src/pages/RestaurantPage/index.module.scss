@@ -38,7 +38,7 @@
 }
 
 .button {
-  background-color: #ff6347;
+  background-color: #FF4D4D;
   color: #fff;
   padding: 8px 16px;
   border: none;
@@ -90,4 +90,9 @@
   display: flex;
   margin: 20px;
   align-items: flex-start; /* Aligns the info card to the top */
+}
+
+.page {
+  background-color: white;
+  min-height: 100vh;
 }
