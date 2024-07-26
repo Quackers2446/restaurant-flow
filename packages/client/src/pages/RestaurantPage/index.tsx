@@ -1,17 +1,88 @@
-import React, {useState} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import {ReviewCard} from "../../components/review"
 import styles from "./index.module.scss"
 import ContactInfoCard from "../../components/contactInfoCard"
-import data from "./reviews.json"
+// import data from "./reviews.json"
+import {useParams} from "react-router-dom"
+import request from "../../utils/request"
+import {apiURL, authURL} from "../../globals"
 import ReviewModal from "../../components/ReviewModal"
+import {getRestaurantResponse, getRestaurantReviewsResponse} from "../../schema/restaurant"
+import {AuthContext} from "../../auth"
+import {useMutation} from "@tanstack/react-query"
 
-type RestaurantPageProps = {
-    name: string
-    image: string
-}
-
-const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
+export const RestaurantPage: React.FC = () => {
+    const {id: restaurantId} = useParams() as {id: string}
     const [isModalOpen, setIsModalOpen] = useState(false)
+    // const [name, setName] = useState<string>("")
+    const [image, setImage] = useState<string | null>(null)
+    const [restaurant, setRestaurant] = useState<(typeof getRestaurantResponse)["_type"] | null>(null)
+    const [reviews, setReviews] = useState<(typeof getRestaurantReviewsResponse)["_type"] | null>(null)
+
+    const [reviewRating, setReviewRating] = useState<string | null>(null)
+    const [reviewItem, setReviewItem] = useState<string | null>(null)
+    const [reviewDesc, setReviewDesc] = useState<string | null>(null)
+    const authContext = useContext(AuthContext)
+
+    const {mutate} = useMutation({
+        mutationFn: async (body: {rating: number; comments: string | null; restaurantId: number}) => {
+            return authContext.auth
+                ? await request(`${apiURL}/review/create`, "POST", "json", body, authContext.auth?.accessToken)
+                : undefined
+        },
+        onSuccess: async () => {
+            setIsModalOpen(false)
+        },
+    })
+
+    const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+        event.preventDefault()
+
+        if (authContext.auth) {
+            mutate({rating: Number(reviewRating), restaurantId: Number(restaurantId), comments: reviewDesc})
+        }
+    }
+
+    useEffect(() => {
+        ;(async () => {
+            const currentRestaurant = await getRestaurantResponse.parseAsync(
+                await request(`${apiURL}/restaurants/${restaurantId}`, "GET", "json"),
+            )
+            // console.log(currentRestaurant)
+            console.log(
+                currentRestaurant
+                    ? (currentRestaurant?.openingHours.main).map((day) => {
+                          return (
+                              String(day.openTime).substring(0, String(day.openTime).length - 2) +
+                              ":" +
+                              String(day.openTime).substring(
+                                  String(day.openTime).length - 2,
+                                  String(day.openTime).length,
+                              ) +
+                              " - " +
+                              String(day.closeTime).substring(0, String(day.closeTime).length - 2) +
+                              ":" +
+                              String(day.closeTime).substring(
+                                  String(day.closeTime).length - 2,
+                                  String(day.closeTime).length,
+                              )
+                          )
+                      })
+                    : "",
+            )
+            setImage("https://" + currentRestaurant?.googleRestaurant.photos?.split("=")[0] + "=w2000-h200")
+            setRestaurant(currentRestaurant)
+        })()
+    }, [restaurantId])
+
+    useEffect(() => {
+        ;(async () => {
+            const currentReviews = await getRestaurantReviewsResponse.parseAsync(
+                await request(`${apiURL}/restaurants/${restaurantId}/reviews`, "GET", "json"),
+            )
+            setReviews(currentReviews)
+        })()
+    }, [restaurantId])
 
     const handleOpenModal = () => {
         setIsModalOpen(true)
@@ -24,40 +95,86 @@ const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
     return (
         <div className={styles.page}>
             <div className={styles.imageContainer}>
-                <img src={image} alt={name} className={styles.image} />
+                {image ? <img src={image} alt={restaurant?.googleRestaurant.name} className={styles.image} /> : null}
                 <div className={styles.overlay}></div>
-                <h1 className={styles.textOverlay}>{name}</h1>
+                <h1 className={styles.textOverlay}>{restaurant?.googleRestaurant.name}</h1>
             </div>
             <div className={styles.margins}>
                 <div className={styles.actions}>
                     <button className={styles.button} onClick={handleOpenModal}>
                         Add review
                     </button>
-                    {isModalOpen && <ReviewModal onClose={handleCloseModal} />}
+                    {isModalOpen && (
+                        <ReviewModal
+                            onClose={handleCloseModal}
+                            setRating={setReviewRating}
+                            setItem={setReviewItem}
+                            setDesc={setReviewDesc}
+                            onSubmit={onSubmit}
+                        />
+                    )}
                 </div>
                 <div className={styles.content}>
                     <div className={styles.reviews}>
-                        {data.map((review) => {
-                            const date = new Date(review.updatedAt)
-                            return (
-                                <ReviewCard
-                                    id={review.reviewId}
-                                    author={review.username}
-                                    tags={["Comfort Food", "East Asian"]}
-                                    comments={review.comments}
-                                    order={"N/A"}
-                                    date={date}
-                                    rating={review.rating}
-                                />
-                            )
-                        })}
+                        {reviews
+                            ? reviews.map((review) => {
+                                  const date = new Date(review.createdAt)
+                                  return (
+                                      <ReviewCard
+                                          author={review.username}
+                                          tags={[
+                                              ["Comfort Food", "East Asian", "Affordable", "Healthy"][
+                                                  review.username.length % 4
+                                              ],
+                                              ["Comfort Food", "East Asian", "Affordable", "Healthy"][
+                                                  review.username.length % 3
+                                              ],
+                                          ]}
+                                          comments={review.comments}
+                                          order={"N/A"}
+                                          date={date}
+                                          rating={review.rating}
+                                      />
+                                  )
+                              })
+                            : null}
                     </div>
                     <div className={styles.infoCard}>
                         <ContactInfoCard
-                            phoneNumber={"416 1111 3333"}
-                            location={"123 University Ave"}
-                            website={"www.yunshang.ca"}
-                            hours={[]}
+                            phoneNumber={restaurant?.googleRestaurant.phone ? restaurant?.googleRestaurant.phone : ""}
+                            location={restaurant?.location.address ? restaurant?.location.address : ""}
+                            website={restaurant?.googleRestaurant.website ? restaurant?.googleRestaurant.website : ""}
+                            hours={
+                                restaurant
+                                    ? (restaurant?.openingHours.main).map((day) => {
+                                          return (
+                                              [
+                                                  "Monday",
+                                                  "Tuesday",
+                                                  "Wednesday",
+                                                  "Thursday",
+                                                  "Friday",
+                                                  "Saturday",
+                                                  "Sunday",
+                                              ][day.closeDay ? day.closeDay : 0] +
+                                              " " +
+                                              String(day.openTime).substring(0, String(day.openTime).length - 2) +
+                                              ":" +
+                                              String(day.openTime).substring(
+                                                  String(day.openTime).length - 2,
+                                                  String(day.openTime).length,
+                                              ) +
+                                              " - " +
+                                              String(day.closeTime).substring(0, String(day.closeTime).length - 2) +
+                                              ":" +
+                                              String(day.closeTime).substring(
+                                                  String(day.closeTime).length - 2,
+                                                  String(day.closeTime).length,
+                                              )
+                                          )
+                                      })
+                                    : []
+                            }
                         />
                     </div>
                 </div>
@@ -66,8 +183,9 @@ const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
     )
 }
 
-export default RestaurantPage
-
+function getRestaurantsSchema(arg0: {[key: string]: unknown}) {
+    throw new Error("Function not implemented.")
+}
 // <div>
 //     <ReviewCard
 //         author={"Bob Dylan"}
