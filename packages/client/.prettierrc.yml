@@ -6,7 +6,7 @@ endOfLine: "lf"
 htmlWhitespaceSensitivity: "strict"
 bracketSameLine: false
 jsxSingleQuote: false
-printWidth: 99
+printWidth: 120
 quoteProps: "as-needed"
 semi: false
 singleQuote: false

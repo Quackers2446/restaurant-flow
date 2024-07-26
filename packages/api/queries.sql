@@ -238,3 +238,6 @@ insert into user set
     name=?,
     username=?,
     email=?;
+
+-- name: GetFullUser :one
+select * from user where user_id=unhex(replace(sqlc.arg("user_id"),'-',''));

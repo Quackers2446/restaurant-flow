@@ -102,6 +102,7 @@ func main() {
 	e.GET("/party/members/:partyId", h.GetPartyMembers)
 	e.POST("/party/join/:partyId", h.JoinParty)
 	e.DELETE("/party/leave", h.LeaveParty)
+	e.GET("/users/own-profile", h.GetOwnProfile)
 
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
