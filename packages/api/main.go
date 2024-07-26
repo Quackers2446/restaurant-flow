@@ -68,6 +68,8 @@ func main() {
 		AllowOrigins: []string{
 			"http://localhost:3000",
 			"http://127.0.0.1:3000",
+			"http://localhost:3334",
+			"http://127.0.0.1:3334",
 		},
 		AllowCredentials: true,
 	}))
@@ -89,7 +91,17 @@ func main() {
 	e.GET("/restaurants/:id", h.GetRestaurant)
 
 	e.POST("/review/create", h.CreateReview)
+	e.PUT("/review/update", h.UpdateReview)
+	e.DELETE("/review/delete", h.DeleteReview)
+	e.POST("/tag/create", h.CreateTag)
 	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
+	e.POST("/internal/register", h.InternalRegister)
+
+	e.POST("/party/create", h.CreateParty)
+	e.GET("/party/all", h.GetParties)
+	e.GET("/party/members/:partyId", h.GetPartyMembers)
+	e.POST("/party/join/:partyId", h.JoinParty)
+	e.DELETE("/party/leave", h.LeaveParty)
 
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)

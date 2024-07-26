@@ -11,9 +11,12 @@ dependencies:
   '@mantine/hooks':
     specifier: ^7.10.0
     version: 7.10.0(react@18.3.1)
+  '@tabler/icons-react':
+    specifier: ^3.11.0
+    version: 3.11.0(react@18.3.1)
   '@tanstack/react-query':
     specifier: ^5.45.1
-    version: 5.45.1(react@18.3.1)
+    version: 5.50.1(react@18.3.1)
   '@testing-library/jest-dom':
     specifier: ^5.17.0
     version: 5.17.0
@@ -43,7 +46,7 @@ dependencies:
     version: 1.9.4
   qs:
     specifier: ^6.12.1
-    version: 6.12.1
+    version: 6.12.3
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -2452,16 +2455,29 @@ packages:
       - supports-color
     dev: false
 
-  /@tanstack/query-core@5.45.0:
-    resolution: {integrity: sha512-RVfIZQmFUTdjhSAAblvueimfngYyfN6HlwaJUPK71PKd7yi43Vs1S/rdimmZedPWX/WGppcq/U1HOj7O7FwYxw==}
+  /@tabler/icons-react@3.11.0(react@18.3.1):
+    resolution: {integrity: sha512-xHNBi9mns1slvqos+7LkP3ube4CjWrANMbxMaorzwzO9J/+y1sAEG/sN8CV8FmtpYW/9/gDR+OWCjjLLg0RmAw==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      '@tabler/icons': 3.11.0
+      react: 18.3.1
     dev: false
 
-  /@tanstack/react-query@5.45.1(react@18.3.1):
-    resolution: {integrity: sha512-mYYfJujKg2kxmkRRjA6nn4YKG3ITsKuH22f1kteJ5IuVQqgKUgbaSQfYwVP0gBS05mhwxO03HVpD0t7BMN7WOA==}
+  /@tabler/icons@3.11.0:
+    resolution: {integrity: sha512-/vZinJNvCYhdAB+RUsyCpanSPuOEKHHIZi4Uu0Bw7ilewHnQhCWUPrT704uHCRli2ROl7spADPmWzAqOganA5A==}
+    dev: false
+
+  /@tanstack/query-core@5.50.1:
+    resolution: {integrity: sha512-lpfhKPrJlyV2DSVcQb/HuozH3Av3kws4ge22agx+lNGpFkS4vLZ7St0l3GLwlAD+bqB+qXGex3JdRKUNtMviEQ==}
+    dev: false
+
+  /@tanstack/react-query@5.50.1(react@18.3.1):
+    resolution: {integrity: sha512-s0DW3rVBDPReDDovUjVqItVa3R2nPfUANK9nqGvarO2DwTiY9U4EBTsqizMxItRCoGgK5apeM7D3mxlHrSKpdQ==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.45.0
+      '@tanstack/query-core': 5.50.1
       react: 18.3.1
     dev: false
 
@@ -9078,8 +9094,8 @@ packages:
       side-channel: 1.0.6
     dev: false
 
-  /qs@6.12.1:
-    resolution: {integrity: sha512-zWmv4RSuB9r2mYQw3zxQuHWeU+42aKi1wWig/j4ele4ygELZ7PEO6MM7rim9oAQH2A5MWfsAVf/jPvTPgCbvUQ==}
+  /qs@6.12.3:
+    resolution: {integrity: sha512-AWJm14H1vVaO/iNZ4/hO+HyaTehuy9nRqVdkTqlJt0HWvBiBIEXFmb4C0DGeYo3Xes9rrEW+TxHsaigCbN5ICQ==}
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.6

@@ -30,6 +30,7 @@ type getRestaurantResult struct {
 //	@Param		requestParams	path		getRestaurantParams	true	"request params"
 //	@Success	200				{object}	getRestaurantsResult
 //	@Failure	400				{object}	echo.HTTPError
+//	@Failure	401				{object}	echo.HTTPError
 //	@Failure	404				{object}	echo.HTTPError
 //	@Failure	500				{object}	echo.HTTPError
 //	@Router		/restaurants/{id} [get]

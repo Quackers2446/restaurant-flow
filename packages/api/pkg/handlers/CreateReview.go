@@ -1,7 +1,5 @@
 package handlers
 
-// TODO: Implemented authentication. This file is using the placeholder user.
-
 import (
 	"net/http"
 	"restaurant-flow/pkg/sqlcClient"
@@ -13,7 +11,7 @@ import (
 // Note: pointers allow validator to tell the difference between 0 and empty
 // https://stackoverflow.com/questions/66632787/how-to-allow-zero0-value
 type createReviewBody struct {
-	Rating       *uint8  `body:"rating" validate:"required,gte=0,lte=10" default:"10"`
+	Rating       *uint8  `body:"rating" validate:"required,gte=0,lte=10"`
 	IsAnonymous  bool    `body:"isAnonymous" default:"false"`
 	RestaurantId *int32  `body:"restaurantId" validate:"required"`
 	Comments     *string `body:"comments"`
@@ -29,9 +27,16 @@ type createReviewBody struct {
 //	@Success	200			{object}	sqlcClient.Review
 //	@Param		requestBody	body		createReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
+//	@Failure	401			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
 //	@Router		/review/create [post]
 func (handler Handler) CreateReview(context echo.Context) (err error) {
+	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusUnauthorized, err)
+	}
+
 	body, err := util.ValidateInput(&context, &createReviewBody{})
 
 	if err != nil {
@@ -44,7 +49,7 @@ func (handler Handler) CreateReview(context echo.Context) (err error) {
 			Rating:       *body.Rating,
 			Comments:     body.Comments,
 			RestaurantID: *body.RestaurantId,
-			UserID:       "00000000-0000-0000-0000-000000000000",
+			UserID:       claims.Subject,
 			IsAnonymous:  util.ToPointer(util.BoolToInt[int8](body.IsAnonymous)),
 		},
 	)
