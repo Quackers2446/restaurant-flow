@@ -100,6 +100,11 @@ insert into review set
     user_id=unhex(replace(sqlc.arg("user_id"),'-','')), -- Accept textual form of UUID
     is_anonymous=sqlc.narg("is_anonymous");
 
+-- name: CreateTag :execlastid
+insert into tag set
+    restaurant_id=?,
+    name=sqlc.narg("name");
+
 -- name: GetRestaurantReviews :many
 select review.*, user.username
 from review
@@ -155,6 +160,9 @@ select review.* from review where restaurant_id=? and user_id=unhex(replace(sqlc
 
 -- name: DeleteReview :exec
 delete from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: GetTag :one
+select tag.* from tag where tag_id = ?;
 
 -- name: UpdateReview :exec
 update review set
