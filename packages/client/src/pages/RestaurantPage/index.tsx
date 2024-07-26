@@ -3,6 +3,7 @@ import {ReviewCard} from "../../components/review"
 import styles from "./index.module.scss"
 import ContactInfoCard from "../../components/contactInfoCard"
 import data from "./reviews.json"
+import ReviewModal from "../../components/ReviewModal"
 
 type RestaurantPageProps = {
     name: string
@@ -12,8 +13,16 @@ type RestaurantPageProps = {
 const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
+    const handleOpenModal = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+    }
+
     return (
-        <div>
+        <div className={styles.page}>
             <div className={styles.imageContainer}>
                 <img src={image} alt={name} className={styles.image} />
                 <div className={styles.overlay}></div>
@@ -21,7 +30,10 @@ const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
             </div>
             <div className={styles.margins}>
                 <div className={styles.actions}>
-                    <button className={styles.button}>Add review</button>
+                    <button className={styles.button} onClick={handleOpenModal}>
+                        Add review
+                    </button>
+                    {isModalOpen && <ReviewModal onClose={handleCloseModal} />}
                 </div>
                 <div className={styles.content}>
                     <div className={styles.reviews}>
