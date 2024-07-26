@@ -101,21 +101,22 @@ insert into review set
     is_anonymous=sqlc.narg("is_anonymous");
 
 -- name: GetRestaurantReviews :many
-select review.*
+select review.*, user.username
 from review
+inner join user on user.user_id = review.user_id
 where restaurant_id = ?
 order by
     case when sqlc.arg("order") = "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end desc,
     case when sqlc.arg("order") != "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end asc,
@@ -130,14 +131,14 @@ order by
     case when sqlc.arg("order") = "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end desc,
     case when sqlc.arg("order") != "desc" then (
         case
             when sqlc.arg("order_by") = "rating" then `rating`
-            when sqlc.arg("order_by") = "created_at" then `created_at`
+            when sqlc.arg("order_by") = "created_at" then review.`created_at`
             else `rating`
         end
     ) end asc,
@@ -145,7 +146,9 @@ order by
 limit ?, ?;
 
 -- name: GetReview :one
-select review.* from review where review_id = ?;
+select review.*, user.username from review
+inner join user on user.user_id = review.user_id
+where review_id = ?;
 
 -- name: GetUpdatedReview :one
 select review.* from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
