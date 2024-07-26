@@ -100,6 +100,11 @@ insert into review set
     user_id=unhex(replace(sqlc.arg("user_id"),'-','')), -- Accept textual form of UUID
     is_anonymous=sqlc.narg("is_anonymous");
 
+-- name: CreateTag :execlastid
+insert into tag set
+    restaurant_id=?,
+    name=sqlc.narg("name");
+
 -- name: GetRestaurantReviews :many
 select review.*
 from review
@@ -145,7 +150,17 @@ order by
 limit ?, ?;
 
 -- name: GetReview :one
-select review.* from review where review_id = ?;
+select review.*, user.username from review
+inner join user on user.user_id = review.user_id
+where review_id = ?;
+
+-- name: GetUpdatedReview :one
+select review.* from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: DeleteReview :exec
+delete from review where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+-- name: GetTag :one
+select tag.* from tag where tag_id = ?;
 
 -- name: UpdateReview :exec
 update review set
