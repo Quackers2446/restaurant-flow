@@ -159,3 +159,37 @@ update review set
     comments=sqlc.narg("comments"),
     is_anonymous=sqlc.narg("is_anonymous")
 where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: CreateParty :execlastid
+insert into party set
+    max_members=?,
+    `description`=?,
+    restaurant_id=?,
+    `time`=?;
+
+-- name: JoinParty :execlastid
+insert into party_members set
+    party_id=?,
+    user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: GetParties :many
+select party.*
+from party;
+
+-- name: GetPartyDetails :one
+select party.*
+from party
+where party_id=?;
+
+-- name: GetPartyMembers :many
+select party_members.*
+from party_members
+where party_id=?;
+
+-- name: GetPartySize :one
+select COUNT(*)
+from party_members
+where party_id=?;
+
+-- name: LeaveParty :exec
+delete from party_members where party_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));

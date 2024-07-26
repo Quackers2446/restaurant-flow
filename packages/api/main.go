@@ -93,6 +93,12 @@ func main() {
 	e.DELETE("/review/delete", h.DeleteReview)
 	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
 
+	e.POST("/party/create", h.CreateParty)
+	e.GET("/party/all", h.GetParties)
+	e.GET("/party/members/:partyId", h.GetPartyMembers)
+	e.POST("/party/join/:partyId", h.JoinParty)
+	e.DELETE("/party/leave", h.LeaveParty)
+
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
