@@ -159,3 +159,10 @@ update review set
     comments=sqlc.narg("comments"),
     is_anonymous=sqlc.narg("is_anonymous")
 where restaurant_id=? and user_id=unhex(replace(sqlc.arg("user_id"),'-',''));
+
+-- name: CreateUser :exec
+insert into user set
+    user_id=unhex(replace(sqlc.arg("user_id"),'-','')),
+    name=?,
+    username=?,
+    email=?;
