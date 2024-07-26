@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import {ReviewCard} from "../../components/review"
 import styles from "./index.module.scss"
 import ContactInfoCard from "../../components/contactInfoCard"
@@ -8,6 +8,8 @@ import request from "../../utils/request"
 import {apiURL, authURL} from "../../globals"
 import ReviewModal from "../../components/ReviewModal"
 import {getRestaurantResponse, getRestaurantReviewsResponse} from "../../schema/restaurant"
+import {AuthContext} from "../../auth"
+import {useMutation} from "@tanstack/react-query"
 
 export const RestaurantPage: React.FC = () => {
     const {id: restaurantId} = useParams() as {id: string}
@@ -17,12 +19,36 @@ export const RestaurantPage: React.FC = () => {
     const [restaurant, setRestaurant] = useState<(typeof getRestaurantResponse)["_type"] | null>(null)
     const [reviews, setReviews] = useState<(typeof getRestaurantReviewsResponse)["_type"] | null>(null)
 
+    const [reviewRating, setReviewRating] = useState<string | null>(null)
+    const [reviewItem, setReviewItem] = useState<string | null>(null)
+    const [reviewDesc, setReviewDesc] = useState<string | null>(null)
+    const authContext = useContext(AuthContext)
+
+    const {mutate} = useMutation({
+        mutationFn: async (body: {rating: number; comments: string | null; restaurantId: number}) => {
+            return authContext.auth
+                ? await request(`${apiURL}/review/create`, "POST", "json", body, authContext.auth?.accessToken)
+                : undefined
+        },
+        onSuccess: async () => {
+            setIsModalOpen(false)
+        },
+    })
+
+    const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+        event.preventDefault()
+
+        if (authContext.auth) {
+            mutate({rating: Number(reviewRating), restaurantId: Number(restaurantId), comments: reviewDesc})
+        }
+    }
+
     useEffect(() => {
         ;(async () => {
             const currentRestaurant = await getRestaurantResponse.parseAsync(
                 await request(`${apiURL}/restaurants/${restaurantId}`, "GET", "json"),
             )
-            console.log(currentRestaurant)
+            // console.log(currentRestaurant)
             console.log(
                 currentRestaurant
                     ? (currentRestaurant?.openingHours.main).map((day) => {
@@ -78,7 +104,15 @@ export const RestaurantPage: React.FC = () => {
                     <button className={styles.button} onClick={handleOpenModal}>
                         Add review
                     </button>
-                    {isModalOpen && <ReviewModal onClose={handleCloseModal} />}
+                    {isModalOpen && (
+                        <ReviewModal
+                            onClose={handleCloseModal}
+                            setRating={setReviewRating}
+                            setItem={setReviewItem}
+                            setDesc={setReviewDesc}
+                            onSubmit={onSubmit}
+                        />
+                    )}
                 </div>
                 <div className={styles.content}>
                     <div className={styles.reviews}>
@@ -88,7 +122,14 @@ export const RestaurantPage: React.FC = () => {
                                   return (
                                       <ReviewCard
                                           author={review.username}
-                                          tags={["Comfort Food", "East Asian"]}
+                                          tags={[
+                                              ["Comfort Food", "East Asian", "Affordable", "Healthy"][
+                                                  review.username.length % 4
+                                              ],
+                                              ["Comfort Food", "East Asian", "Affordable", "Healthy"][
+                                                  review.username.length % 3
+                                              ],
+                                          ]}
                                           comments={review.comments}
                                           order={"N/A"}
                                           date={date}

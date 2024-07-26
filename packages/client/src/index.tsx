@@ -23,7 +23,7 @@ const App: React.FC = () => {
     const [currentAccessToken, setCurrentAccessToken] = useState<string | undefined | null>(undefined)
 
     const setAccessToken = (accessToken: string): void => {
-        setAccessToken(accessToken)
+        setCurrentAccessToken(accessToken)
     }
 
     const setUser = (user: FullUser): void => {

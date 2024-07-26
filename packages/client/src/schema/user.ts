@@ -1,7 +1,7 @@
 import {z} from "zod"
 
 export const ownProfileResponse = z.object({
-    createdAt: z.date(),
+    createdAt: z.string(),
     email: z.string(),
     name: z.string(),
     userId: z.string(),

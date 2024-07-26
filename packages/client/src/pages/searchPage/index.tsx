@@ -117,10 +117,11 @@ export const SearchPage: React.FC = () => {
                         })
                         return (
                             <RestaurantCard
+                                id={restaurant.restaurantId}
                                 imageUrl={"https://" + restaurant.googleRestaurant.photos?.split("=")[0] + "=w150-h150"} // replace with the actual path
                                 title={restaurant.googleRestaurant.name}
                                 rating={review ? review[0].rating : 5}
-                                tag="Comfort Food"
+                                tag={["Comfort Food", "East Asian", "Affordable", "Healthy"][(restaurant.googleRestaurant.name.length % 4)]}
                                 popularDish="XYZ"
                                 review={review ? review[0].comments : ""}
                             />
