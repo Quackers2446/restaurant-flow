@@ -1,21 +1,28 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {ReviewCard} from "../../components/review"
 import styles from "./index.module.scss"
 import ContactInfoCard from "../../components/contactInfoCard"
 import data from "./reviews.json"
+import {useParams} from "react-router-dom"
+import request from "../../utils/request"
+import {apiURL, authURL} from "../../globals"
 
-type RestaurantPageProps = {
-    name: string
-    image: string
-}
-
-const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
+export const RestaurantPage: React.FC = () => {
+    const {id: restaurantId} = useParams() as {id: string}
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [name, setName] = useState<string>("")
+    const [image, setImage] = useState<string | null>(null)
+
+    useEffect(() => {
+        ;(async () => {
+            const currentRestaurant = await request(`${apiURL}/restaurants/${restaurantId}`, "GET", "json")
+        })()
+    }, [restaurantId])
 
     return (
         <div>
             <div className={styles.imageContainer}>
-                <img src={image} alt={name} className={styles.image} />
+                {image ? <img src={image} alt={name} className={styles.image} /> : null}
                 <div className={styles.overlay}></div>
                 <h1 className={styles.textOverlay}>{name}</h1>
             </div>
@@ -52,8 +59,6 @@ const RestaurantPage: React.FC<RestaurantPageProps> = ({name, image}) => {
         </div>
     )
 }
-
-export default RestaurantPage
 
 // <div>
 //     <ReviewCard

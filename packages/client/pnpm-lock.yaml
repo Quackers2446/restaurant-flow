@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@luke-zhang-04/utils':
+    specifier: github:Luke-zhang-04/utils#semver:3
+    version: github.com/Luke-zhang-04/utils/e289d045353ea63dc2138990045f44be3f3e5699(@types/node@16.18.97)
   '@mantine/core':
     specifier: ^7.10.0
     version: 7.10.0(@mantine/hooks@7.10.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
@@ -7783,6 +7786,10 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /node-abort-controller@3.1.1:
+    resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
+    dev: false
+
   /node-forge@1.3.1:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
     engines: {node: '>= 6.13.0'}
@@ -11475,4 +11482,23 @@ packages:
 
   /zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
+
+  github.com/Luke-zhang-04/utils/e289d045353ea63dc2138990045f44be3f3e5699(@types/node@16.18.97):
+    resolution: {tarball: https://codeload.github.com/Luke-zhang-04/utils/tar.gz/e289d045353ea63dc2138990045f44be3f3e5699}
+    id: github.com/Luke-zhang-04/utils/e289d045353ea63dc2138990045f44be3f3e5699
+    name: '@luke-zhang-04/utils'
+    version: 3.0.0
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@types/node': '>= 18'
+      node-fetch: '>= 2'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      node-fetch:
+        optional: true
+    dependencies:
+      '@types/node': 16.18.97
+      node-abort-controller: 3.1.1
     dev: false
