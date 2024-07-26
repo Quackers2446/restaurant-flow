@@ -93,6 +93,7 @@ func main() {
 	e.POST("/review/create", h.CreateReview)
 	e.PUT("/review/update", h.UpdateReview)
 	e.DELETE("/review/delete", h.DeleteReview)
+	e.POST("/tag/create", h.CreateTag)
 	e.GET("/restaurants/:restaurantId/reviews", h.GetRestaurantReviews)
 	e.POST("/internal/register", h.InternalRegister)
 

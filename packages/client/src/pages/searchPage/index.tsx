@@ -101,7 +101,7 @@ export const SearchPage: React.FC = () => {
             <Sidebar />
             <div className={styles.cardsContainer}>
                 <TextInput
-                    value={query}
+                    defaultValue={query}
                     placeholder={"Restaurant or Food"}
                     className={styles.textInput}
                     radius="xl"

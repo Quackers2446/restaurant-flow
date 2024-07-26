@@ -28,7 +28,7 @@ type updateReviewBody struct {
 //	@Param		requestBody	body		updateReviewBody	true	"request body"
 //	@Failure	400			{object}	echo.HTTPError
 //	@Failure	500			{object}	echo.HTTPError
-//	@Router		/review/update [post]
+//	@Router		/review/update [put]
 
 func (handler Handler) UpdateReview(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
