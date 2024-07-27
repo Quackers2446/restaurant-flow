@@ -24,11 +24,12 @@ type joinPartyParams struct {
 //	@Tags		Party
 //	@Accept		json
 //	@Produce	json
-//	@Success	200			{object}	sqlcClient.Review
-//	@Param		requestBody	body		joinPartyParams	true	"request body"
-//	@Failure	400			{object}	echo.HTTPError
-//	@Failure	401			{object}	echo.HTTPError
-//	@Failure	500			{object}	echo.HTTPError
+//	@Success	200				{object}	sqlcClient.Review
+//	@Param		requestParams	path		joinPartyParams	true	"request body"
+//	@Param		Authorization	header		string			true	"access token"
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	401				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/party/join/{partyId} [post]
 func (handler Handler) JoinParty(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)

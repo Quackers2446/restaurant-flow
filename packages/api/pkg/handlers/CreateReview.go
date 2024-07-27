@@ -24,11 +24,12 @@ type createReviewBody struct {
 //	@Tags		Reviews
 //	@Accept		json
 //	@Produce	json
-//	@Success	200			{object}	sqlcClient.Review
-//	@Param		requestBody	body		createReviewBody	true	"request body"
-//	@Failure	400			{object}	echo.HTTPError
-//	@Failure	401			{object}	echo.HTTPError
-//	@Failure	500			{object}	echo.HTTPError
+//	@Success	200				{object}	sqlcClient.Review
+//	@Param		requestBody		body		createReviewBody	true	"request body"
+//	@Param		Authorization	header		string				true	"access token"
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	401				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/review/create [post]
 func (handler Handler) CreateReview(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)

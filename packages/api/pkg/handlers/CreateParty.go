@@ -25,11 +25,12 @@ type createPartyBody struct {
 //	@Tags		Party
 //	@Accept		json
 //	@Produce	json
-//	@Success	200			{object}	sqlcClient.Party
-//	@Param		requestBody	body		createPartyBody	true	"request body"
-//	@Failure	400			{object}	echo.HTTPError
-//	@Failure	401			{object}	echo.HTTPError
-//	@Failure	500			{object}	echo.HTTPError
+//	@Success	200				{object}	sqlcClient.Party
+//	@Param		requestBody		body		createPartyBody	true	"request body"
+//	@Param		Authorization	header		string			true	"access token"
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	401				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/party/create [post]
 func (handler Handler) CreateParty(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)

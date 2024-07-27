@@ -22,10 +22,11 @@ type deleteReviewBody struct {
 //	@Accept		json
 //	@Produce	json
 //	@Success	200
-//	@Param		requestBody	body		deleteReviewBody	true	"request body"
-//	@Failure	400			{object}	echo.HTTPError
-//	@Failure	401			{object}	echo.HTTPError
-//	@Failure	500			{object}	echo.HTTPError
+//	@Param		requestBody		body		deleteReviewBody	true	"request body"
+//	@Param		Authorization	header		string				true	"access token"
+//	@Failure	400				{object}	echo.HTTPError
+//	@Failure	401				{object}	echo.HTTPError
+//	@Failure	500				{object}	echo.HTTPError
 //	@Router		/review/delete [delete]
 func (handler Handler) DeleteReview(context echo.Context) (err error) {
 	_, claims, err := util.ValidateTokenHeader(&context.Request().Header)
